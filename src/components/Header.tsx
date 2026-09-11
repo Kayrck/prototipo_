@@ -85,7 +85,7 @@ export default function Header() {
         role="banner"
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-center h-16 lg:h-20 gap-6">
+          <div className="flex items-center h-16 lg:h-20 gap-2 lg:gap-3">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="SINTFUB, página inicial">
               <img src="/sintfub-logo.png" alt="SINTFUB" className="h-11 w-auto flex-shrink-0" />
@@ -98,7 +98,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center justify-center gap-0 ml-4 flex-1" aria-label="Navegação principal">
+            <nav className="hidden lg:flex items-center justify-center gap-0 mx-auto" aria-label="Navegação principal">
               {menuItems.map((item) => (
                 <div key={item.label} className="mega-menu-item relative group">
                   <Link

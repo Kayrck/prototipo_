@@ -24,6 +24,14 @@ const categoryLabels: Record<string, string> = {
 };
 
 const PAGE_SIZE = 6;
+const MULTIMIDIA_SLUGS = ["fotos", "videos", "cards"];
+
+const multimidiaVideos = [
+  { label: "HUB · 54 anos", href: "https://www.youtube.com/watch?v=cCoZSAESKpA", image: "/img/video-hub-54-anos.jpg" },
+  { label: "Fala da Nadia", href: "https://www.youtube.com/watch?v=RIVp_ClgKGQ", image: "/img/video-fala-nadia.jpg" },
+  { label: "Memorial da Greve de 2024", href: "https://www.youtube.com/watch?v=C0cU4hLx398", image: "/img/video-memorial-greve.jpg" },
+  { label: "Esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", image: "/img/video-urp-esclarecimentos.jpg" },
+];
 
 export default function NewsListing() {
   const location = useLocation();
@@ -39,6 +47,7 @@ export default function NewsListing() {
   const tagSlug = isTagPage ? segments[1] || "" : "";
   const leafCategory = !isTagPage && segments[0] === "category" ? segments[segments.length - 1] : "";
   const parentCategory = !isTagPage && segments.length === 3 ? segments[1] : "";
+  const isMultimidiaRoot = leafCategory === "multimidia" && !parentCategory;
 
   const catLabel = isTagPage
     ? `Tag: ${tagSlug.replace(/-/g, " ")}`
@@ -49,6 +58,8 @@ export default function NewsListing() {
     // "Publicações" é a categoria-mãe (agrega Notícias, Informativos, Multimídias etc.),
     // então a página raiz /category/publicacoes/ deve mostrar todas as publicações.
     if (leafCategory === "publicacoes" && !parentCategory) return true;
+    // "Multimídias" agrega Fotos, Vídeos e Cards na página raiz da categoria.
+    if (isMultimidiaRoot) return MULTIMIDIA_SLUGS.includes(item.categorySlug);
     if (leafCategory) return item.categorySlug === leafCategory;
     return true;
   });
@@ -93,6 +104,39 @@ export default function NewsListing() {
         <div className="flex gap-8">
           {/* Main content */}
           <div className="flex-1 min-w-0">
+            {isMultimidiaRoot && (
+              <div className="mb-10">
+                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Vídeos</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {multimidiaVideos.map((video) => (
+                    <a
+                      key={video.label}
+                      href={video.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative rounded-2xl overflow-hidden h-40 bg-gray-800"
+                      aria-label={`Assistir "${video.label}" no YouTube`}
+                    >
+                      <img
+                        src={video.image}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                      <div className="relative h-full flex flex-col items-center justify-center gap-2">
+                        <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
+                          <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                        <span className="text-white font-bold text-sm text-center px-4 font-[family-name:var(--font-display)]">{video.label}</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {Array.from({ length: 6 }).map((_, i) => (

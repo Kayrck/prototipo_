@@ -28,7 +28,7 @@ const hubConfigs: Record<string, HubConfig> = {
   "/juridico/": {
     title: "Jurídico",
     subtitle: "Assessoria jurídica para servidores",
-    description: "O SINTFUB oferece suporte jurídico nas áreas trabalhista e cível para todos os filiados. Consulte as categorias abaixo para acessar informativos, decisões e orientações legais.",
+    description: "Nossos associados contam com o serviço de assessoria jurídica gratuita nas áreas Trabalhista, Cível, Família e Criminal.",
     breadcrumb: "Jurídico",
     color: "#C41230",
     icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
@@ -37,19 +37,27 @@ const hubConfigs: Record<string, HubConfig> = {
         type: "cards",
         title: "Áreas de atuação",
         items: [
-          { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/", desc: "Defesa dos direitos laborais, acordos coletivos, rescisões e demandas trabalhistas.", icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
+          { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/", desc: "Defesa dos direitos laborais, acordos coletivos, rescisões e demandas trabalhistas. Assessoria: Wagner Advogados Associados.", icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
           { label: "Jurídico Cível", href: "/category/juridico-civel/", desc: "Assessoria em demandas cíveis, família e criminal para filiados e dependentes.", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
         ],
       },
       {
         type: "info",
         title: "Como acessar o atendimento jurídico",
-        content: "Filiados ao SINTFUB têm direito a consultas jurídicas nas áreas trabalhista e cível. Para agendar atendimento, entre em contato com o departamento jurídico pelos canais disponíveis na página de contato ou pelo WhatsApp.",
+        content: "Servidoras e servidores associados ao SINTFUB têm direito a atendimento jurídico gratuito com os advogados contratados pelo sindicato. Os plantões do Jurídico nas áreas trabalhista, cível, família e crime de menor potencial ofensivo do juizado especial acontecem na sede do sindicato, no Campus Darcy Ribeiro. Para agendar, entre em contato pelos canais da página de Contato ou pelo WhatsApp.",
+      },
+      {
+        type: "cards",
+        title: "Vídeo: orientações jurídicas",
+        items: [
+          { label: "Jurídico do SINTFUB faz esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", desc: "Assista no canal do SINTFUB no YouTube.", icon: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" },
+        ],
       },
       {
         type: "links",
         title: "Links úteis",
         items: [
+          { label: "Site da Assessoria Jurídica Trabalhista (Wagner Advogados)", href: "https://wagner.adv.br/" },
           { label: "Contato: Departamento Jurídico", href: "/contato/" },
           { label: "WhatsApp Jurídico", href: "/contato/" },
           { label: "Transparência", href: "/category/transparencia/" },
@@ -99,7 +107,13 @@ const hubConfigs: Record<string, HubConfig> = {
           { label: "Comissão de Ética", href: "/category/comissao-de-etica/", desc: "Regimento e informações da Comissão de Ética.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
         ],
       },
-      { type: "docs", title: "Documentos recentes", docType: "Transparência" },
+      { type: "docs", title: "Prestação de contas e documentos financeiros", docType: "Transparência" },
+      { type: "docs", title: "Atas de Assembleia", docType: "Ata" },
+      {
+        type: "info",
+        title: "Assembleia de prestação de contas",
+        content: "A gestão financeira do SINTFUB é submetida periodicamente à Assembleia Geral. Em abril de 2026, por exemplo, a Assembleia Geral Ordinária avaliou e votou a prestação de contas do exercício de 2023, com base nos relatórios do Conselho Fiscal disponíveis para consulta abaixo.",
+      },
     ],
   },
   "/category/aposentado/": {
@@ -123,7 +137,12 @@ const hubConfigs: Record<string, HubConfig> = {
       { type: "news", title: "Publicações para aposentados", newsCategory: "aposentados" },
       {
         type: "info",
-        title: "Informação importante",
+        title: "Licença-prêmio e férias não gozadas",
+        content: "O período de férias e de licença-prêmio adquirido e não gozado, ou não utilizado para fins de aposentadoria, deve ser convertido em pecúnia — direito garantido pela assessoria jurídica trabalhista do SINTFUB. Consulte a página de Jurídico Trabalhista para mais orientações.",
+      },
+      {
+        type: "info",
+        title: "Filiação de aposentados",
         content: "A situação 'Aposentado' está disponível no formulário de filiação (campo Ativo/Aposentado). O mesmo formulário atende servidores ativos e aposentados da FUB.",
       },
     ],
@@ -202,35 +221,44 @@ export default function HubPage() {
                   {section.title}
                 </h2>
                 <div className={`grid gap-4 ${section.items.length === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"}`}>
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="group flex flex-col gap-4 p-6 bg-gray-50 hover:bg-white border border-gray-100 hover:border-gray-300 hover:shadow-md rounded-2xl transition-all"
-                    >
-                      {item.icon && (
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${config.color}12` }}>
-                          <svg className="w-6 h-6 group-hover:scale-110 transition-transform" style={{ color: config.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                  {section.items.map((item) => {
+                    const external = /^https?:\/\//.test(item.href);
+                    const cardClassName = "group flex flex-col gap-4 p-6 bg-gray-50 hover:bg-white border border-gray-100 hover:border-gray-300 hover:shadow-md rounded-2xl transition-all";
+                    const cardContent = (
+                      <>
+                        {item.icon && (
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${config.color}12` }}>
+                            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" style={{ color: config.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                            </svg>
+                          </div>
+                        )}
+                        <div>
+                          <h3 className="font-bold text-gray-900 text-base mb-1 font-[family-name:var(--font-display)] group-hover:text-[#C41230] transition-colors">
+                            {item.label}
+                          </h3>
+                          {item.desc && (
+                            <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                          )}
+                        </div>
+                        <div className="mt-auto flex items-center gap-1 text-xs font-semibold" style={{ color: config.color }}>
+                          {external ? "Acessar site" : "Acessar"}
+                          <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </div>
-                      )}
-                      <div>
-                        <h3 className="font-bold text-gray-900 text-base mb-1 font-[family-name:var(--font-display)] group-hover:text-[#C41230] transition-colors">
-                          {item.label}
-                        </h3>
-                        {item.desc && (
-                          <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                        )}
-                      </div>
-                      <div className="mt-auto flex items-center gap-1 text-xs font-semibold" style={{ color: config.color }}>
-                        Acessar
-                        <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </div>
-                    </Link>
-                  ))}
+                      </>
+                    );
+                    return external ? (
+                      <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className={cardClassName}>
+                        {cardContent}
+                      </a>
+                    ) : (
+                      <Link key={item.label} to={item.href} className={cardClassName}>
+                        {cardContent}
+                      </Link>
+                    );
+                  })}
                 </div>
               </section>
             );
@@ -311,19 +339,31 @@ export default function HubPage() {
                   {section.title}
                 </h2>
                 <ul className="space-y-2">
-                  {section.items.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        to={item.href}
-                        className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#C41230] transition-colors group"
-                      >
+                  {section.items.map((item) => {
+                    const external = /^https?:\/\//.test(item.href);
+                    const linkClassName = "flex items-center gap-2 text-sm text-gray-700 hover:text-[#C41230] transition-colors group";
+                    const linkContent = (
+                      <>
                         <svg className="w-4 h-4 text-gray-400 group-hover:text-[#C41230] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                         {item.label}
-                      </Link>
-                    </li>
-                  ))}
+                      </>
+                    );
+                    return (
+                      <li key={item.label}>
+                        {external ? (
+                          <a href={item.href} target="_blank" rel="noopener noreferrer" className={linkClassName}>
+                            {linkContent}
+                          </a>
+                        ) : (
+                          <Link to={item.href} className={linkClassName}>
+                            {linkContent}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             );
