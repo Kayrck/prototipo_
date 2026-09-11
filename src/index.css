@@ -44,12 +44,19 @@ body {
 }
 
 /* Mega menu */
-.mega-menu-item:hover .mega-menu-dropdown {
-  display: block;
+.mega-menu-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  pointer-events: none;
 }
 
-.mega-menu-dropdown {
-  display: none;
+.mega-menu-item:hover .mega-menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Smooth transitions */

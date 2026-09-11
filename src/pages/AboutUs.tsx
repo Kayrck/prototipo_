@@ -1,22 +1,42 @@
 import Breadcrumb from "../components/Breadcrumb";
 import { Link, useParams } from "react-router-dom";
 
+const pageLabels: Record<string, string> = {
+  "conselho-de-representantes": "Conselho de Representantes",
+  "missao": "Missão",
+  "memoria-sindical": "Memória Sindical",
+  "agenda-da-coordenacao-executiva": "Agenda da Coordenação Executiva",
+  "corpo-administrativo": "Corpo Administrativo",
+  "conselho-fiscal": "Conselho Fiscal",
+  "historia": "História",
+};
+
+const boardGroups: { title: string; people: string[] }[] = [
+  { title: "Coordenação Geral", people: ["Carla Simone Vizzotto", "Maria do Socorro Oliveira Marzola", "Efraim Carlos Costa"] },
+  { title: "Coordenação de Administração", people: ["Alice Queiroz Silva", "Taiã Mairon Peixoto Ribeiro"] },
+  { title: "Coordenação de Cultura e Esportes", people: ["Jackson Ferreira do Nascimento", "Sinara Sartori de Melo"] },
+  { title: "Coordenação de Comunicação e Divulgação", people: ["Camila Oliveira Sobrinho", "Mônica Regina Peres"] },
+  { title: "Coordenação de Finanças", people: ["Wilker Luciano Zorzin"] },
+  { title: "Coordenação Jurídica e Relações de Trabalho", people: ["Luiz Eduardo Celino Benedito", "Nadia Regina Alves Valadares"] },
+  { title: "Coordenação de Políticas Sociais, Saúde e Seguridade Social", people: ["Valdete Silva de Freitas Morais", "Sônia Aparecida Alves"] },
+  { title: "Coordenação de Assuntos de Aposentadoria e Pensão", people: ["Celina Menezes Bastos"] },
+  { title: "Coordenação de Educação", people: ["Leocádia Aparecida Chaves", "Junia Maria Zandonade Falqueto"] },
+  { title: "Coordenação de Raça, Etnia e Diversidade Sexual", people: ["Maria Célia Orlato Selem", "Andrea Henrique Campos Da Fonseca"] },
+  { title: "Coordenação de Mulheres", people: ["Luanna Ferreira da Silva", "Iris Dias Santos"] },
+  { title: "Coordenação de Organização Política e Formação Sindical", people: ["Alexandre Jorge de Medeiros Fernandes", "Carla Márcia"] },
+];
+
+const fiscalCouncil = {
+  titulares: ["Frederico Cristiano Gonçalves Mourão", "Rosângela Rodrigues de Araújo Fraga", "Dijalma José da Silva"],
+  suplentes: ["José Humberto Alves", "Elmar Rodrigues de Lima", "Sérgio Rubens Ribeiro"],
+};
+
 export default function AboutUs() {
   const { slug } = useParams();
-
-  const emptyPages = ["conselho-de-representantes", "missao", "memoria-sindical", "agenda-da-coordenacao-executiva", "corpo-administrativo"];
-  const isEmpty = slug && emptyPages.includes(slug);
-
-  const pageLabels: Record<string, string> = {
-    "conselho-de-representantes": "Conselho de Representantes",
-    "missao": "Missão",
-    "memoria-sindical": "Memória Sindical",
-    "agenda-da-coordenacao-executiva": "Agenda da Coordenação Executiva",
-    "corpo-administrativo": "Corpo Administrativo",
-    "conselho-fiscal": "Conselho Fiscal",
-    "historia": "História",
-  };
   const pageLabel = (slug && pageLabels[slug]) || "Quem Somos";
+
+  const emptyOnRealSite = ["conselho-de-representantes", "memoria-sindical", "agenda-da-coordenacao-executiva"];
+  const isEmpty = !!slug && emptyOnRealSite.includes(slug);
 
   return (
     <div className="min-h-screen bg-white">
@@ -47,9 +67,9 @@ export default function AboutUs() {
       </div>
 
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-12">
-        {isEmpty ? (
-          <div className="flex gap-10">
-            <div className="flex-1">
+        <div className="flex gap-10">
+          <div className="flex-1 max-w-3xl">
+            {isEmpty ? (
               <div className="flex flex-col items-center justify-center py-20 text-center">
                 <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                   <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,60 +77,97 @@ export default function AboutUs() {
                   </svg>
                 </div>
                 <h2 className="text-xl font-bold text-gray-800 mb-2">Conteúdo em elaboração</h2>
-                <p className="text-gray-500 text-sm">Este conteúdo ainda não possui publicações.</p>
+                <p className="text-gray-500 text-sm">Esta página ainda não possui conteúdo publicado no site oficial do SINTFUB.</p>
               </div>
-            </div>
-            <aside className="hidden lg:block w-72 flex-shrink-0">
-              <div className="sticky top-24 bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-4">Navegação</h2>
-                <ul className="space-y-2">
-                  {Object.entries(pageLabels).map(([s, label]) => (
-                    <li key={s}>
-                      <Link to={`/quem-somos/${s}/`} className={`block text-sm py-1.5 px-3 rounded-lg transition-colors ${s === slug ? "bg-red-50 text-[#C41230] font-semibold" : "text-gray-600 hover:text-[#C41230] hover:bg-red-50"}`}>
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            ) : slug === "conselho-fiscal" ? (
+              <div className="space-y-8">
+                <p className="text-gray-600 text-sm">Composição do Conselho Fiscal para a gestão 2026/2029.</p>
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-3 font-[family-name:var(--font-display)]">Titulares</h2>
+                  <ul className="space-y-2">
+                    {fiscalCouncil.titulares.map((name) => (
+                      <li key={name} className="text-gray-700 text-sm py-2 px-4 bg-gray-50 rounded-lg">{name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-3 font-[family-name:var(--font-display)]">Suplentes</h2>
+                  <ul className="space-y-2">
+                    {fiscalCouncil.suplentes.map((name) => (
+                      <li key={name} className="text-gray-700 text-sm py-2 px-4 bg-gray-50 rounded-lg">{name}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </aside>
-          </div>
-        ) : (
-          <div className="flex gap-10">
-            <div className="flex-1 max-w-3xl">
+            ) : slug === "corpo-administrativo" ? (
+              <div className="space-y-8">
+                <p className="text-gray-600 text-sm">Coordenação Executiva do SINTFUB, gestão 2026-2029.</p>
+                {boardGroups.map((group) => (
+                  <div key={group.title}>
+                    <h2 className="font-bold text-gray-900 text-base mb-3 font-[family-name:var(--font-display)]">{group.title}</h2>
+                    <ul className="space-y-2">
+                      {group.people.map((name) => (
+                        <li key={name} className="text-gray-700 text-sm py-2 px-4 bg-gray-50 rounded-lg">{name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : slug === "missao" ? (
+              <div className="prose prose-gray max-w-none space-y-6">
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-2 font-[family-name:var(--font-display)]">Missão</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Desenvolver continuamente políticas estratégicas de negociação com o objetivo de garantir a representação, a defesa, o aperfeiçoamento e a integridade dos trabalhadores da Fundação Universidade de Brasília, perante as autoridades administrativas e jurídicas, visando o fortalecimento do sistema educacional do Brasil, em benefício da sociedade.
+                  </p>
+                </div>
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-2 font-[family-name:var(--font-display)]">Visão</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Ser reconhecido como entidade essencial e de vanguarda na representação e no aperfeiçoamento dos trabalhadores da Fundação Universidade de Brasília.
+                  </p>
+                </div>
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-2 font-[family-name:var(--font-display)]">Valor</h2>
+                  <p className="text-gray-700 leading-relaxed">Ética – atuar segundo os preceitos estatutários da entidade.</p>
+                </div>
+                <div>
+                  <h2 className="font-bold text-gray-900 text-base mb-2 font-[family-name:var(--font-display)]">Liderança</h2>
+                  <p className="text-gray-700 leading-relaxed">Conduzir com habilidade as ações institucionais para o cumprimento dos objetivos da entidade.</p>
+                </div>
+              </div>
+            ) : (
               <div className="prose prose-gray max-w-none">
                 <p className="text-lg font-medium text-gray-800 leading-relaxed mb-6">
                   O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é a entidade representativa dos trabalhadores técnico-administrativos ativos e aposentados da FUB, campus da Universidade de Brasília.
                 </p>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Fundado com o objetivo de defender os interesses coletivos e individuais dos servidores, o SINTFUB atua em múltiplas frentes: negociações coletivas, assessoria jurídica trabalhista e cível, convênios de saúde e outros benefícios, além de iniciativas de transparência e participação democrática.
+                  O Sindicato teve início em 1985 com a concepção da Associação dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília (ATA-FUB). Em 1992, a entidade passou por mudança estatutária, adotando a denominação de Sindicato (SINTFUB) e, no mesmo ano, filiou-se à Central Única dos Trabalhadores (CUT) e à Federação de Sindicatos de Trabalhadores Técnico-Administrativos em Instituições de Ensino Superior Públicas do Brasil (FASUBRA).
                 </p>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  A diretoria é eleita pelos filiados em assembleias periódicas, garantindo legitimidade democrática as decisões e as pautas de reivindicação junto as instituições competentes.
+                  Em 1999 houve uma nova mudança: o significado da sigla deixou de ser Sindicato dos Servidores Técnico-Administrativos para Sindicato dos Trabalhadores da Fundação Universidade de Brasília, passando a abranger o conjunto da categoria — ativos, aposentados, terceirizados e pensionistas.
                 </p>
-                <div className="bg-red-50 border-l-4 border-[#C41230] rounded-r-xl p-5 my-6">
-                  <p className="text-sm text-gray-700 italic">
-                    <strong>Conteúdo demonstrativo.</strong> O texto real desta página deve ser fornecido pelo SINTFUB e inserido no sistema de gestão de conteúdo.
-                  </p>
-                </div>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Há mais de três décadas o SINTFUB coloca em prática sua missão, visão e valores. Por meio de greves, acordos, manifestações e interlocução com diferentes atores da vida política brasileira, o sindicato tem sido protagonista na manutenção e conquista de direitos, informando e representando a categoria.
+                </p>
               </div>
-            </div>
-            <aside className="hidden lg:block w-72 flex-shrink-0">
-              <div className="sticky top-24 bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-4">Navegação</h2>
-                <ul className="space-y-2">
-                  {Object.entries(pageLabels).map(([s, label]) => (
-                    <li key={s}>
-                      <Link to={`/quem-somos/${s}/`} className={`block text-sm py-1.5 px-3 rounded-lg transition-colors ${s === slug ? "bg-red-50 text-[#C41230] font-semibold" : "text-gray-600 hover:text-[#C41230] hover:bg-red-50"}`}>
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
+            )}
           </div>
-        )}
+          <aside className="hidden lg:block w-72 flex-shrink-0">
+            <div className="sticky top-24 bg-gray-50 rounded-2xl p-5 border border-gray-100">
+              <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-4">Navegação</h2>
+              <ul className="space-y-2">
+                {Object.entries(pageLabels).map(([s, label]) => (
+                  <li key={s}>
+                    <Link to={`/quem-somos/${s}/`} className={`block text-sm py-1.5 px-3 rounded-lg transition-colors ${s === slug ? "bg-red-50 text-[#C41230] font-semibold" : "text-gray-600 hover:text-[#C41230] hover:bg-red-50"}`}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   );

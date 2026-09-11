@@ -132,7 +132,7 @@ export default function Header() {
                             )}
                           </Link>
                           {"children" in child && child.children && child.children.length > 0 && (
-                            <div className="absolute left-full top-0 hidden group-hover/sub:block bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-48 z-50">
+                            <div className="absolute left-full top-0 opacity-0 invisible -translate-x-1 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 transition-all duration-200 bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-48 z-50">
                               {child.children.map((sub) => (
                                 <Link
                                   key={sub.label}
