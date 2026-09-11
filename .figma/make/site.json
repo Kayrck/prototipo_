@@ -1,0 +1,10 @@
+{
+  "description": "Provides a modern, accessible platform for SINTFUB members to access news, documents, legal support, and membership services with clear navigation and responsive design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
