@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "./Logo";
 
 const footerLinks = {
   institucional: [
@@ -68,7 +67,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4" aria-label="SINTFUB, página inicial">
-              <Logo className="h-11 w-auto flex-shrink-0" />
+              <img src="/sintfub-logo.png" alt="SINTFUB" className="h-11 w-auto flex-shrink-0" />
               <div>
                 <div className="text-white font-black text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
                 <div className="text-gray-400 text-xs leading-tight">

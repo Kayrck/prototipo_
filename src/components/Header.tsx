@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { menuItems } from "../data/content";
-import Logo from "./Logo";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -89,7 +88,7 @@ export default function Header() {
           <div className="flex items-center h-16 lg:h-20 gap-6">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="SINTFUB, página inicial">
-              <Logo className="h-11 w-auto flex-shrink-0" />
+              <img src="/sintfub-logo.png" alt="SINTFUB" className="h-11 w-auto flex-shrink-0" />
               <div className="hidden sm:block leading-tight">
                 <div className="font-black text-[#C41230] text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
                 <div className="text-gray-500 text-xs leading-tight max-w-[220px]">

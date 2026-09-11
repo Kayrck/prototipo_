@@ -5,7 +5,7 @@ import { newsItems, documents } from "../data/content";
 
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1778876091364-1747994fe24d?w=1440&h=700&fit=crop&auto=format",
+    image: "/img/consintfub-geral.jpg",
     tag: "SINTFUB em ação",
     headline: "Defendendo os trabalhadores da Fundação Universidade de Brasília",
     subtext: "O SINTFUB representa e protege os direitos dos servidores ativos e aposentados da FUB. Juntos somos mais fortes.",
@@ -13,7 +13,7 @@ const heroSlides = [
     ctaSecondary: { label: "Saiba mais", href: "/quem-somos/" },
   },
   {
-    image: "https://images.unsplash.com/photo-1778876088549-76d29de0834c?w=1440&h=700&fit=crop&auto=format",
+    image: "/img/aposentados-reuniao-2.jpg",
     tag: "Assembleia Geral",
     headline: "Sua voz importa. Participe das assembleias do SINTFUB",
     subtext: "As assembleias gerais são o espaço democrático onde filiados deliberam sobre as principais pautas do sindicato.",
@@ -21,7 +21,7 @@ const heroSlides = [
     ctaSecondary: { label: "Contato", href: "/contato/" },
   },
   {
-    image: "https://images.unsplash.com/photo-1667785786593-c860d545a4f6?w=1440&h=700&fit=crop&auto=format",
+    image: "/img/cldf-hub-homenagem.jpg",
     tag: "Unidade e luta",
     headline: "Conquistas coletivas que transformam a vida dos trabalhadores",
     subtext: "Mais de uma década de luta pela valorização, pelos direitos e pela dignidade dos servidores da UnB.",
@@ -325,7 +325,7 @@ export default function Home() {
               {
                 label: "Vídeos",
                 href: "/category/multimidia/videos/",
-                image: "https://images.unsplash.com/photo-1773828755374-0ee802d9f44b?w=600&h=400&fit=crop&auto=format",
+                image: "/img/cldf-hub-2.jpg",
                 icon: (
                   <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
@@ -335,7 +335,7 @@ export default function Home() {
               {
                 label: "Fotos",
                 href: "/category/multimidia/fotos/",
-                image: "https://images.unsplash.com/photo-1557970093-de63e1c8e48b?w=600&h=400&fit=crop&auto=format",
+                image: "/img/consintfub-8.png",
                 icon: (
                   <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -345,7 +345,7 @@ export default function Home() {
               {
                 label: "Cards",
                 href: "/category/multimidia/cards/",
-                image: "https://images.unsplash.com/photo-1632184078940-35a3c70996a6?w=600&h=400&fit=crop&auto=format",
+                image: "/img/conf-educacao.jpg",
                 icon: (
                   <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
