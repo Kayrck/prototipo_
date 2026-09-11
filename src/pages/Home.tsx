@@ -191,7 +191,7 @@ export default function Home() {
               { value: "30+", label: "Categorias de conteúdo", desc: "Publicações organizadas" },
               { value: "38", label: "Campos na ficha de filiação", desc: "Formulário completo e seguro" },
               { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
-              { value: "16+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB" },
+              { value: "40+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB desde 1985" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <div className="text-3xl lg:text-4xl font-black text-[#C41230] font-[family-name:var(--font-display)] mb-1">
@@ -446,28 +446,38 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Photo collage */}
-            <div className="relative h-[420px] hidden lg:block">
-              <img
-                src={newsItems[3].image}
-                alt=""
-                aria-hidden="true"
-                className="absolute top-0 left-0 w-56 h-64 rounded-[2rem] object-cover shadow-xl"
-              />
-              <img
-                src={newsItems[4].image}
-                alt=""
-                aria-hidden="true"
-                className="absolute top-20 left-48 w-44 h-44 rounded-full object-cover shadow-xl border-4 border-gray-50"
-              />
-              <img
-                src={newsItems[5].image}
-                alt=""
-                aria-hidden="true"
-                className="absolute bottom-0 left-20 w-60 h-48 rounded-[2rem] object-cover shadow-xl"
-              />
-              <div className="absolute bottom-6 right-0 bg-[#C41230] text-white rounded-2xl shadow-xl px-5 py-4 text-center">
-                <div className="text-2xl font-black font-[family-name:var(--font-display)]">{newsItems.length}+</div>
-                <div className="text-xs font-medium leading-tight">Publicações<br />no protótipo</div>
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
+                <img
+                  src={newsItems[3].image}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-64 rounded-[1.75rem] object-cover shadow-lg"
+                />
+                <div className="bg-[#C41230] rounded-[1.75rem] shadow-lg p-5 flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="text-white text-sm font-bold leading-tight font-[family-name:var(--font-display)]">
+                    40+ anos<br />de história
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4 pt-10">
+                <img
+                  src={newsItems[4].image}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full aspect-square rounded-full object-cover shadow-lg"
+                />
+                <img
+                  src={newsItems[5].image}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-56 rounded-[1.75rem] object-cover shadow-lg"
+                />
               </div>
             </div>
 
