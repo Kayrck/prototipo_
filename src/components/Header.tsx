@@ -103,7 +103,7 @@ export default function Header() {
                 <div key={item.label} className="mega-menu-item relative group">
                   <Link
                     to={item.href}
-                    className={`flex items-center gap-1 px-3.5 py-6 text-sm font-semibold transition-colors whitespace-nowrap ${
+                    className={`flex items-center gap-1 px-2 py-6 text-sm font-semibold transition-colors whitespace-nowrap ${
                       item.highlight
                         ? "text-[#C41230] hover:text-[#9B0E25]"
                         : "text-gray-700 hover:text-[#C41230]"
