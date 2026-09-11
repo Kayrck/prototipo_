@@ -98,7 +98,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center justify-center gap-0 mx-auto" aria-label="Navegação principal">
+            <nav className="hidden lg:flex items-center gap-0" aria-label="Navegação principal">
               {menuItems.map((item) => (
                 <div key={item.label} className="mega-menu-item relative group">
                   <Link
@@ -153,7 +153,7 @@ export default function Header() {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-2 ml-auto lg:ml-6">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
