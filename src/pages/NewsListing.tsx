@@ -48,6 +48,7 @@ export default function NewsListing() {
   const leafCategory = !isTagPage && segments[0] === "category" ? segments[segments.length - 1] : "";
   const parentCategory = !isTagPage && segments.length === 3 ? segments[1] : "";
   const isMultimidiaRoot = leafCategory === "multimidia" && !parentCategory;
+  const showVideoTiles = isMultimidiaRoot || (leafCategory === "videos" && parentCategory === "multimidia");
 
   const catLabel = isTagPage
     ? `Tag: ${tagSlug.replace(/-/g, " ")}`
@@ -95,7 +96,9 @@ export default function NewsListing() {
             </h1>
           </div>
           <p className="text-gray-500 text-sm mt-2 ml-4">
-            {filtered.length} {filtered.length === 1 ? "publicação" : "publicações"}
+            {showVideoTiles
+              ? `${filtered.length + multimidiaVideos.length} ${filtered.length + multimidiaVideos.length === 1 ? "publicação" : "publicações"}`
+              : `${filtered.length} ${filtered.length === 1 ? "publicação" : "publicações"}`}
           </p>
         </div>
       </div>
@@ -104,7 +107,7 @@ export default function NewsListing() {
         <div className="flex gap-8">
           {/* Main content */}
           <div className="flex-1 min-w-0">
-            {isMultimidiaRoot && (
+            {showVideoTiles && (
               <div className="mb-10">
                 <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Vídeos</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -144,15 +147,17 @@ export default function NewsListing() {
                 ))}
               </div>
             ) : filtered.length === 0 ? (
-              <div className="text-center py-24">
-                <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
+              showVideoTiles ? null : (
+                <div className="text-center py-24">
+                  <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl font-bold text-gray-800 mb-2">Sem publicações</h2>
+                  <p className="text-gray-500 text-sm">Este conteúdo ainda não possui publicações.</p>
                 </div>
-                <h2 className="text-xl font-bold text-gray-800 mb-2">Sem publicações</h2>
-                <p className="text-gray-500 text-sm">Este conteúdo ainda não possui publicações.</p>
-              </div>
+              )
             ) : (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

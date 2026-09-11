@@ -395,6 +395,30 @@ export const newsItems = [
     image: "/img/nota-pesar-gilvan.jpg",
     tags: ["aposentado", "pesar"],
   },
+  {
+    id: 34,
+    slug: "42-anos-da-cut",
+    title: "42 anos da CUT: vida longa à Central Única dos Trabalhadores!",
+    excerpt: "O SINTFUB celebra o aniversário da CUT, central sindical à qual é filiado desde 1992.",
+    date: "2025-08-28",
+    dateFormatted: "28 de agosto de 2025",
+    category: "Cards",
+    categorySlug: "cards",
+    image: "/img/card-homenagem-cut.jpg",
+    tags: ["cut"],
+  },
+  {
+    id: 35,
+    slug: "assedio-na-unb-nao",
+    title: "Assédio na UnB não!",
+    excerpt: "Card de campanha do SINTFUB contra o assédio na Universidade de Brasília, com orientações para identificar e denunciar.",
+    date: "2024-08-09",
+    dateFormatted: "9 de agosto de 2024",
+    category: "Cards",
+    categorySlug: "cards",
+    image: "/img/card-assedio-nao.png",
+    tags: ["assedio", "denuncia"],
+  },
 ];
 
 export const documents = [
