@@ -448,27 +448,27 @@ export default function Home() {
             {/* Photo collage */}
             <div className="hidden lg:flex flex-col gap-4">
               <img
-                src={newsItems[3].image}
+                src="/img/cldf-hub-homenagem.jpg"
                 alt=""
                 aria-hidden="true"
                 className="w-full h-56 rounded-[1.75rem] object-cover shadow-lg"
               />
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[#C41230] rounded-[1.75rem] shadow-lg p-5 flex flex-col items-center justify-center text-center gap-2">
-                  <div className="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="grid grid-cols-2 gap-4 items-start">
+                <div className="bg-[#C41230] rounded-2xl shadow-lg p-3.5 flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <div className="text-white text-sm font-bold leading-tight font-[family-name:var(--font-display)]">
+                  <div className="text-white text-xs font-bold leading-tight font-[family-name:var(--font-display)]">
                     40+ anos<br />de história
                   </div>
                 </div>
                 <img
-                  src={newsItems[4].image}
+                  src="/img/aposentados-reuniao-2.jpg"
                   alt=""
                   aria-hidden="true"
-                  className="w-full h-full min-h-[176px] rounded-[1.75rem] object-cover shadow-lg"
+                  className="w-full h-44 rounded-[1.75rem] object-cover shadow-lg"
                 />
               </div>
             </div>
