@@ -60,7 +60,7 @@ export default function TermsOfUse() {
               },
               {
                 title: "10. Contato",
-                content: "Dúvidas sobre estes Termos de Uso podem ser encaminhadas para contato@sintfub.org.br ou pelo formulário de contato disponível neste site.",
+                content: "Dúvidas sobre estes Termos de Uso podem ser encaminhadas para sintfub@sintfub.org.br ou pelo formulário de contato disponível neste site.",
               },
             ].map((section) => (
               <section key={section.title}>

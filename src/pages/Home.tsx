@@ -320,12 +320,24 @@ export default function Home() {
               </svg>
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                label: "Vídeos",
-                href: "/category/multimidia/videos/",
-                image: "/img/cldf-hub-2.jpg",
+                label: "HUB · 54 anos",
+                href: "https://www.youtube.com/watch?v=cCoZSAESKpA",
+                external: true,
+                image: "/img/video-hub-54-anos.jpg",
+                icon: (
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Fala da Nadia",
+                href: "https://www.youtube.com/watch?v=RIVp_ClgKGQ",
+                external: true,
+                image: "/img/video-fala-nadia.jpg",
                 icon: (
                   <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
@@ -352,28 +364,46 @@ export default function Home() {
                   </svg>
                 ),
               },
-            ].map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
-                aria-label={item.label}
-              >
-                <img
-                  src={item.image}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="relative h-full flex flex-col items-center justify-center gap-3">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
-                    {item.icon}
+            ].map((item) => {
+              const tile = (
+                <>
+                  <img
+                    src={item.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="relative h-full flex flex-col items-center justify-center gap-3">
+                    <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
+                      {item.icon}
+                    </div>
+                    <span className="text-white font-bold text-lg font-[family-name:var(--font-display)]">{item.label}</span>
                   </div>
-                  <span className="text-white font-bold text-lg font-[family-name:var(--font-display)]">{item.label}</span>
-                </div>
-              </Link>
-            ))}
+                </>
+              );
+              return item.external ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
+                  aria-label={`Assistir "${item.label}" no YouTube`}
+                >
+                  {tile}
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
+                  aria-label={item.label}
+                >
+                  {tile}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

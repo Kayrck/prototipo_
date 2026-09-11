@@ -46,6 +46,9 @@ export default function NewsListing() {
 
   const filtered = newsItems.filter((item) => {
     if (isTagPage) return item.tags.some((t) => t.toLowerCase().replace(/\s+/g, "-") === tagSlug);
+    // "Publicações" é a categoria-mãe (agrega Notícias, Informativos, Multimídias etc.),
+    // então a página raiz /category/publicacoes/ deve mostrar todas as publicações.
+    if (leafCategory === "publicacoes" && !parentCategory) return true;
     if (leafCategory) return item.categorySlug === leafCategory;
     return true;
   });

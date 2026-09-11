@@ -4,10 +4,10 @@ import Breadcrumb from "../components/Breadcrumb";
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 const departments = [
-  { label: "Secretaria", phone: "(61) XXXX-XXXX", email: "secretaria@sintfub.org.br", wa: "5561XXXXXXXXX" },
-  { label: "Jurídico", phone: "(61) XXXX-XXXX", email: "juridico@sintfub.org.br", wa: "5561XXXXXXXXX" },
-  { label: "Financeiro", phone: "(61) XXXX-XXXX", email: "financeiro@sintfub.org.br", wa: "5561XXXXXXXXX" },
-  { label: "Subsede HUB", phone: "(61) XXXX-XXXX", email: "hub@sintfub.org.br", wa: "5561XXXXXXXXX" },
+  { label: "Secretaria", phone: "(61) 99231-6213", email: "sintfub@sintfub.org.br", wa: "5561992316213" },
+  { label: "Jurídico", phone: "(61) 99232-2081", email: "sintfub@sintfub.org.br", wa: "5561992322081" },
+  { label: "Financeiro", phone: "(61) 99255-0589", email: "sintfub@sintfub.org.br", wa: "5561992550589" },
+  { label: "Subsede HUB", phone: "(61) 99231-7544", email: "sintfub@sintfub.org.br", wa: "5561992317544" },
 ];
 
 export default function Contact() {
@@ -150,7 +150,7 @@ export default function Contact() {
               <address className="not-italic text-xs text-gray-600 leading-relaxed">
                 SINTFUB, Sindicato dos Trabalhadores da<br />
                 Fundação Universidade de Brasília<br />
-                Campus Universitário Darcy Ribeiro<br />
+                UnB, Bloco C, Edifício Multiuso 1, Sala 54/2<br />
                 Asa Norte, Brasília/DF<br />
                 CEP: 70910-900
               </address>

@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
             {[
               {
                 title: "1. Quem somos",
-                content: "O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é o controlador dos dados pessoais coletados por meio deste site (sintfub.org.br) e de seus formulários. Para contato sobre privacidade de dados: contato@sintfub.org.br.",
+                content: "O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é o controlador dos dados pessoais coletados por meio deste site (sintfub.org.br) e de seus formulários. Para contato sobre privacidade de dados: sintfub@sintfub.org.br.",
               },
               {
                 title: "2. Dados que coletamos",
@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
               },
               {
                 title: "7. Direitos do titular",
-                content: "Nos termos da LGPD, o titular dos dados tem direito a: acesso, correção, portabilidade, anonimização, bloqueio ou eliminação de dados desnecessários, revogação do consentimento e oposição ao tratamento. Para exercer esses direitos, entre em contato pelo e-mail: contato@sintfub.org.br.",
+                content: "Nos termos da LGPD, o titular dos dados tem direito a: acesso, correção, portabilidade, anonimização, bloqueio ou eliminação de dados desnecessários, revogação do consentimento e oposição ao tratamento. Para exercer esses direitos, entre em contato pelo e-mail: sintfub@sintfub.org.br.",
               },
               {
                 title: "8. Cookies",
@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
               },
               {
                 title: "10. Contato",
-                content: "Para dúvidas ou solicitações relacionadas a esta política, entre em contato com o SINTFUB pelo e-mail contato@sintfub.org.br ou pelo formulário de contato disponível neste site.",
+                content: "Para dúvidas ou solicitações relacionadas a esta política, entre em contato com o SINTFUB pelo e-mail sintfub@sintfub.org.br ou pelo formulário de contato disponível neste site.",
               },
             ].map((section) => (
               <section key={section.title}>
