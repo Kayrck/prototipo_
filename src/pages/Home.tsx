@@ -442,29 +442,71 @@ export default function Home() {
       </section>
 
       {/* Informativos section */}
-      <section className="py-16 bg-gray-50" aria-labelledby="informativos-heading">
+      <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="informativos-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Photo collage */}
+            <div className="relative h-[420px] hidden lg:block">
+              <img
+                src={newsItems[3].image}
+                alt=""
+                aria-hidden="true"
+                className="absolute top-0 left-0 w-56 h-64 rounded-[2rem] object-cover shadow-xl"
+              />
+              <img
+                src={newsItems[4].image}
+                alt=""
+                aria-hidden="true"
+                className="absolute top-20 left-48 w-44 h-44 rounded-full object-cover shadow-xl border-4 border-gray-50"
+              />
+              <img
+                src={newsItems[5].image}
+                alt=""
+                aria-hidden="true"
+                className="absolute bottom-0 left-20 w-60 h-48 rounded-[2rem] object-cover shadow-xl"
+              />
+              <div className="absolute bottom-6 right-0 bg-[#C41230] text-white rounded-2xl shadow-xl px-5 py-4 text-center">
+                <div className="text-2xl font-black font-[family-name:var(--font-display)]">{newsItems.length}+</div>
+                <div className="text-xs font-medium leading-tight">Publicações<br />no protótipo</div>
+              </div>
+            </div>
+
+            {/* Content */}
             <div>
               <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Publicações</p>
-              <h2 id="informativos-heading" className="text-2xl lg:text-3xl font-black text-gray-900 font-[family-name:var(--font-display)]">
+              <h2 id="informativos-heading" className="text-2xl lg:text-3xl font-black text-gray-900 mb-4 font-[family-name:var(--font-display)]">
                 Informativos e publicações
               </h2>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Acompanhe as notícias, informativos e comunicados mais recentes do SINTFUB sobre a categoria.
+              </p>
+              <div className="space-y-5 mb-8">
+                {newsItems.slice(3, 6).map((item) => (
+                  <div key={item.id} className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#C41230]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0">
+                      <Link to={`/${item.slug}/`} className="font-bold text-gray-900 text-sm hover:text-[#C41230] transition-colors line-clamp-1">
+                        {item.title}
+                      </Link>
+                      <p className="text-sm text-gray-500 mt-0.5 line-clamp-1">{item.excerpt}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/category/informativos/"
+                className="inline-flex items-center gap-2 bg-[#C41230] hover:bg-[#9B0E25] text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm"
+              >
+                Ver todas as publicações
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
-            <Link
-              to="/category/informativos/"
-              className="text-sm font-semibold text-[#C41230] flex items-center gap-1.5 hover:gap-3 transition-all hidden sm:flex"
-            >
-              Ver todos
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {newsItems.slice(3, 6).map((item) => (
-              <NewsCard key={item.id} {...item} />
-            ))}
           </div>
         </div>
       </section>
