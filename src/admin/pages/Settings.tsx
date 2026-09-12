@@ -15,7 +15,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-3xl mx-auto">
       <AdminPageHeader
         title="Configurações"
         description="Informações institucionais, redes sociais, SEO e configurações gerais do site."

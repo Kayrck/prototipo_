@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* Strategic CTAs */}
-      <section className="bg-white border-b border-gray-100" aria-label="Áreas de acesso rápido">
+      <section className="bg-offwhite border-b border-gray-100" aria-label="Áreas de acesso rápido">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 -mt-10 relative z-10 gap-3 pb-8 pt-0 sm:gap-4">
             {strategicCTAs.map((cta) => (
@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Stats bar */}
-      <section className="border-b border-gray-100 py-8 bg-white" aria-label="Números do SINTFUB">
+      <section className="border-b border-gray-100 py-8 bg-offwhite" aria-label="Números do SINTFUB">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto sm:mx-0">
             {[
@@ -204,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* News section */}
-      <section className="py-16 bg-gray-50" aria-labelledby="news-heading">
+      <section className="py-16 bg-offwhite" aria-labelledby="news-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -440,7 +440,7 @@ export default function Home() {
       </section>
 
       {/* Informativos section */}
-      <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="informativos-heading">
+      <section className="py-16 sm:py-20 bg-offwhite" aria-labelledby="informativos-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Photo collage */}
@@ -512,7 +512,7 @@ export default function Home() {
       </section>
 
       {/* Access areas */}
-      <section className="py-16 bg-white" aria-labelledby="areas-heading">
+      <section className="py-16 bg-offwhite" aria-labelledby="areas-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Acesso rápido</p>
@@ -531,7 +531,7 @@ export default function Home() {
               <Link
                 key={area.label}
                 to={area.href}
-                className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-gray-100 hover:border-[#C41230] hover:shadow-md transition-all bg-gray-50 hover:bg-white"
+                className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-gray-100 hover:border-[#C41230] hover:shadow-md transition-all bg-white"
               >
                 <img src={area.illustration} alt="" aria-hidden="true" className="w-full h-28 object-contain" />
                 <span className="text-sm font-bold text-gray-900 group-hover:text-[#C41230] transition-colors font-[family-name:var(--font-display)]">
