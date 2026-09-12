@@ -522,27 +522,24 @@ export default function Home() {
               Áreas do SINTFUB
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {[
-              { label: "Quem Somos", href: "/quem-somos/", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" },
-              { label: "Transparência", href: "/category/transparencia/", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-              { label: "Aposentados", href: "/category/aposentado/", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
-              { label: "Denúncia", href: "/denuncia/", icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" },
-              { label: "Contato", href: "/contato/", icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
+              { label: "Quem Somos", href: "/quem-somos/", desc: "História, missão e coordenação executiva", illustration: "/img/area-quem-somos.svg" },
+              { label: "Transparência", href: "/category/transparencia/", desc: "Prestação de contas e documentos financeiros", illustration: "/img/area-transparencia.svg" },
+              { label: "Aposentados", href: "/category/aposentado/", desc: "Notícias e suporte previdenciário", illustration: "/img/area-aposentados.svg" },
+              { label: "Denúncia", href: "/denuncia/", desc: "Canal de denúncias com sigilo garantido", illustration: "/img/area-denuncia.svg" },
+              { label: "Contato", href: "/contato/", desc: "Fale com a Secretaria e demais setores", illustration: "/img/area-contato.svg" },
             ].map((area) => (
               <Link
                 key={area.label}
                 to={area.href}
-                className="group flex flex-col items-center text-center gap-3 p-5 rounded-xl border border-gray-100 hover:border-[#C41230] hover:bg-red-50 transition-all"
+                className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-gray-100 hover:border-[#C41230] hover:shadow-md transition-all bg-gray-50 hover:bg-white"
               >
-                <div className="w-12 h-12 bg-gray-100 group-hover:bg-[#C41230] rounded-xl flex items-center justify-center transition-colors">
-                  <svg className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={area.icon} />
-                  </svg>
-                </div>
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-[#C41230] transition-colors">
+                <img src={area.illustration} alt="" aria-hidden="true" className="w-full h-28 object-contain" />
+                <span className="text-sm font-bold text-gray-900 group-hover:text-[#C41230] transition-colors font-[family-name:var(--font-display)]">
                   {area.label}
                 </span>
+                <span className="text-xs text-gray-500 leading-snug">{area.desc}</span>
               </Link>
             ))}
           </div>
