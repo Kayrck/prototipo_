@@ -11,7 +11,7 @@ export default function NotFound() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-24">
+    <div className="min-h-screen bg-offwhite flex flex-col items-center justify-center px-6 py-24">
       <div className="text-center max-w-lg">
         <div className="text-[120px] font-black text-gray-100 leading-none font-[family-name:var(--font-display)] mb-4 select-none">
           404

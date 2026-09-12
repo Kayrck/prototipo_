@@ -36,17 +36,12 @@ function PostOrNotFound() {
 }
 
 function AppShell() {
-  const location = useLocation();
-  const isFormPage = ["/filie-se", "/denuncia", "/contato"].some((p) =>
-    location.pathname.startsWith(p)
-  );
-
   return (
     <div className="flex flex-col min-h-full">
       <a href="#main-content" className="skip-link">Ir para o conteúdo principal</a>
       <ScrollToTop />
       <Header />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 has-whatsapp-widget">
         <Routes>
           {/* Home */}
           <Route path="/" element={<Home />} />
@@ -128,11 +123,7 @@ function AppShell() {
         </Routes>
       </main>
       <Footer />
-
-      {/* WhatsApp widget: safe bottom zone on form pages mobile */}
-      <div className={isFormPage ? "sm:block" : ""}>
-        <WhatsAppWidget />
-      </div>
+      <WhatsAppWidget />
       <BackToTop />
     </div>
   );

@@ -39,7 +39,7 @@ export default function AboutUs() {
   const isEmpty = !!slug && emptyOnRealSite.includes(slug);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb
         items={[
           { label: "Quem Somos", href: "/quem-somos/" },

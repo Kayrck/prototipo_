@@ -63,12 +63,12 @@ export default function Comments() {
               </div>
               <div className="flex items-center gap-4 mt-3">
                 {c.status !== "aprovado" && (
-                  <button onClick={() => updateComment(c.id, { status: "aprovado" })} className="text-xs font-semibold text-green-700 hover:underline">
+                  <button onClick={() => updateComment(c.id, { status: "aprovado" })} className="text-xs font-semibold text-gray-900 hover:underline">
                     Aprovar
                   </button>
                 )}
                 {c.status !== "spam" && (
-                  <button onClick={() => updateComment(c.id, { status: "spam" })} className="text-xs font-semibold text-yellow-700 hover:underline">
+                  <button onClick={() => updateComment(c.id, { status: "spam" })} className="text-xs font-semibold text-gray-500 hover:text-[#C41230] hover:underline">
                     Marcar como spam
                   </button>
                 )}

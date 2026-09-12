@@ -144,12 +144,12 @@ export default function Membership() {
 
   if (status === "success") {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-offwhite flex flex-col">
         <Breadcrumb items={[{ label: "Filie-se" }]} />
         <div className="flex-1 flex items-center justify-center py-24 px-6">
           <div className="text-center max-w-md">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -169,7 +169,7 @@ export default function Membership() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={[{ label: "Filie-se ao SINTFUB" }]} />
 
       {/* Page header */}

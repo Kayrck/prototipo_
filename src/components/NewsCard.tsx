@@ -71,7 +71,7 @@ export default function NewsCard({
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="relative h-full flex flex-col justify-end p-8">
-          <Link to={`/category/${categorySlug}/`} className="text-xs font-semibold text-[#C41230] bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full w-fit mb-4 hover:bg-white/20 transition-colors uppercase tracking-wider">
+          <Link to={`/category/${categorySlug}/`} className="text-xs font-semibold bg-black/35 text-white px-3 py-1 rounded-full w-fit mb-4 hover:bg-black/50 transition-colors uppercase tracking-wider">
             {category}
           </Link>
           <Link to={`/${slug}/`}>

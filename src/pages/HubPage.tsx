@@ -249,7 +249,7 @@ export default function HubPage() {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Hero */}

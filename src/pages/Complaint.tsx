@@ -30,8 +30,9 @@ export default function Complaint() {
       setUploadFile(null);
       return;
     }
+    setUploadState("loading");
     setUploadFile(file);
-    setUploadState("selected");
+    setTimeout(() => setUploadState("selected"), 500);
   };
 
   const handleDrop = (e: React.DragEvent) => {
@@ -41,6 +42,13 @@ export default function Complaint() {
       const syntheticEvent = { target: { files: [file] } } as unknown as React.ChangeEvent<HTMLInputElement>;
       handleFileChange(syntheticEvent);
     }
+  };
+
+  const handleRemoveFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setUploadFile(null);
+    setUploadState("idle");
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const validate = () => {
@@ -67,7 +75,7 @@ export default function Complaint() {
 
   if (formStatus === "error") {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-offwhite flex flex-col">
         <Breadcrumb items={[{ label: "Canal de Denúncia" }]} />
         <div className="flex-1 flex items-center justify-center py-24 px-6">
           <div className="text-center max-w-md">
@@ -92,12 +100,12 @@ export default function Complaint() {
 
   if (formStatus === "success") {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-offwhite flex flex-col">
         <Breadcrumb items={[{ label: "Canal de Denúncia" }]} />
         <div className="flex-1 flex items-center justify-center py-24 px-6">
           <div className="text-center max-w-md">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -113,14 +121,14 @@ export default function Complaint() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={[{ label: "Canal de Denúncia" }]} />
 
       {/* Header */}
       <div className="bg-gray-900 py-12">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-yellow-400 uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-red-300 uppercase tracking-widest mb-4">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
@@ -229,13 +237,14 @@ export default function Complaint() {
 
                 <div>
                   <label htmlFor="d-message" className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Sua mensagem <span className="text-gray-400 font-normal">(opcional)</span>
+                    Mensagem / relato <span className="text-gray-400 font-normal">(opcional)</span>
                   </label>
                   <textarea
                     id="d-message"
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Descreva aqui o que aconteceu: data, local, pessoas envolvidas e demais detalhes relevantes."
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C41230] focus:border-[#C41230] resize-none"
                   />
                 </div>
@@ -246,20 +255,22 @@ export default function Complaint() {
                     Anexe seu documento <span className="text-gray-400 font-normal">(opcional)</span>
                   </label>
                   <div
-                    className={`relative border-2 border-dashed rounded-xl p-6 text-center transition-colors cursor-pointer ${
+                    className={`relative border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
+                      uploadState === "loading" ? "cursor-wait" : "cursor-pointer"
+                    } ${
                       uploadState === "invalid" || uploadState === "error"
                         ? "border-red-400 bg-red-50"
                         : uploadState === "success" || uploadState === "selected"
-                        ? "border-green-400 bg-green-50"
+                        ? "border-gray-900 bg-gray-50"
                         : "border-gray-300 hover:border-[#C41230] hover:bg-red-50"
                     }`}
-                    onClick={() => fileInputRef.current?.click()}
+                    onClick={() => uploadState !== "loading" && fileInputRef.current?.click()}
                     onDrop={handleDrop}
                     onDragOver={(e) => e.preventDefault()}
                     role="button"
                     tabIndex={0}
                     aria-label="Área para upload de arquivo"
-                    onKeyDown={(e) => e.key === "Enter" && fileInputRef.current?.click()}
+                    onKeyDown={(e) => e.key === "Enter" && uploadState !== "loading" && fileInputRef.current?.click()}
                   >
                     <input
                       ref={fileInputRef}
@@ -278,13 +289,33 @@ export default function Complaint() {
                         <p className="text-xs text-gray-500 mt-1">PDF, JPG, PNG, ZIP · máximo 10 MB</p>
                       </>
                     )}
+                    {uploadState === "loading" && (
+                      <>
+                        <svg className="w-8 h-8 text-gray-400 mx-auto mb-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        <p className="text-sm font-medium text-gray-700">Enviando arquivo...</p>
+                        {uploadFile && <p className="text-xs text-gray-500 mt-1">{uploadFile.name}</p>}
+                      </>
+                    )}
                     {uploadState === "selected" && uploadFile && (
                       <>
-                        <svg className="w-10 h-10 text-green-500 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <button
+                          type="button"
+                          onClick={handleRemoveFile}
+                          aria-label="Remover arquivo selecionado"
+                          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-[#C41230] hover:bg-white rounded-lg transition-colors"
+                        >
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                        <svg className="w-10 h-10 text-gray-900 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <p className="text-sm font-medium text-green-700">{uploadFile.name}</p>
-                        <p className="text-xs text-green-600 mt-1">{(uploadFile.size / 1024 / 1024).toFixed(2)} MB • Clique para trocar</p>
+                        <p className="text-sm font-medium text-gray-900">{uploadFile.name}</p>
+                        <p className="text-xs text-gray-500 mt-1">{(uploadFile.size / 1024 / 1024).toFixed(2)} MB · Clique para trocar</p>
                       </>
                     )}
                     {uploadState === "invalid" && (

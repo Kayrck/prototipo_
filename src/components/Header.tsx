@@ -236,7 +236,7 @@ export default function Header() {
             aria-hidden="true"
           />
           <nav
-            className="absolute top-0 right-0 bottom-0 w-80 max-w-full bg-white shadow-2xl flex flex-col overflow-y-auto"
+            className="absolute top-0 right-0 bottom-0 w-80 max-w-full bg-white shadow-xl flex flex-col overflow-y-auto"
             aria-label="Menu móvel"
           >
             {/* Drawer header */}

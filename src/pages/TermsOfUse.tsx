@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 export default function TermsOfUse() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={[{ label: "Termos de Uso" }]} />
 
       <div className="bg-gray-50 border-b border-gray-100 py-10">

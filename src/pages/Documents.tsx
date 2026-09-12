@@ -7,11 +7,11 @@ const allDocuments = documents;
 const PAGE_SIZE = 6;
 
 const typeColors: Record<string, string> = {
-  Estatuto: "bg-purple-100 text-purple-700",
-  Ata: "bg-blue-100 text-blue-700",
-  Resolução: "bg-orange-100 text-orange-700",
-  Boletim: "bg-green-100 text-green-700",
-  Transparência: "bg-teal-100 text-teal-700",
+  Estatuto: "bg-[#C41230] text-white",
+  Ata: "bg-gray-900 text-white",
+  Resolução: "bg-gray-700 text-white",
+  Boletim: "bg-red-50 text-[#C41230]",
+  Transparência: "bg-gray-100 text-gray-700",
 };
 
 export default function Documents() {
@@ -40,7 +40,7 @@ export default function Documents() {
 
   if (isEstatuto) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-offwhite">
         <Breadcrumb items={[{ label: "Documentos", href: "/category/documentos/" }, { label: "Estatuto" }]} />
         <div className="bg-gray-50 border-b border-gray-100 py-10">
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
@@ -91,7 +91,7 @@ export default function Documents() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={[{ label: pageTitle }]} />
       <div className="bg-gray-50 border-b border-gray-100 py-10">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">

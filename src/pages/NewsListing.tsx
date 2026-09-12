@@ -99,7 +99,7 @@ export default function NewsListing() {
     : [{ label: catLabel }];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Page header */}
@@ -158,7 +158,7 @@ export default function NewsListing() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                       <div className="relative h-full flex flex-col items-center justify-center gap-2">
-                        <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
+                        <div className="w-12 h-12 bg-black/35 rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
                           <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />
                           </svg>

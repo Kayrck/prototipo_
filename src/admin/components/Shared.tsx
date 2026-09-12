@@ -5,20 +5,20 @@ import { ReactNode, useEffect, useState } from "react";
 // ---------------------------------------------------------------------------
 
 const statusStyles: Record<string, string> = {
-  publicado: "bg-green-50 text-green-700 border-green-200",
-  ativa: "bg-green-50 text-green-700 border-green-200",
-  ativo: "bg-green-50 text-green-700 border-green-200",
-  aprovado: "bg-green-50 text-green-700 border-green-200",
-  respondido: "bg-green-50 text-green-700 border-green-200",
+  publicado: "bg-gray-900 text-white border-gray-900",
+  ativa: "bg-gray-900 text-white border-gray-900",
+  ativo: "bg-gray-900 text-white border-gray-900",
+  aprovado: "bg-gray-900 text-white border-gray-900",
+  respondido: "bg-gray-900 text-white border-gray-900",
   rascunho: "bg-gray-100 text-gray-600 border-gray-200",
-  agendado: "bg-blue-50 text-blue-700 border-blue-200",
+  agendado: "bg-red-50 text-[#C41230] border-red-100",
   arquivado: "bg-gray-100 text-gray-500 border-gray-200",
   inativa: "bg-gray-100 text-gray-500 border-gray-200",
   inativo: "bg-gray-100 text-gray-500 border-gray-200",
-  pendente: "bg-yellow-50 text-yellow-700 border-yellow-200",
-  novo: "bg-blue-50 text-blue-700 border-blue-200",
+  pendente: "bg-red-50 text-[#C41230] border-red-100",
+  novo: "bg-red-50 text-[#C41230] border-red-100",
   lido: "bg-gray-100 text-gray-600 border-gray-200",
-  spam: "bg-red-50 text-[#C41230] border-red-200",
+  spam: "bg-[#C41230] text-white border-[#C41230]",
 };
 
 export function StatusBadge({ status }: { status: string }) {
@@ -132,7 +132,7 @@ export function Toast({ message, onClose }: { message: string | null; onClose: (
   if (!message) return null;
   return (
     <div className="fixed bottom-6 right-6 z-[100] bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg shadow-xl flex items-center gap-2" role="status">
-      <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <svg className="w-4 h-4 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>
       {message}

@@ -20,7 +20,7 @@ export default function Denuncias() {
     <div>
       <AdminPageHeader title="Denúncias" description="Denúncias recebidas pelo Canal de Denúncia do site." />
 
-      <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-xs text-amber-800 mb-5 flex items-start gap-2.5">
+      <div className="bg-red-50 border border-red-100 rounded-lg px-4 py-3 text-xs text-[#7A0A1C] mb-5 flex items-start gap-2.5">
         <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
         </svg>

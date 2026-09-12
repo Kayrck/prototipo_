@@ -103,7 +103,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         <div className="relative h-full max-w-[1280px] mx-auto px-6 lg:px-8 flex flex-col justify-center">
           <div className="max-w-2xl">
-            <span className="inline-block text-xs font-bold text-[#C41230] bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-5 uppercase tracking-widest">
+            <span className="inline-block text-xs font-bold text-[#C41230] bg-black/35 border border-white/20 rounded-full px-4 py-1.5 mb-5 uppercase tracking-widest">
               {slide.tag}
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5 font-[family-name:var(--font-display)]">
@@ -124,7 +124,7 @@ export default function Home() {
               </Link>
               <Link
                 to={slide.ctaSecondary.href}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                className="inline-flex items-center gap-2 bg-black/35 hover:bg-black/50 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
               >
                 {slide.ctaSecondary.label}
               </Link>
@@ -186,12 +186,10 @@ export default function Home() {
       {/* Stats bar */}
       <section className="border-b border-gray-100 py-8 bg-white" aria-label="Números do SINTFUB">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto sm:mx-0">
             {[
-              { value: "30+", label: "Categorias de conteúdo", desc: "Publicações organizadas" },
-              { value: "38", label: "Campos na ficha de filiação", desc: "Formulário completo e seguro" },
-              { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
               { value: "40+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB desde 1985" },
+              { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <div className="text-3xl lg:text-4xl font-black text-[#C41230] font-[family-name:var(--font-display)] mb-1">
@@ -375,7 +373,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="relative h-full flex flex-col items-center justify-center gap-3">
-                    <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
+                    <div className="w-16 h-16 bg-black/35 rounded-full flex items-center justify-center border border-white/20 group-hover:bg-[#C41230]/80 transition-colors">
                       {item.icon}
                     </div>
                     <span className="text-white font-bold text-lg font-[family-name:var(--font-display)]">{item.label}</span>

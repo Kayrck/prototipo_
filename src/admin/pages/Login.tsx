@@ -28,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-offwhite flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <img src="/sintfub-logo.png" alt="SINTFUB" className="h-14 w-auto mx-auto mb-4" />

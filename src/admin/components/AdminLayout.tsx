@@ -155,7 +155,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-offwhite flex">
       {/* Sidebar desktop/tablet */}
       <aside className={`hidden md:flex flex-col border-r border-gray-200 bg-white flex-shrink-0 transition-all ${collapsed ? "w-[72px]" : "w-64"}`}>
         <div className="h-16 flex items-center gap-2.5 px-4 border-b border-gray-100 flex-shrink-0">

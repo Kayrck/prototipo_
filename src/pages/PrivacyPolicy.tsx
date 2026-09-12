@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-offwhite">
       <Breadcrumb items={[{ label: "Política de Privacidade" }]} />
 
       <div className="bg-gray-50 border-b border-gray-100 py-10">
