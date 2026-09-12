@@ -98,8 +98,8 @@ interface ConfirmDialogProps {
 export function ConfirmDialog({ open, title, description, confirmLabel = "Confirmar", danger, onConfirm, onCancel }: ConfirmDialogProps) {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 px-4" role="dialog" aria-modal="true" aria-labelledby="confirm-dialog-title">
-      <div className="bg-white rounded-lg border border-gray-200 shadow-xl max-w-sm w-full p-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 px-4 animate-overlay-in" role="dialog" aria-modal="true" aria-labelledby="confirm-dialog-title">
+      <div className="bg-white rounded-lg border border-gray-200 shadow-xl max-w-sm w-full p-6 animate-dropdown-in">
         <h2 id="confirm-dialog-title" className="font-bold text-gray-900 text-base mb-2">{title}</h2>
         <p className="text-sm text-gray-600 mb-6 leading-relaxed">{description}</p>
         <div className="flex justify-end gap-3">
@@ -131,7 +131,7 @@ export function Toast({ message, onClose }: { message: string | null; onClose: (
 
   if (!message) return null;
   return (
-    <div className="fixed bottom-6 right-6 z-[100] bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg shadow-xl flex items-center gap-2" role="status">
+    <div className="fixed bottom-6 right-6 z-[100] bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg shadow-xl flex items-center gap-2 animate-toast-in" role="status">
       <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>

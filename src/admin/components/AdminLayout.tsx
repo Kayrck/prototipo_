@@ -11,14 +11,15 @@ const editorialNav = [
   { label: "Documentos", href: "/admin/documentos", icon: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" },
   { label: "Jurídico", href: "/admin/juridico", icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" },
   { label: "Transparência", href: "/admin/transparencia", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
+  { label: "Denúncias", href: "/admin/denuncias", icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z", badgeKey: "denuncias" },
   { label: "Aposentados", href: "/admin/aposentados", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
   { label: "Páginas", href: "/admin/paginas", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
   { label: "Mídia", href: "/admin/midia", icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 8h16M4 4h16a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z" },
 ];
 
 const adminNav = [
-  { label: "Comentários", href: "/admin/comentarios", icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" },
-  { label: "Formulários", href: "/admin/formularios", icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" },
+  { label: "Comentários", href: "/admin/comentarios", icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", badgeKey: "comentarios" },
+  { label: "Formulários", href: "/admin/formularios", icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2", badgeKey: "formularios" },
   { label: "Usuários", href: "/admin/usuarios", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
   { label: "Configurações", href: "/admin/configuracoes", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" },
 ];
@@ -32,6 +33,7 @@ const breadcrumbLabels: Record<string, string> = {
   documentos: "Documentos",
   juridico: "Jurídico",
   transparencia: "Transparência",
+  denuncias: "Denúncias",
   aposentados: "Aposentados",
   paginas: "Páginas",
   categorias: "Categorias",
@@ -50,8 +52,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { formSubmissions, comments } = useAdmin();
 
   const newSubmissions = formSubmissions.filter((f) => f.status === "novo").length;
+  const newDenuncias = formSubmissions.filter((f) => f.formType === "Denuncie" && f.status === "novo").length;
   const pendingComments = comments.filter((c) => c.status === "pendente").length;
   const notifCount = newSubmissions + pendingComments;
+
+  const navBadges: Record<string, number> = {
+    denuncias: newDenuncias,
+    formularios: newSubmissions,
+    comentarios: pendingComments,
+  };
 
   const segments = location.pathname.split("/").filter(Boolean);
   const crumbs = segments
@@ -69,46 +78,78 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <p className={`text-[11px] font-bold text-gray-400 uppercase tracking-widest ${collapsed ? "hidden" : ""}`}>Conteúdo editorial</p>
       </div>
       <nav className="space-y-0.5 px-2">
-        {editorialNav.map((item) => (
-          <NavLink
-            key={item.href}
-            to={item.href}
-            end={item.href === "/admin"}
-            onClick={() => setMobileOpen(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                isActive ? "bg-[#C41230] text-white" : "text-gray-600 hover:bg-gray-100"
-              }`
-            }
-          >
-            <svg className="w-4.5 h-4.5 flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-              <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-            </svg>
-            <span className={collapsed ? "hidden" : ""}>{item.label}</span>
-          </NavLink>
-        ))}
+        {editorialNav.map((item) => {
+          const badge = item.badgeKey ? navBadges[item.badgeKey] : 0;
+          return (
+            <NavLink
+              key={item.href}
+              to={item.href}
+              end={item.href === "/admin"}
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  isActive ? "bg-[#C41230] text-white" : "text-gray-600 hover:bg-gray-100"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <svg className="w-4.5 h-4.5 flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                  </svg>
+                  <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
+                  {!!badge && (
+                    <span
+                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center animate-badge-pop ${
+                        isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
+                      }`}
+                    >
+                      {badge}
+                    </span>
+                  )}
+                </>
+              )}
+            </NavLink>
+          );
+        })}
       </nav>
       <div className="px-4 mt-5 mb-1">
         <p className={`text-[11px] font-bold text-gray-400 uppercase tracking-widest ${collapsed ? "hidden" : ""}`}>Administração</p>
       </div>
       <nav className="space-y-0.5 px-2">
-        {adminNav.map((item) => (
-          <NavLink
-            key={item.href}
-            to={item.href}
-            onClick={() => setMobileOpen(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                isActive ? "bg-[#C41230] text-white" : "text-gray-600 hover:bg-gray-100"
-              }`
-            }
-          >
-            <svg className="flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-              <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-            </svg>
-            <span className={collapsed ? "hidden" : ""}>{item.label}</span>
-          </NavLink>
-        ))}
+        {adminNav.map((item) => {
+          const badge = item.badgeKey ? navBadges[item.badgeKey] : 0;
+          return (
+            <NavLink
+              key={item.href}
+              to={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  isActive ? "bg-[#C41230] text-white" : "text-gray-600 hover:bg-gray-100"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <svg className="flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                  </svg>
+                  <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
+                  {!!badge && (
+                    <span
+                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center animate-badge-pop ${
+                        isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
+                      }`}
+                    >
+                      {badge}
+                    </span>
+                  )}
+                </>
+              )}
+            </NavLink>
+          );
+        })}
       </nav>
     </>
   );
@@ -143,8 +184,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar mobile (drawer) */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 bottom-0 w-72 bg-white flex flex-col">
+          <div className="absolute inset-0 bg-black/40 animate-overlay-in" onClick={() => setMobileOpen(false)} />
+          <aside className="absolute left-0 top-0 bottom-0 w-72 bg-white flex flex-col animate-drawer-in">
             <div className="h-16 flex items-center justify-between gap-2.5 px-4 border-b border-gray-100 flex-shrink-0">
               <div className="flex items-center gap-2.5">
                 <img src="/sintfub-logo.png" alt="SINTFUB" className="h-8 w-auto" />
@@ -220,11 +261,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 )}
               </button>
               {notifOpen && (
-                <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-40">
+                <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-40 origin-top-right animate-dropdown-in">
                   <p className="px-4 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-widest">Notificações</p>
-                  {newSubmissions > 0 && (
+                  {newDenuncias > 0 && (
+                    <Link to="/admin/denuncias" onClick={() => setNotifOpen(false)} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">
+                      {newDenuncias} nova(s) denúncia(s)
+                    </Link>
+                  )}
+                  {newSubmissions - newDenuncias > 0 && (
                     <Link to="/admin/formularios" onClick={() => setNotifOpen(false)} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">
-                      {newSubmissions} nova(s) resposta(s) de formulário
+                      {newSubmissions - newDenuncias} nova(s) resposta(s) de formulário
                     </Link>
                   )}
                   {pendingComments > 0 && (

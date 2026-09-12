@@ -60,7 +60,7 @@ export default function Dashboard() {
         <StatCard label="Vídeos" value={videos} href="/admin/multimidia" />
         <StatCard label="Fotos" value={photos} href="/admin/midia" />
         <StatCard label="Mensagens recebidas" value={messages} href="/admin/formularios" />
-        <StatCard label="Denúncias recebidas" value={denuncias} href="/admin/formularios" />
+        <StatCard label="Denúncias recebidas" value={denuncias} href="/admin/denuncias" />
         <StatCard label="Filiações recebidas" value={filiacoes} href="/admin/formularios" />
       </div>
 

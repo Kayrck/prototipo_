@@ -12,6 +12,7 @@ import Categories from "./pages/Categories";
 import Multimedia from "./pages/Multimedia";
 import MediaLibrary from "./pages/MediaLibrary";
 import DocumentsAdmin from "./pages/Documents";
+import Denuncias from "./pages/Denuncias";
 import Juridico from "./pages/Juridico";
 import Transparencia from "./pages/Transparencia";
 import Aposentados from "./pages/Aposentados";
@@ -53,6 +54,7 @@ export default function AdminApp() {
                   <Route path="multimidia" element={<Multimedia />} />
                   <Route path="midia" element={<MediaLibrary />} />
                   <Route path="documentos" element={<DocumentsAdmin />} />
+                  <Route path="denuncias" element={<Denuncias />} />
                   <Route path="juridico" element={<Juridico />} />
                   <Route path="transparencia" element={<Transparencia />} />
                   <Route path="aposentados" element={<Aposentados />} />
