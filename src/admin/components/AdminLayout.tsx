@@ -94,11 +94,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             >
               {({ isActive }) => (
                 <>
-                  <svg className="w-4.5 h-4.5 flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-                  </svg>
+                  <span className="relative flex-shrink-0">
+                    <svg className="w-4.5 h-4.5" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                    </svg>
+                    {!!badge && collapsed && (
+                      <span
+                        className={`absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-full text-[9px] font-bold flex items-center justify-center ring-2 ${
+                          isActive ? "bg-white text-[#C41230] ring-[#C41230]" : "bg-[#C41230] text-white ring-white"
+                        }`}
+                      >
+                        {badge}
+                      </span>
+                    )}
+                  </span>
                   <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
-                  {!!badge && (
+                  {!!badge && !collapsed && (
                     <span
                       className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                         isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
@@ -132,11 +143,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             >
               {({ isActive }) => (
                 <>
-                  <svg className="flex-shrink-0" style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-                  </svg>
+                  <span className="relative flex-shrink-0">
+                    <svg style={{ width: 18, height: 18 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
+                    </svg>
+                    {!!badge && collapsed && (
+                      <span
+                        className={`absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-full text-[9px] font-bold flex items-center justify-center ring-2 ${
+                          isActive ? "bg-white text-[#C41230] ring-[#C41230]" : "bg-[#C41230] text-white ring-white"
+                        }`}
+                      >
+                        {badge}
+                      </span>
+                    )}
+                  </span>
                   <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
-                  {!!badge && (
+                  {!!badge && !collapsed && (
                     <span
                       className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                         isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
