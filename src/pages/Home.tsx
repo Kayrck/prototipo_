@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewsCard from "../components/NewsCard";
+import Reveal from "../components/Reveal";
 import { newsItems, documents } from "../data/content";
 
 const heroSlides = [
@@ -152,32 +153,33 @@ export default function Home() {
       <section className="bg-offwhite border-b border-gray-100" aria-label="Áreas de acesso rápido">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 -mt-10 relative z-10 gap-3 pb-8 pt-0 sm:gap-4">
-            {strategicCTAs.map((cta) => (
-              <Link
-                key={cta.label}
-                to={cta.href}
-                className={`group flex flex-col items-center text-center gap-3 rounded-2xl p-5 lg:p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl ${
-                  cta.highlight
-                    ? "bg-[#C41230] text-white"
-                    : "bg-white text-gray-800 border border-gray-100"
-                }`}
-              >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                  cta.highlight ? "bg-white/20" : "bg-red-50 text-[#C41230] group-hover:bg-[#C41230] group-hover:text-white transition-colors"
-                }`}>
-                  {cta.icon}
-                </div>
-                <div>
-                  <div className={`font-bold text-sm lg:text-base leading-tight font-[family-name:var(--font-display)] ${
-                    cta.highlight ? "text-white" : "text-gray-900"
+            {strategicCTAs.map((cta, i) => (
+              <Reveal key={cta.label} delay={i * 80}>
+                <Link
+                  to={cta.href}
+                  className={`group flex flex-col items-center text-center gap-3 rounded-2xl p-5 lg:p-6 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl ${
+                    cta.highlight
+                      ? "bg-[#C41230] text-white"
+                      : "bg-white text-gray-800 border border-gray-100"
+                  }`}
+                >
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                    cta.highlight ? "bg-white/20" : "bg-red-50 text-[#C41230] group-hover:bg-[#C41230] group-hover:text-white transition-colors"
                   }`}>
-                    {cta.label}
+                    {cta.icon}
                   </div>
-                  <div className={`text-xs mt-1 hidden sm:block ${cta.highlight ? "text-red-200" : "text-gray-500"}`}>
-                    {cta.desc}
+                  <div>
+                    <div className={`font-bold text-sm lg:text-base leading-tight font-[family-name:var(--font-display)] ${
+                      cta.highlight ? "text-white" : "text-gray-900"
+                    }`}>
+                      {cta.label}
+                    </div>
+                    <div className={`text-xs mt-1 hidden sm:block ${cta.highlight ? "text-red-200" : "text-gray-500"}`}>
+                      {cta.desc}
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -190,9 +192,10 @@ export default function Home() {
             {[
               { value: "40+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB desde 1985" },
               { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
-            ].map((stat) => (
-              <div
+            ].map((stat, i) => (
+              <Reveal
                 key={stat.label}
+                delay={i * 100}
                 className="flex flex-col bg-white border border-gray-100 border-l-4 border-l-[#C41230] rounded-xl px-5 py-4 sm:px-6 sm:py-5 shadow-sm"
               >
                 <div className="text-3xl lg:text-4xl font-black text-[#C41230] font-[family-name:var(--font-display)] mb-1">
@@ -200,7 +203,7 @@ export default function Home() {
                 </div>
                 <div className="text-sm font-semibold text-gray-900">{stat.label}</div>
                 <div className="text-xs text-gray-500 mt-0.5">{stat.desc}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -209,7 +212,7 @@ export default function Home() {
       {/* News section */}
       <section className="py-16 bg-offwhite" aria-labelledby="news-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <Reveal className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Últimas</p>
               <h2 id="news-heading" className="text-2xl lg:text-3xl font-black text-gray-900 font-[family-name:var(--font-display)]">
@@ -225,14 +228,16 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
+            <Reveal className="lg:col-span-1">
               <NewsCard {...newsItems[0]} variant="featured" />
-            </div>
+            </Reveal>
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {newsItems.slice(1, 5).map((item) => (
-                <NewsCard key={item.id} {...item} />
+              {newsItems.slice(1, 5).map((item, i) => (
+                <Reveal key={item.id} delay={i * 80}>
+                  <NewsCard {...item} />
+                </Reveal>
               ))}
             </div>
           </div>
@@ -253,7 +258,7 @@ export default function Home() {
       {/* Documents highlight */}
       <section className="py-16 bg-white" aria-labelledby="docs-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <Reveal className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Documentos</p>
               <h2 id="docs-heading" className="text-2xl lg:text-3xl font-black text-gray-900 font-[family-name:var(--font-display)]">
@@ -269,12 +274,14 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {documents.map((doc) => (
-              <a
+            {documents.map((doc, i) => (
+              <Reveal
                 key={doc.id}
+                as="a"
                 href={doc.url}
+                delay={Math.min(i, 6) * 60}
                 className="group flex items-start gap-4 p-5 bg-gray-50 hover:bg-red-50 border border-gray-100 hover:border-red-200 rounded-xl transition-all"
               >
                 <div className="w-12 h-12 bg-[#C41230] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#9B0E25] transition-colors">
@@ -295,7 +302,7 @@ export default function Home() {
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-[#C41230] flex-shrink-0 transition-colors mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-              </a>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -304,7 +311,7 @@ export default function Home() {
       {/* Multimedia section */}
       <section className="py-16 bg-gray-900" aria-labelledby="media-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <Reveal className="flex items-end justify-between mb-10">
             <div>
               <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Conteúdo</p>
               <h2 id="media-heading" className="text-2xl lg:text-3xl font-black text-white font-[family-name:var(--font-display)]">
@@ -320,7 +327,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
@@ -365,7 +372,7 @@ export default function Home() {
                   </svg>
                 ),
               },
-            ].map((item) => {
+            ].map((item, i) => {
               const tile = (
                 <>
                   <img
@@ -384,25 +391,29 @@ export default function Home() {
                 </>
               );
               return item.external ? (
-                <a
+                <Reveal
                   key={item.label}
+                  as="a"
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  delay={i * 80}
                   className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
                   aria-label={`Assistir "${item.label}" no YouTube`}
                 >
                   {tile}
-                </a>
+                </Reveal>
               ) : (
-                <Link
+                <Reveal
                   key={item.label}
+                  as={Link}
                   to={item.href}
+                  delay={i * 80}
                   className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
                   aria-label={item.label}
                 >
                   {tile}
-                </Link>
+                </Reveal>
               );
             })}
           </div>
@@ -413,15 +424,15 @@ export default function Home() {
       <section className="py-16 bg-[#C41230]" aria-labelledby="cta-filiacao">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left max-w-2xl">
+            <Reveal className="text-center lg:text-left max-w-2xl">
               <h2 id="cta-filiacao" className="text-2xl lg:text-4xl font-black text-white mb-4 font-[family-name:var(--font-display)]">
                 Faça parte do SINTFUB
               </h2>
               <p className="text-red-200 text-base lg:text-lg leading-relaxed">
                 A filiação garante acesso a representação jurídica, convênios exclusivos, participação nas assembleias e muito mais. Proteja seus direitos como servidor da FUB.
               </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            </Reveal>
+            <Reveal delay={120} className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <Link
                 to="/filie-se/"
                 className="inline-flex items-center justify-center gap-2 bg-white text-[#C41230] font-black px-8 py-4 rounded-xl hover:bg-red-50 transition-colors text-base shadow-lg"
@@ -437,7 +448,7 @@ export default function Home() {
               >
                 Tirar dúvidas
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -447,7 +458,7 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Photo collage */}
-            <div className="hidden lg:flex flex-col gap-4">
+            <Reveal className="hidden lg:flex flex-col gap-4">
               <img
                 src="/img/cldf-hub-homenagem.jpg"
                 alt=""
@@ -472,10 +483,10 @@ export default function Home() {
                   className="w-full h-44 rounded-[1.75rem] object-cover shadow-lg"
                 />
               </div>
-            </div>
+            </Reveal>
 
             {/* Content */}
-            <div>
+            <Reveal delay={120}>
               <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Publicações</p>
               <h2 id="informativos-heading" className="text-2xl lg:text-3xl font-black text-gray-900 mb-4 font-[family-name:var(--font-display)]">
                 Informativos e publicações
@@ -509,7 +520,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -517,12 +528,12 @@ export default function Home() {
       {/* Access areas */}
       <section className="py-16 bg-offwhite" aria-labelledby="areas-heading">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <Reveal className="text-center mb-12">
             <p className="text-xs font-bold text-[#C41230] uppercase tracking-widest mb-2">Acesso rápido</p>
             <h2 id="areas-heading" className="text-2xl lg:text-3xl font-black text-gray-900 font-[family-name:var(--font-display)]">
               Áreas do SINTFUB
             </h2>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {[
               { label: "Quem Somos", href: "/quem-somos/", desc: "História, missão e coordenação executiva", illustration: "/img/area-quem-somos.svg" },
@@ -530,10 +541,12 @@ export default function Home() {
               { label: "Aposentados", href: "/category/aposentado/", desc: "Notícias e suporte previdenciário", illustration: "/img/area-aposentados.svg" },
               { label: "Denúncia", href: "/denuncia/", desc: "Canal de denúncias com sigilo garantido", illustration: "/img/area-denuncia.svg" },
               { label: "Contato", href: "/contato/", desc: "Fale com a Secretaria e demais setores", illustration: "/img/area-contato.svg" },
-            ].map((area) => (
-              <Link
+            ].map((area, i) => (
+              <Reveal
                 key={area.label}
+                as={Link}
                 to={area.href}
+                delay={i * 70}
                 className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-gray-100 hover:border-[#C41230] hover:shadow-md transition-all bg-white"
               >
                 <img src={area.illustration} alt="" aria-hidden="true" className="w-full h-28 object-contain" />
@@ -541,7 +554,7 @@ export default function Home() {
                   {area.label}
                 </span>
                 <span className="text-xs text-gray-500 leading-snug">{area.desc}</span>
-              </Link>
+              </Reveal>
             ))}
           </div>
         </div>

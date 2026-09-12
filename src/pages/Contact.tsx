@@ -159,16 +159,15 @@ export default function Contact() {
 
           {/* Form + Map */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Google Map embed placeholder */}
-            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 h-56 flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <svg className="w-10 h-10 mx-auto mb-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="text-sm font-medium">Mapa do Google</p>
-                <p className="text-xs text-gray-400">Campus UnB, Asa Norte, Brasília/DF</p>
-              </div>
+            {/* Google Map */}
+            <div className="rounded-2xl overflow-hidden border border-gray-200 h-56">
+              <iframe
+                title="Localização do SINTFUB — Campus UnB, Asa Norte, Brasília/DF"
+                src="https://www.google.com/maps?q=Universidade+de+Brasília,+Asa+Norte,+Brasília+-+DF,+70910-900&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             {/* Form */}

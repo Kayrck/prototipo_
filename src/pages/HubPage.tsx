@@ -467,11 +467,11 @@ export default function HubPage() {
                   <div className="w-1 h-6 rounded-full" style={{ backgroundColor: config.color }} />
                   {section.title}
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-4 max-w-xl">
                   {section.images.map((img) => (
                     <figure key={img.src} className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
                       <img src={img.src} alt={img.caption} className="w-full h-auto object-cover" />
-                      <figcaption className="px-4 py-3 text-sm font-semibold text-gray-700 bg-gray-50">{img.caption}</figcaption>
+                      <figcaption className="px-3 py-2.5 text-xs font-semibold text-gray-700 bg-gray-50">{img.caption}</figcaption>
                     </figure>
                   ))}
                 </div>
