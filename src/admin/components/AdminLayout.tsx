@@ -170,15 +170,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex-1 overflow-y-auto py-3">
           <NavList />
         </div>
-        <button
-          onClick={() => setCollapsed((c) => !c)}
-          className="h-12 border-t border-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-600 flex-shrink-0"
-          aria-label={collapsed ? "Expandir menu" : "Recolher menu"}
-        >
-          <svg className={`w-4 h-4 transition-transform ${collapsed ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-          </svg>
-        </button>
       </aside>
 
       {/* Sidebar mobile (drawer) */}
@@ -214,6 +205,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <button onClick={() => setMobileOpen(true)} aria-label="Abrir menu" className="md:hidden p-2 -ml-2 text-gray-600">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => setCollapsed((c) => !c)}
+            aria-label={collapsed ? "Expandir menu" : "Recolher menu"}
+            title={collapsed ? "Expandir menu" : "Recolher menu"}
+            className="hidden md:flex p-2 -ml-2 text-gray-500 hover:text-gray-800 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M9 4v16" />
+              {collapsed ? <path strokeLinecap="round" strokeLinejoin="round" d="M13 9l3 3-3 3" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M15 9l-3 3 3 3" />}
             </svg>
           </button>
 
