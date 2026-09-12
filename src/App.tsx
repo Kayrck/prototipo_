@@ -18,6 +18,7 @@ import TermsOfUse from "./pages/TermsOfUse";
 import HubPage from "./pages/HubPage";
 import BackToTop from "./components/BackToTop";
 import { newsItems } from "./data/content";
+import AdminApp from "./admin/AdminApp";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -140,7 +141,10 @@ function AppShell() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppShell />
+      <Routes>
+        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="/*" element={<AppShell />} />
+      </Routes>
     </BrowserRouter>
   );
 }
