@@ -419,6 +419,30 @@ export const newsItems = [
     image: "/img/card-assedio-nao.png",
     tags: ["assedio", "denuncia"],
   },
+  {
+    id: 36,
+    slug: "unb-assina-primeiros-atos-concessao-rsc",
+    title: "UnB assina primeiros atos de concessão do RSC, conquista histórica da greve de 2024",
+    excerpt: "A Universidade de Brasília iniciou a assinatura dos primeiros atos de concessão do Reconhecimento de Saberes e Competências (RSC) aos técnico-administrativos em educação.",
+    date: "2026-09-11",
+    dateFormatted: "11 de setembro de 2026",
+    category: "Notícias",
+    categorySlug: "noticias",
+    image: "/img/rsc-unb-assina.jpg",
+    tags: ["rsc", "campanhasalarial2024"],
+  },
+  {
+    id: 37,
+    slug: "parceria-escola-vivendo-aprendendo",
+    title: "Com nova parceria, filiados terão desconto em escola Vivendo e Aprendendo na Asa Norte",
+    excerpt: "O SINTFUB firmou parceria com a escola associativa Vivendo e Aprendendo, garantindo 25% de desconto para filiados e suas famílias.",
+    date: "2026-09-11",
+    dateFormatted: "11 de setembro de 2026",
+    category: "Notícias",
+    categorySlug: "noticias",
+    image: "/img/parceria-escola-vivendo.png",
+    tags: ["convênio", "benefícios"],
+  },
 ];
 
 export const documents = [

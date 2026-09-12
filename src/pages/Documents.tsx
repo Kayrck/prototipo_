@@ -100,6 +100,29 @@ export default function Documents() {
         </div>
       </div>
 
+      {!isEstatuto && (
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-10">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+            {Object.keys(typeColors).map((type) => {
+              const count = allDocuments.filter((d) => d.type === type).length;
+              return (
+                <button
+                  key={type}
+                  onClick={() => setActiveType(activeType === type ? null : type)}
+                  aria-pressed={activeType === type}
+                  className={`text-center p-4 rounded-2xl border transition-all ${
+                    activeType === type ? "border-[#C41230] ring-2 ring-[#C41230]/20" : "border-gray-100 hover:border-gray-300"
+                  } bg-gray-50`}
+                >
+                  <div className="text-2xl font-black text-gray-900 font-[family-name:var(--font-display)]">{count}</div>
+                  <div className="text-xs text-gray-500 font-medium mt-0.5">{type}</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-10">
         <div className="flex gap-8">
           <div className="flex-1 min-w-0">

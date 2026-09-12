@@ -137,20 +137,51 @@ export default function AboutUs() {
                 </div>
               </div>
             ) : (
-              <div className="prose prose-gray max-w-none">
-                <p className="text-lg font-medium text-gray-800 leading-relaxed mb-6">
-                  O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é a entidade representativa dos trabalhadores técnico-administrativos ativos e aposentados da FUB, campus da Universidade de Brasília.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  O Sindicato teve início em 1985 com a concepção da Associação dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília (ATA-FUB). Em 1992, a entidade passou por mudança estatutária, adotando a denominação de Sindicato (SINTFUB) e, no mesmo ano, filiou-se à Central Única dos Trabalhadores (CUT) e à Federação de Sindicatos de Trabalhadores Técnico-Administrativos em Instituições de Ensino Superior Públicas do Brasil (FASUBRA).
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Em 1999 houve uma nova mudança: o significado da sigla deixou de ser Sindicato dos Servidores Técnico-Administrativos para Sindicato dos Trabalhadores da Fundação Universidade de Brasília, passando a abranger o conjunto da categoria — ativos, aposentados, terceirizados e pensionistas.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Há mais de três décadas o SINTFUB coloca em prática sua missão, visão e valores. Por meio de greves, acordos, manifestações e interlocução com diferentes atores da vida política brasileira, o sindicato tem sido protagonista na manutenção e conquista de direitos, informando e representando a categoria.
-                </p>
-              </div>
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                  {[
+                    { value: "1985", label: "Ano de fundação" },
+                    { value: "12", label: "Coordenações" },
+                    { value: "6", label: "Conselheiros fiscais" },
+                    { value: "2", label: "Centrais/federações filiadas" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                      <div className="text-2xl font-black text-[#C41230] font-[family-name:var(--font-display)]">{stat.value}</div>
+                      <div className="text-xs text-gray-500 font-medium mt-0.5">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="prose prose-gray max-w-none">
+                  <p className="text-lg font-medium text-gray-800 leading-relaxed mb-6">
+                    O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é a entidade representativa dos trabalhadores técnico-administrativos ativos e aposentados da FUB, campus da Universidade de Brasília.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Há mais de três décadas o SINTFUB coloca em prática sua missão, visão e valores. Por meio de greves, acordos, manifestações e interlocução com diferentes atores da vida política brasileira, o sindicato tem sido protagonista na manutenção e conquista de direitos, informando e representando a categoria.
+                  </p>
+                </div>
+
+                <div className="mt-10">
+                  <h2 className="font-bold text-gray-900 text-base mb-6 font-[family-name:var(--font-display)]">Linha do tempo</h2>
+                  <div className="space-y-6">
+                    {[
+                      { year: "1985", text: "Início do Sindicato com a concepção da Associação dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília (ATA-FUB)." },
+                      { year: "1992", text: "Mudança estatutária adota a denominação de Sindicato (SINTFUB); filiação à Central Única dos Trabalhadores (CUT) e à FASUBRA." },
+                      { year: "1999", text: "Nova mudança na sigla: de Sindicato dos Servidores Técnico-Administrativos para Sindicato dos Trabalhadores da FUB, passando a abranger ativos, aposentados, terceirizados e pensionistas." },
+                    ].map((item, idx, arr) => (
+                      <div key={item.year} className="flex gap-4">
+                        <div className="flex flex-col items-center flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-red-50 text-[#C41230] font-black text-xs flex items-center justify-center font-[family-name:var(--font-display)]">
+                            {item.year}
+                          </div>
+                          {idx < arr.length - 1 && <div className="w-0.5 flex-1 bg-gray-200 my-1" />}
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed pb-6">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
             )}
           </div>
           <aside className="hidden lg:block w-72 flex-shrink-0">

@@ -49,6 +49,16 @@ export default function NewsListing() {
   const parentCategory = !isTagPage && segments.length === 3 ? segments[1] : "";
   const isMultimidiaRoot = leafCategory === "multimidia" && !parentCategory;
   const showVideoTiles = isMultimidiaRoot || (leafCategory === "videos" && parentCategory === "multimidia");
+  const isPublicacoesRoot = leafCategory === "publicacoes" && !parentCategory;
+  const categoryBreakdown = isPublicacoesRoot
+    ? [
+        { slug: "noticias", label: "Notícias" },
+        { slug: "aposentados", label: "Aposentados" },
+        { slug: "juridico-trabalhista", label: "Jurídico Trabalhista" },
+        { slug: "juridico-civel", label: "Jurídico Cível" },
+        { slug: "informativos", label: "Informativos" },
+      ].map((c) => ({ ...c, count: newsItems.filter((item) => item.categorySlug === c.slug).length }))
+    : [];
 
   const catLabel = isTagPage
     ? `Tag: ${tagSlug.replace(/-/g, " ")}`
@@ -107,6 +117,20 @@ export default function NewsListing() {
         <div className="flex gap-8">
           {/* Main content */}
           <div className="flex-1 min-w-0">
+            {isPublicacoesRoot && (
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-10">
+                {categoryBreakdown.map((c) => (
+                  <Link
+                    key={c.slug}
+                    to={`/category/${c.slug}/`}
+                    className="text-center p-4 rounded-2xl border border-gray-100 hover:border-[#C41230] bg-gray-50 hover:bg-white transition-all"
+                  >
+                    <div className="text-2xl font-black text-gray-900 font-[family-name:var(--font-display)]">{c.count}</div>
+                    <div className="text-xs text-gray-500 font-medium mt-0.5">{c.label}</div>
+                  </Link>
+                ))}
+              </div>
+            )}
             {showVideoTiles && (
               <div className="mb-10">
                 <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Vídeos</h2>

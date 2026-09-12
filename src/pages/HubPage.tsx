@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import NewsCard from "../components/NewsCard";
@@ -16,12 +17,16 @@ interface HubConfig {
 }
 
 interface HubSection {
-  type: "news" | "links" | "docs" | "info" | "cards";
+  type: "news" | "links" | "docs" | "info" | "cards" | "faq" | "stats" | "gallery" | "steps";
   title: string;
   items?: { label: string; href: string; desc?: string; icon?: string }[];
   newsCategory?: string;
   docType?: string;
   content?: string;
+  faqs?: { q: string; a: string }[];
+  stats?: { value: string; label: string }[];
+  images?: { src: string; caption: string }[];
+  steps?: { title: string; desc: string }[];
 }
 
 const hubConfigs: Record<string, HubConfig> = {
@@ -33,6 +38,16 @@ const hubConfigs: Record<string, HubConfig> = {
     color: "#C41230",
     icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
     sections: [
+      {
+        type: "stats",
+        title: "",
+        stats: [
+          { value: "4", label: "Áreas de atendimento" },
+          { value: "100%", label: "Gratuito para associados" },
+          { value: "2", label: "Assessorias parceiras" },
+          { value: "6", label: "Publicações jurídicas" },
+        ],
+      },
       {
         type: "cards",
         title: "Áreas de atuação",
@@ -47,10 +62,28 @@ const hubConfigs: Record<string, HubConfig> = {
         content: "Servidoras e servidores associados ao SINTFUB têm direito a atendimento jurídico gratuito com os advogados contratados pelo sindicato. Os plantões do Jurídico nas áreas trabalhista, cível, família e crime de menor potencial ofensivo do juizado especial acontecem na sede do sindicato, no Campus Darcy Ribeiro. Para agendar, entre em contato pelos canais da página de Contato ou pelo WhatsApp.",
       },
       {
+        type: "gallery",
+        title: "Escalas de plantão jurídico",
+        images: [
+          { src: "/img/plantao-juridico-trabalhista.jpg", caption: "Plantão Jurídico Trabalhista" },
+          { src: "/img/plantao-juridico-familia.jpg", caption: "Plantão Jurídico Cível, Família e Criminal" },
+        ],
+      },
+      {
         type: "cards",
         title: "Vídeo: orientações jurídicas",
         items: [
           { label: "Jurídico do SINTFUB faz esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", desc: "Assista no canal do SINTFUB no YouTube.", icon: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" },
+        ],
+      },
+      {
+        type: "faq",
+        title: "Perguntas frequentes",
+        faqs: [
+          { q: "O atendimento jurídico é gratuito?", a: "Sim. Servidoras e servidores associados ao SINTFUB têm direito a atendimento jurídico gratuito com os advogados contratados pelo sindicato." },
+          { q: "Quais áreas são atendidas?", a: "Trabalhista, Cível, Família e Criminal (crime de menor potencial ofensivo do juizado especial)." },
+          { q: "Onde acontecem os plantões?", a: "Na sede do sindicato, no Campus Darcy Ribeiro, conforme a escala de cada área." },
+          { q: "Como agendar um atendimento?", a: "Pelos canais da página de Contato ou pelo WhatsApp do SINTFUB." },
         ],
       },
       {
@@ -98,6 +131,16 @@ const hubConfigs: Record<string, HubConfig> = {
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
     sections: [
       {
+        type: "stats",
+        title: "",
+        stats: [
+          { value: "6", label: "Documentos publicados" },
+          { value: "4", label: "Atas de Assembleia" },
+          { value: "3", label: "Conselheiros titulares" },
+          { value: "3", label: "Conselheiros suplentes" },
+        ],
+      },
+      {
         type: "cards",
         title: "Áreas de transparência",
         items: [
@@ -105,6 +148,15 @@ const hubConfigs: Record<string, HubConfig> = {
           { label: "Contratos e Convênios", href: "/contratos-convenios/", desc: "Contratos firmados e convênios ativos do SINTFUB.", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
           { label: "Conselho Fiscal", href: "/quem-somos/conselho-fiscal/", desc: "Composição e atas do Conselho Fiscal.", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
           { label: "Comissão de Ética", href: "/category/comissao-de-etica/", desc: "Regimento e informações da Comissão de Ética.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+        ],
+      },
+      {
+        type: "steps",
+        title: "Como funciona a prestação de contas",
+        steps: [
+          { title: "Convocação", desc: "A Coordenação Executiva publica edital convocando os filiados para a Assembleia Geral de prestação de contas." },
+          { title: "Análise do Conselho Fiscal", desc: "O Conselho Fiscal analisa os documentos financeiros do exercício e elabora relatório para a Assembleia." },
+          { title: "Votação em Assembleia", desc: "A Assembleia Geral avalia os relatórios e vota a aprovação ou reprovação das contas do exercício." },
         ],
       },
       { type: "docs", title: "Prestação de contas e documentos financeiros", docType: "Transparência" },
@@ -124,6 +176,16 @@ const hubConfigs: Record<string, HubConfig> = {
     color: "#059669",
     icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
     sections: [
+      {
+        type: "stats",
+        title: "",
+        stats: [
+          { value: "10", label: "Publicações reais" },
+          { value: "1", label: "Coordenação dedicada" },
+          { value: "365", label: "Prazo da Prova de Vida (dias)" },
+          { value: "100%", label: "Atendimento gratuito" },
+        ],
+      },
       {
         type: "cards",
         title: "Serviços para aposentados",
@@ -176,6 +238,7 @@ const hubConfigs: Record<string, HubConfig> = {
 export default function HubPage() {
   const { pathname } = useLocation();
   const config = hubConfigs[pathname] || hubConfigs["/juridico/"];
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const breadcrumbItems = config.breadcrumbParent
     ? [config.breadcrumbParent, { label: config.breadcrumb }]
@@ -375,6 +438,106 @@ export default function HubPage() {
                 <div className="p-6 rounded-2xl border-l-4" style={{ borderColor: config.color, backgroundColor: `${config.color}06` }}>
                   <h3 className="font-bold text-gray-900 mb-2 font-[family-name:var(--font-display)]">{section.title}</h3>
                   <p className="text-sm text-gray-700 leading-relaxed">{section.content}</p>
+                </div>
+              </section>
+            );
+          }
+
+          if (section.type === "stats" && section.stats) {
+            return (
+              <section key={i} aria-label={section.title || "Números"}>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  {section.stats.map((stat) => (
+                    <div key={stat.label} className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                      <div className="text-3xl font-black mb-1 font-[family-name:var(--font-display)]" style={{ color: config.color }}>
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-gray-500 font-medium">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+          }
+
+          if (section.type === "gallery" && section.images) {
+            return (
+              <section key={i} aria-labelledby={`section-${i}`}>
+                <h2 id={`section-${i}`} className="text-xl font-black text-gray-900 mb-6 font-[family-name:var(--font-display)] flex items-center gap-3">
+                  <div className="w-1 h-6 rounded-full" style={{ backgroundColor: config.color }} />
+                  {section.title}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {section.images.map((img) => (
+                    <figure key={img.src} className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                      <img src={img.src} alt={img.caption} className="w-full h-auto object-cover" />
+                      <figcaption className="px-4 py-3 text-sm font-semibold text-gray-700 bg-gray-50">{img.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            );
+          }
+
+          if (section.type === "faq" && section.faqs) {
+            return (
+              <section key={i} aria-labelledby={`section-${i}`}>
+                <h2 id={`section-${i}`} className="text-xl font-black text-gray-900 mb-6 font-[family-name:var(--font-display)] flex items-center gap-3">
+                  <div className="w-1 h-6 rounded-full" style={{ backgroundColor: config.color }} />
+                  {section.title}
+                </h2>
+                <div className="space-y-3">
+                  {section.faqs.map((faq, fi) => {
+                    const isOpen = openFaq === fi;
+                    return (
+                      <div key={faq.q} className="border border-gray-100 rounded-xl overflow-hidden">
+                        <button
+                          onClick={() => setOpenFaq(isOpen ? null : fi)}
+                          aria-expanded={isOpen}
+                          className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left bg-gray-50 hover:bg-red-50 transition-colors"
+                        >
+                          <span className="font-semibold text-gray-900 text-sm">{faq.q}</span>
+                          <svg
+                            className={`w-4 h-4 text-gray-500 flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {isOpen && (
+                          <div className="px-5 py-4 text-sm text-gray-600 leading-relaxed bg-white">{faq.a}</div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          }
+
+          if (section.type === "steps" && section.steps) {
+            return (
+              <section key={i} aria-labelledby={`section-${i}`}>
+                <h2 id={`section-${i}`} className="text-xl font-black text-gray-900 mb-6 font-[family-name:var(--font-display)] flex items-center gap-3">
+                  <div className="w-1 h-6 rounded-full" style={{ backgroundColor: config.color }} />
+                  {section.title}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {section.steps.map((step, si) => (
+                    <div key={step.title} className="relative pl-2">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm mb-3"
+                        style={{ backgroundColor: `${config.color}12`, color: config.color }}
+                      >
+                        {si + 1}
+                      </div>
+                      <h3 className="font-bold text-gray-900 text-sm mb-1 font-[family-name:var(--font-display)]">{step.title}</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </section>
             );
