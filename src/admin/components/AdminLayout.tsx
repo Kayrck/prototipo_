@@ -100,7 +100,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
                   {!!badge && (
                     <span
-                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center animate-badge-pop ${
+                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                         isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
                       }`}
                     >
@@ -138,7 +138,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <span className={`flex-1 ${collapsed ? "hidden" : ""}`}>{item.label}</span>
                   {!!badge && (
                     <span
-                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center animate-badge-pop ${
+                      className={`flex-shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                         isActive ? "bg-white text-[#C41230]" : "bg-[#C41230] text-white"
                       }`}
                     >
@@ -184,8 +184,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar mobile (drawer) */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/40 animate-overlay-in" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 bottom-0 w-72 bg-white flex flex-col animate-drawer-in">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <aside className="absolute left-0 top-0 bottom-0 w-72 bg-white flex flex-col">
             <div className="h-16 flex items-center justify-between gap-2.5 px-4 border-b border-gray-100 flex-shrink-0">
               <div className="flex items-center gap-2.5">
                 <img src="/sintfub-logo.png" alt="SINTFUB" className="h-8 w-auto" />
@@ -261,7 +261,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 )}
               </button>
               {notifOpen && (
-                <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-40 origin-top-right animate-dropdown-in">
+                <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-40">
                   <p className="px-4 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-widest">Notificações</p>
                   {newDenuncias > 0 && (
                     <Link to="/admin/denuncias" onClick={() => setNotifOpen(false)} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">

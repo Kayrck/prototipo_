@@ -76,8 +76,8 @@ export default function Denuncias() {
       )}
 
       {selected && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 px-4 animate-overlay-in" role="dialog" aria-modal="true" onClick={() => setSelected(null)}>
-          <div className="bg-white rounded-lg border border-gray-200 shadow-xl max-w-md w-full p-6 animate-dropdown-in" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 px-4" role="dialog" aria-modal="true" onClick={() => setSelected(null)}>
+          <div className="bg-white rounded-lg border border-gray-200 shadow-xl max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-gray-900 text-base">Denúncia</h2>
               <StatusBadge status={selected.status} />
