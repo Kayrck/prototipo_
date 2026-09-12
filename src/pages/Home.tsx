@@ -191,7 +191,10 @@ export default function Home() {
               { value: "40+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB desde 1985" },
               { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col">
+              <div
+                key={stat.label}
+                className="flex flex-col bg-white border border-gray-100 border-l-4 border-l-[#C41230] rounded-xl px-5 py-4 sm:px-6 sm:py-5 shadow-sm"
+              >
                 <div className="text-3xl lg:text-4xl font-black text-[#C41230] font-[family-name:var(--font-display)] mb-1">
                   {stat.value}
                 </div>
