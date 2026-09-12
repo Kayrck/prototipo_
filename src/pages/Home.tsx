@@ -217,7 +217,7 @@ export default function Home() {
             </div>
             <Link
               to="/category/publicacoes/noticias/"
-              className="text-sm font-semibold text-[#C41230] flex items-center gap-1.5 hover:gap-3 transition-all hidden sm:flex"
+              className="text-sm font-semibold text-[#C41230] flex items-center gap-1.5 hidden sm:flex"
             >
               Ver todas
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -261,7 +261,7 @@ export default function Home() {
             </div>
             <Link
               to="/category/documentos/"
-              className="text-sm font-semibold text-[#C41230] flex items-center gap-1.5 hover:gap-3 transition-all hidden sm:flex"
+              className="text-sm font-semibold text-[#C41230] flex items-center gap-1.5 hidden sm:flex"
             >
               Ver todos
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

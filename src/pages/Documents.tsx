@@ -20,6 +20,7 @@ export default function Documents() {
   const pageTitle = isEstatuto ? "Estatuto" : "Documentos";
   const [activeType, setActiveType] = useState<string | null>(null);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   const filteredDocuments = activeType ? allDocuments.filter((d) => d.type === activeType) : allDocuments;
   const totalPages = Math.max(1, Math.ceil(filteredDocuments.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
@@ -28,6 +29,12 @@ export default function Documents() {
   useEffect(() => {
     setPage(1);
   }, [activeType]);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, [activeType, page, pathname]);
 
   const isExternal = (url: string) => url.startsWith("http");
 
@@ -139,7 +146,19 @@ export default function Documents() {
                 </button>
               </div>
             )}
-            {filteredDocuments.length === 0 ? (
+            {loading ? (
+              <div className="space-y-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 lg:p-5 bg-white border border-gray-100 rounded-xl">
+                    <div className="skeleton w-12 h-12 rounded-xl flex-shrink-0" />
+                    <div className="flex-1 min-w-0 space-y-2">
+                      <div className="skeleton h-3 w-24 rounded" />
+                      <div className="skeleton h-4 w-3/4 rounded" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : filteredDocuments.length === 0 ? (
               <div className="text-center py-16 bg-gray-50 rounded-2xl border border-gray-100">
                 <p className="text-gray-500 text-sm">Nenhum documento encontrado para este tipo.</p>
               </div>

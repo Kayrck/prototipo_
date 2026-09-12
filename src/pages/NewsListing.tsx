@@ -35,8 +35,14 @@ const multimidiaVideos = [
 
 export default function NewsListing() {
   const location = useLocation();
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 350);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   // Os parâmetros de rota variam por categoria (algumas rotas usam :sub, outras
   // :category/:subcategory, outras são literais sem parâmetro nenhum). Em vez de

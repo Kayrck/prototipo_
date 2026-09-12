@@ -147,7 +147,7 @@ export default function NewsCard({
           )}
           <Link
             to={`/${slug}/`}
-            className="text-xs font-semibold text-[#C41230] flex items-center gap-1 hover:gap-2 transition-all ml-auto"
+            className="text-xs font-semibold text-[#C41230] flex items-center gap-1 ml-auto"
             aria-label={`Leia mais sobre ${title}`}
           >
             Leia mais

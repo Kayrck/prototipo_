@@ -200,7 +200,7 @@ const hubConfigs: Record<string, HubConfig> = {
       {
         type: "info",
         title: "Licença-prêmio e férias não gozadas",
-        content: "O período de férias e de licença-prêmio adquirido e não gozado, ou não utilizado para fins de aposentadoria, deve ser convertido em pecúnia — direito garantido pela assessoria jurídica trabalhista do SINTFUB. Consulte a página de Jurídico Trabalhista para mais orientações.",
+        content: "O período de férias e de licença-prêmio adquirido e não gozado, ou não utilizado para fins de aposentadoria, deve ser convertido em pecúnia. Esse direito é garantido pela assessoria jurídica trabalhista do SINTFUB; consulte a página de Jurídico Trabalhista para mais orientações.",
       },
       {
         type: "info",
@@ -306,7 +306,7 @@ export default function HubPage() {
                         </div>
                         <div className="mt-auto flex items-center gap-1 text-xs font-semibold" style={{ color: config.color }}>
                           {external ? "Acessar site" : "Acessar"}
-                          <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </div>
