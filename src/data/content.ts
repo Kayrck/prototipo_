@@ -594,11 +594,11 @@ export const menuItems = [
       { label: "Estatuto", href: "/estatuto/" },
       {
         label: "CONSINTFUB",
-        href: "/category/consintfub/",
+        href: "/tag/consintfub/",
         children: [
-          { label: "XXII CONSINTFUB", href: "/category/consintfub/" },
-          { label: "XXI CONSINTFUB", href: "/category/consintfub/" },
-          { label: "XIX CONSINTFUB", href: "/category/consintfub/" },
+          { label: "XXII CONSINTFUB", href: "/tag/consintfub/" },
+          { label: "XXI CONSINTFUB", href: "/tag/consintfub/" },
+          { label: "XIX CONSINTFUB", href: "/tag/consintfub/" },
         ],
       },
       { label: "Eleições", href: "/category/eleicoes/" },

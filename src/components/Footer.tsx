@@ -26,7 +26,7 @@ const footerLinks = {
     { label: "Estatuto", href: "/estatuto/" },
     { label: "Atas de Assembleia", href: "/category/documentos/atas/" },
     { label: "Resoluções e Boletins", href: "/resolucoes-boletins/" },
-    { label: "CONSINTFUB", href: "/category/consintfub/" },
+    { label: "CONSINTFUB", href: "/tag/consintfub/" },
     { label: "Eleições", href: "/category/eleicoes/" },
   ],
   transparencia: [

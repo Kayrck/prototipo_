@@ -17,14 +17,22 @@ const typeColors: Record<string, string> = {
 export default function Documents() {
   const { pathname } = useLocation();
   const isEstatuto = pathname.startsWith("/estatuto");
+  const isAtas = pathname.includes("/atas") || pathname.startsWith("/atas-de-assembleias");
   const pageTitle = isEstatuto ? "Estatuto" : "Documentos";
-  const [activeType, setActiveType] = useState<string | null>(null);
+  const [activeType, setActiveType] = useState<string | null>(isAtas ? "Ata" : null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const filteredDocuments = activeType ? allDocuments.filter((d) => d.type === activeType) : allDocuments;
   const totalPages = Math.max(1, Math.ceil(filteredDocuments.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const pagedDocuments = filteredDocuments.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  // Re-sync the pre-selected filter when navigating between document routes
+  // client-side (e.g. Documentos -> Atas de Assembleia), since the component
+  // instance is reused and the useState initializer above only runs once.
+  useEffect(() => {
+    setActiveType(isAtas ? "Ata" : null);
+  }, [pathname]);
 
   useEffect(() => {
     setPage(1);

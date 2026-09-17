@@ -69,7 +69,6 @@ function AppShell() {
           {/* Categories, ordered most specific first */}
           <Route path="/category/documentos/" element={<Documents />} />
           <Route path="/category/documentos/atas/" element={<Documents />} />
-          <Route path="/category/consintfub/" element={<Documents />} />
           <Route path="/category/eleicoes/" element={<Documents />} />
 
           <Route path="/category/juridico-trabalhista/" element={<HubPage />} />
