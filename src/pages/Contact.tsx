@@ -148,7 +148,7 @@ export default function Contact() {
             <div className="p-5 bg-gray-50 rounded-xl border border-gray-100">
               <h3 className="font-bold text-gray-900 text-sm mb-3">Endereço</h3>
               <address className="not-italic text-xs text-gray-600 leading-relaxed">
-                SINTFUB, Sindicato dos Trabalhadores da<br />
+                SINTFUB, Sindicato dos Servidores Técnico-Administrativos da<br />
                 Fundação Universidade de Brasília<br />
                 UnB, Bloco C, Edifício Multiuso 1, Sala 54/2<br />
                 Asa Norte, Brasília/DF<br />

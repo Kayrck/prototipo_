@@ -68,7 +68,7 @@ export default function Documents() {
                 </h2>
                 <p className="text-sm text-gray-500 mb-1">Atualizado em 2021 • 6,1 MB</p>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                  Documento que rege a organização, funcionamento e objetivos do SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília.
+                  Documento que rege a organização, funcionamento e objetivos do SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília.
                 </p>
                 <a
                   href="https://sintfub.org.br/wp-content/uploads/2021/11/ESTATUTOVIGENTE2021SINTFUB.pdf"

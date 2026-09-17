@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
             {[
               {
                 title: "1. Quem somos",
-                content: "O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é o controlador dos dados pessoais coletados por meio deste site (sintfub.org.br) e de seus formulários. Para contato sobre privacidade de dados: sintfub@sintfub.org.br.",
+                content: "O SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, é o controlador dos dados pessoais coletados por meio deste site (sintfub.org.br) e de seus formulários. Para contato sobre privacidade de dados: sintfub@sintfub.org.br.",
               },
               {
                 title: "2. Dados que coletamos",

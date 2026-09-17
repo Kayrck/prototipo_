@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 const footerLinks = {
   institucional: [
     { label: "História", href: "/quem-somos/historia/" },
-    { label: "Missão", href: "/missao/" },
-    { label: "Corpo Administrativo", href: "/corpo-administrativo/" },
+    { label: "Missão", href: "/quem-somos/missao/" },
+    { label: "Corpo Administrativo", href: "/quem-somos/corpo-administrativo/" },
     { label: "Conselho de Representantes", href: "/quem-somos/conselho-de-representantes/" },
     { label: "Conselho Fiscal", href: "/quem-somos/conselho-fiscal/" },
-    { label: "Agenda da Coordenação Executiva", href: "/agenda-da-coordenacao-executiva/" },
+    { label: "Agenda da Coordenação Executiva", href: "/quem-somos/agenda-da-coordenacao-executiva/" },
   ],
   publicacoes: [
     { label: "Notícias", href: "/category/publicacoes/noticias/" },
@@ -71,7 +71,7 @@ export default function Footer() {
               <div>
                 <div className="text-white font-black text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
                 <div className="text-gray-400 text-xs leading-tight">
-                  Sindicato dos Trabalhadores da<br />Fundação Universidade de Brasília
+                  Sindicato dos Servidores Técnico-Administrativos da<br />Fundação Universidade de Brasília
                 </div>
               </div>
             </Link>
@@ -255,7 +255,7 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
           <p>
-            © {new Date().getFullYear()} SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília. Todos os direitos reservados.
+            © {new Date().getFullYear()} SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4">
             <Link to="/politica-de-privacidade/" className="hover:text-gray-300 transition-colors">

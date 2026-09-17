@@ -92,7 +92,7 @@ export default function Header() {
               <div className="hidden sm:block leading-tight">
                 <div className="font-black text-[#C41230] text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
                 <div className="text-gray-500 text-xs leading-tight max-w-[220px]">
-                  Sindicato dos Trabalhadores da<br />Fundação Universidade de Brasília
+                  Sindicato dos Servidores Técnico-Administrativos da<br />Fundação Universidade de Brasília
                 </div>
               </div>
             </Link>
