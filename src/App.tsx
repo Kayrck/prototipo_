@@ -74,6 +74,7 @@ function AppShell() {
           <Route path="/category/juridico-trabalhista/" element={<HubPage />} />
           <Route path="/category/juridico-civel/" element={<HubPage />} />
           <Route path="/category/transparencia/" element={<HubPage />} />
+          <Route path="/category/transparencia/prestacao-de-contas/" element={<Documents />} />
           <Route path="/category/transparencia/:sub/" element={<NewsListing />} />
           <Route path="/category/aposentado/" element={<HubPage />} />
 
@@ -84,7 +85,7 @@ function AppShell() {
           <Route path="/category/informativos/" element={<NewsListing />} />
           <Route path="/category/multimidia/" element={<NewsListing />} />
           <Route path="/category/multimidia/:sub/" element={<NewsListing />} />
-          <Route path="/category/comissao-de-etica/" element={<NewsListing />} />
+          <Route path="/category/comissao-de-etica/" element={<Documents />} />
           <Route path="/category/:category/" element={<NewsListing />} />
           <Route path="/category/:category/:subcategory/" element={<NewsListing />} />
 

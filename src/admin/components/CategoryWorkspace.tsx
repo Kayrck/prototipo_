@@ -7,14 +7,20 @@ interface CategoryWorkspaceProps {
   description: string;
   pubCategorySlugs: string[];
   docCategories: string[];
+  /** Extra match by title keyword, for real documents whose format-based
+   * category (Ata, Resolução...) doesn't reflect this workspace's topic —
+   * e.g. the URP ata is topically Jurídico but categorized as "Ata". */
+  docKeywords?: string[];
   infoNote?: string;
 }
 
-export default function CategoryWorkspace({ title, description, pubCategorySlugs, docCategories, infoNote }: CategoryWorkspaceProps) {
+export default function CategoryWorkspace({ title, description, pubCategorySlugs, docCategories, docKeywords, infoNote }: CategoryWorkspaceProps) {
   const { publications, documents } = useAdmin();
 
   const relatedPublications = publications.filter((p) => pubCategorySlugs.includes(p.category));
-  const relatedDocuments = documents.filter((d) => docCategories.includes(d.category));
+  const relatedDocuments = documents.filter(
+    (d) => docCategories.includes(d.category) || docKeywords?.some((k) => d.title.toLowerCase().includes(k.toLowerCase()))
+  );
 
   return (
     <div>

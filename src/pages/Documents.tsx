@@ -14,12 +14,16 @@ const typeColors: Record<string, string> = {
   Transparência: "bg-gray-100 text-gray-700",
 };
 
+const etica = documents.find((d) => d.title.includes("Ética"));
+
 export default function Documents() {
   const { pathname } = useLocation();
   const isEstatuto = pathname.startsWith("/estatuto");
+  const isComissaoEtica = pathname.includes("/comissao-de-etica");
   const isAtas = pathname.includes("/atas") || pathname.startsWith("/atas-de-assembleias");
-  const pageTitle = isEstatuto ? "Estatuto" : "Documentos";
-  const [activeType, setActiveType] = useState<string | null>(isAtas ? "Ata" : null);
+  const isPrestacaoContas = pathname.includes("/prestacao-de-contas");
+  const pageTitle = isEstatuto ? "Estatuto" : isPrestacaoContas ? "Prestação de Contas" : "Documentos";
+  const [activeType, setActiveType] = useState<string | null>(isAtas ? "Ata" : isPrestacaoContas ? "Transparência" : null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const filteredDocuments = activeType ? allDocuments.filter((d) => d.type === activeType) : allDocuments;
@@ -31,7 +35,7 @@ export default function Documents() {
   // client-side (e.g. Documentos -> Atas de Assembleia), since the component
   // instance is reused and the useState initializer above only runs once.
   useEffect(() => {
-    setActiveType(isAtas ? "Ata" : null);
+    setActiveType(isAtas ? "Ata" : isPrestacaoContas ? "Transparência" : null);
   }, [pathname]);
 
   useEffect(() => {
@@ -98,9 +102,70 @@ export default function Documents() {
     );
   }
 
+  if (isComissaoEtica) {
+    return (
+      <div className="min-h-screen bg-offwhite">
+        <Breadcrumb items={[{ label: "Transparência", href: "/category/transparencia/" }, { label: "Comissão de Ética" }]} />
+        <div className="bg-gray-50 border-b border-gray-100 py-10">
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-1 h-8 bg-[#C41230] rounded-full" />
+              <h1 className="text-2xl lg:text-3xl font-black text-gray-900 font-[family-name:var(--font-display)]">
+                Comissão de Ética
+              </h1>
+            </div>
+            <p className="text-gray-500 text-sm mt-2 ml-4">Regimento e resoluções da Comissão de Ética do SINTFUB.</p>
+          </div>
+        </div>
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-12">
+          <div className="max-w-xl">
+            {etica ? (
+              <a
+                href={etica.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-5 p-6 bg-white border border-gray-200 hover:border-[#C41230] hover:shadow-sm rounded-2xl transition-all"
+              >
+                <div className="w-16 h-20 bg-gray-700 group-hover:bg-[#C41230] rounded-xl flex flex-col items-center justify-center gap-1 flex-shrink-0 transition-colors">
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-white text-xs font-bold">PDF</span>
+                </div>
+                <div className="flex-1">
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${typeColors[etica.type]}`}>{etica.type}</span>
+                  <h2 className="font-bold text-gray-900 text-lg mt-2 mb-1 font-[family-name:var(--font-display)] group-hover:text-[#C41230] transition-colors">
+                    {etica.title}
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-1">{etica.date} • {etica.size}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 group-hover:text-[#C41230] transition-colors mt-2">
+                    Baixar PDF
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ) : (
+              <div className="text-center py-16 bg-gray-50 rounded-2xl border border-gray-100">
+                <p className="text-gray-500 text-sm">Este conteúdo ainda não possui publicações.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-offwhite">
-      <Breadcrumb items={[{ label: pageTitle }]} />
+      <Breadcrumb
+        items={
+          isPrestacaoContas
+            ? [{ label: "Transparência", href: "/category/transparencia/" }, { label: "Prestação de Contas" }]
+            : [{ label: pageTitle }]
+        }
+      />
       <div className="bg-gray-50 border-b border-gray-100 py-10">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-1">
