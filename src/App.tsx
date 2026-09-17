@@ -98,10 +98,6 @@ function AppShell() {
           <Route path="/quem-somos" element={<AboutUs />} />
           <Route path="/quem-somos/:slug/" element={<AboutUs />} />
           <Route path="/quem-somos/:slug" element={<AboutUs />} />
-          <Route path="/missao/" element={<AboutUs />} />
-          <Route path="/memoria-sindical/" element={<AboutUs />} />
-          <Route path="/agenda-da-coordenacao-executiva/" element={<AboutUs />} />
-          <Route path="/corpo-administrativo/" element={<AboutUs />} />
           <Route path="/juridico/" element={<HubPage />} />
           <Route path="/contratos-convenios/" element={<HubPage />} />
 

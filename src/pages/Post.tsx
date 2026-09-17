@@ -134,7 +134,7 @@ export default function Post() {
             <div className="prose prose-gray max-w-none text-gray-700 leading-relaxed space-y-4">
               <p className="text-lg font-medium text-gray-800">{post.excerpt}</p>
               <p>
-                O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, atua continuamente em defesa dos direitos e interesses dos servidores ativos e aposentados da FUB. Esta é uma publicação demonstrativa representando o conteúdo que seria exibido nesta página.
+                O SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, atua continuamente em defesa dos direitos e interesses dos servidores ativos e aposentados da FUB. Esta é uma publicação demonstrativa representando o conteúdo que seria exibido nesta página.
               </p>
               <p>
                 A diretoria do SINTFUB mantém constante diálogo com a administração da UnB e com as instâncias do governo federal para garantir condições dignas de trabalho e a valorização dos servidores. Todas as ações e conquistas são comunicadas aos filiados por meio das publicações, informativos e das redes sociais do sindicato.

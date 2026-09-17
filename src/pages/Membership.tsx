@@ -181,7 +181,7 @@ export default function Membership() {
               Filie-se ao SINTFUB
             </h1>
             <p className="text-red-100 text-base leading-relaxed">
-              Preencha o formulário abaixo para solicitar sua filiação ao Sindicato dos Trabalhadores da Fundação Universidade de Brasília. Todos os campos marcados com <abbr title="obrigatório" className="no-underline text-white font-bold">*</abbr> são obrigatórios.
+              Preencha o formulário abaixo para solicitar sua filiação ao Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília. Todos os campos marcados com <abbr title="obrigatório" className="no-underline text-white font-bold">*</abbr> são obrigatórios.
             </p>
           </div>
         </div>

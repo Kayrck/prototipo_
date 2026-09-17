@@ -255,7 +255,7 @@ const seedActivities: AdminActivity[] = [
 ];
 
 const seedSettings: AdminSettings = {
-  siteName: "SINTFUB — Sindicato dos Trabalhadores da Fundação Universidade de Brasília",
+  siteName: "SINTFUB — Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília",
   email: "sintfub@sintfub.org.br",
   phoneSecretaria: "(61) 99231-6213",
   phoneJuridico: "(61) 99232-2081",
@@ -265,7 +265,7 @@ const seedSettings: AdminSettings = {
   facebook: "https://www.facebook.com/sintfub",
   instagram: "https://www.instagram.com/sintfub_unb",
   youtube: "https://www.youtube.com/channel/UCz4A5n0VW_mMyR88MI177BQ",
-  seoTitle: "SINTFUB - Sindicato dos Trabalhadores da Fundação Universidade de Brasília",
+  seoTitle: "SINTFUB - Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília",
   seoDescription: "O SINTFUB representa e protege os direitos dos servidores técnico-administrativos ativos e aposentados da FUB.",
   seoUrl: "https://sintfub.org.br",
   seoSocialImage: "/sintfub-logo.png",

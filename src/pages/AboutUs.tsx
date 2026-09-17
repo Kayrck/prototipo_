@@ -154,7 +154,7 @@ export default function AboutUs() {
 
                 <div className="prose prose-gray max-w-none">
                   <p className="text-lg font-medium text-gray-800 leading-relaxed mb-6">
-                    O SINTFUB, Sindicato dos Trabalhadores da Fundação Universidade de Brasília, é a entidade representativa dos trabalhadores técnico-administrativos ativos e aposentados da FUB, campus da Universidade de Brasília.
+                    O SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, é a entidade representativa dos trabalhadores técnico-administrativos ativos e aposentados da FUB, campus da Universidade de Brasília.
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
                     Há mais de três décadas o SINTFUB coloca em prática sua missão, visão e valores. Por meio de greves, acordos, manifestações e interlocução com diferentes atores da vida política brasileira, o sindicato tem sido protagonista na manutenção e conquista de direitos, informando e representando a categoria.
@@ -167,7 +167,7 @@ export default function AboutUs() {
                     {[
                       { year: "1985", text: "Início do Sindicato com a concepção da Associação dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília (ATA-FUB)." },
                       { year: "1992", text: "Mudança estatutária adota a denominação de Sindicato (SINTFUB); filiação à Central Única dos Trabalhadores (CUT) e à FASUBRA." },
-                      { year: "1999", text: "Nova mudança na sigla: de Sindicato dos Servidores Técnico-Administrativos para Sindicato dos Trabalhadores da FUB, passando a abranger ativos, aposentados, terceirizados e pensionistas." },
+                      { year: "1999", text: "Consolidação da denominação Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, com ampliação do alcance da entidade para abranger também aposentados, terceirizados e pensionistas." },
                     ].map((item, idx, arr) => (
                       <div key={item.year} className="flex gap-4">
                         <div className="flex flex-col items-center flex-shrink-0">

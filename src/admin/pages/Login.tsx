@@ -33,7 +33,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <img src="/sintfub-logo.png" alt="SINTFUB" className="h-14 w-auto mx-auto mb-4" />
           <h1 className="font-black text-gray-900 text-lg">Painel Administrativo</h1>
-          <p className="text-sm text-gray-500 mt-1">SINTFUB — Sindicato dos Trabalhadores da FUB</p>
+          <p className="text-sm text-gray-500 mt-1">SINTFUB — Sindicato dos Servidores Técnico-Administrativos da FUB</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-xl p-6 sm:p-7 shadow-sm space-y-4">
