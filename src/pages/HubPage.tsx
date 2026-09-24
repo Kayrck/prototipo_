@@ -138,6 +138,14 @@ const hubConfigs: Record<string, HubConfig> = {
         title: "Calendário de plantões",
         images: [{ src: "/img/plantao-juridico-trabalhista.jpg", caption: "Plantão Jurídico Trabalhista" }],
       },
+      {
+        type: "cards",
+        title: "Temas relacionados",
+        items: [
+          { label: "URP", href: "/temas/urp/", desc: "Notícias, documentos e materiais sobre a URP/89.", icon: ICON.doc },
+          { label: "Carreira", href: "/temas/carreira/", desc: "RSC, PCCTAE, licença-prêmio e demais direitos da carreira.", icon: ICON.briefcase },
+        ],
+      },
       { type: "news", title: "Publicações", newsCategory: "juridico-trabalhista" },
     ],
   },

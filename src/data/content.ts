@@ -1,5 +1,6 @@
 import type { NewsItem } from "./types";
 import { extraNewsItems } from "./posts-extra";
+import { themeNewsItems } from "./posts-themes";
 
 const baseNewsItems: NewsItem[] = [
   {
@@ -442,7 +443,7 @@ const baseNewsItems: NewsItem[] = [
 ];
 
 /** Todas as publicações: as originais do protótipo mais as reais importadas do site oficial. */
-export const newsItems: NewsItem[] = [...baseNewsItems, ...extraNewsItems];
+export const newsItems: NewsItem[] = [...baseNewsItems, ...extraNewsItems, ...themeNewsItems];
 
 export const documents = [
   {

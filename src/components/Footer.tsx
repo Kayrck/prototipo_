@@ -23,6 +23,7 @@ const footerLinks = {
     { label: "Informativos", href: "/category/informativos/" },
     { label: "Informes da FASUBRA", href: "/category/informes-fasubra/" },
     { label: "Multimídia", href: "/category/multimidia/" },
+    { label: "Temas", href: "/temas/" },
   ],
   juridico: [
     { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/" },

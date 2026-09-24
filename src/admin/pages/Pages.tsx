@@ -17,6 +17,7 @@ const initialPages: SitePage[] = [
   { id: "aposentados", name: "Aposentados", path: "/category/aposentado/", status: "publicado" },
   { id: "servicos", name: "Serviços", path: "/servicos/", status: "publicado" },
   { id: "agenda", name: "Agenda Institucional", path: "/agenda/", status: "publicado" },
+  { id: "temas", name: "Temas (Carreira, URP, Campanha Salarial, Reforma Administrativa)", path: "/temas/", status: "publicado" },
   { id: "convenios", name: "Convênios e Parcerias", path: "/convenios-e-parcerias/", status: "publicado" },
   { id: "hub", name: "Subsede HUB", path: "/hub/", status: "publicado" },
   { id: "contato", name: "Contato", path: "/contato", status: "publicado" },

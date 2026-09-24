@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import NewsCard, { NewsCardSkeleton } from "../components/NewsCard";
 import { newsItems, tagCloud } from "../data/content";
 import type { NewsKind } from "../data/types";
+import { themes } from "../data/themes";
 
 const categoryLabels: Record<string, string> = {
   "publicacoes": "Publicações",
@@ -116,6 +117,11 @@ function buildNavigation(leaf: string, parent: string): { title: string; items: 
         { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/", count: newsItems.filter((n) => n.categorySlug === "juridico-trabalhista").length },
         { label: "Jurídico Cível", href: "/category/juridico-civel/", count: newsItems.filter((n) => n.categorySlug === "juridico-civel").length },
         { label: "Subsede HUB", href: "/hub/" },
+        ...themes.map((theme) => ({
+          label: theme.label,
+          href: `/temas/${theme.slug}/`,
+          count: newsItems.filter((n) => n.tags.some((t) => theme.tags.includes(t.toLowerCase()))).length,
+        })),
       ],
     };
   }

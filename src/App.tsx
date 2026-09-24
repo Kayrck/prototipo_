@@ -17,6 +17,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import HubPage from "./pages/HubPage";
 import Agenda from "./pages/Agenda";
+import Themes from "./pages/Themes";
 import BackToTop from "./components/BackToTop";
 import { newsItems } from "./data/content";
 import AdminApp from "./admin/AdminApp";
@@ -115,6 +116,8 @@ function AppShell() {
           <Route path="/hub/" element={<HubPage />} />
           <Route path="/servicos/" element={<HubPage />} />
           <Route path="/agenda/" element={<Agenda />} />
+          <Route path="/temas/" element={<Themes />} />
+          <Route path="/temas/:slug/" element={<Themes />} />
 
           {/* Legal */}
           <Route path="/politica-de-privacidade/" element={<PrivacyPolicy />} />
