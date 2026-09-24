@@ -36,7 +36,7 @@ const baseNewsItems: NewsItem[] = [
     dateFormatted: "2 de setembro de 2026",
     category: "Notícias",
     categorySlug: "noticias",
-    image: "/img/expediente-aviso.png",
+    image: "/img/expediente-aviso.jpg",
     tags: ["expediente"],
   },
   {
@@ -108,7 +108,7 @@ const baseNewsItems: NewsItem[] = [
     dateFormatted: "10 de agosto de 2026",
     category: "Aposentados",
     categorySlug: "aposentados",
-    image: "/img/nota-pesar-noe.png",
+    image: "/img/nota-pesar-noe.jpg",
     kind: "nota",
     tags: ["aposentado", "pesar"],
   },
@@ -121,7 +121,7 @@ const baseNewsItems: NewsItem[] = [
     dateFormatted: "6 de agosto de 2026",
     category: "Notícias",
     categorySlug: "noticias",
-    image: "/img/consintfub-7.png",
+    image: "/img/consintfub-7.jpg",
     tags: ["educação"],
   },
   {
@@ -157,7 +157,7 @@ const baseNewsItems: NewsItem[] = [
     dateFormatted: "30 de julho de 2026",
     category: "Notícias",
     categorySlug: "noticias",
-    image: "/img/cad-rsc.png",
+    image: "/img/cad-rsc.jpg",
     tags: ["campanhasalarial2024", "pcctae", "rsc"],
   },
   {

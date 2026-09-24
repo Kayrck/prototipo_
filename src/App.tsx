@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppWidget from "./components/WhatsAppWidget";
@@ -20,7 +20,8 @@ import Agenda from "./pages/Agenda";
 import Themes from "./pages/Themes";
 import BackToTop from "./components/BackToTop";
 import { newsItems } from "./data/content";
-import AdminApp from "./admin/AdminApp";
+// O painel administrativo só é baixado por quem acessa /admin (mantém o site público leve).
+const AdminApp = lazy(() => import("./admin/AdminApp"));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -147,7 +148,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/admin/*" element={<AdminApp />} />
+        <Route
+          path="/admin/*"
+          element={
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-sm text-gray-500">Carregando painel…</div>}>
+              <AdminApp />
+            </Suspense>
+          }
+        />
         <Route path="/*" element={<AppShell />} />
       </Routes>
     </BrowserRouter>
