@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import NewsCard from "../components/NewsCard";
 import { newsItems, tagCloud } from "../data/content";
+import { TAE_FUB } from "../data/institutional";
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -11,7 +12,11 @@ export default function Post() {
   const [copied, setCopied] = useState(false);
 
   const post = newsItems.find((n) => n.slug === slug) || newsItems[0];
-  const related = newsItems.filter((n) => n.slug !== post.slug).slice(0, 5);
+  const byDate = [...newsItems].sort((a, b) => b.date.localeCompare(a.date));
+  const related = byDate.filter((n) => n.slug !== post.slug).slice(0, 5);
+  const postIndex = byDate.findIndex((n) => n.slug === post.slug);
+  const olderPost = postIndex >= 0 ? byDate[postIndex + 1] : undefined;
+  const newerPost = postIndex > 0 ? byDate[postIndex - 1] : undefined;
 
   const currentUrl = `https://sintfub.org.br/${post.slug}/`;
 
@@ -133,11 +138,32 @@ export default function Post() {
             {/* Post content */}
             <div className="prose prose-gray max-w-none text-gray-700 leading-relaxed space-y-4">
               <p className="text-lg font-medium text-gray-800">{post.excerpt}</p>
+              {post.pdf && (
+                <a
+                  href={post.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="not-prose group flex items-center gap-4 p-4 bg-white border border-gray-200 hover:border-[#C41230] rounded-xl transition-colors"
+                >
+                  <div className="w-12 h-12 bg-red-50 group-hover:bg-[#C41230] rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                    <svg className="w-6 h-6 text-[#C41230] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-[#C41230] transition-colors">Baixar o PDF completo</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Documento divulgado pelo SINTFUB</p>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-[#C41230] transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+              )}
               <p>
-                O SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, atua continuamente em defesa dos direitos e interesses dos servidores ativos e aposentados da FUB. Esta é uma publicação demonstrativa representando o conteúdo que seria exibido nesta página.
+                O SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília, atua continuamente em defesa dos direitos e interesses dos {TAE_FUB}, da ativa e aposentados. Esta é uma publicação demonstrativa representando o conteúdo que seria exibido nesta página.
               </p>
               <p>
-                A diretoria do SINTFUB mantém constante diálogo com a administração da UnB e com as instâncias do governo federal para garantir condições dignas de trabalho e a valorização dos servidores. Todas as ações e conquistas são comunicadas aos filiados por meio das publicações, informativos e das redes sociais do sindicato.
+                A diretoria do SINTFUB mantém constante diálogo com a administração da UnB e com as instâncias do governo federal para garantir condições dignas de trabalho e a valorização dos {TAE_FUB}. Todas as ações e conquistas são comunicadas aos filiados por meio das publicações, informativos e das redes sociais do sindicato.
               </p>
               <p>
                 Para mais informações, entre em contato com o SINTFUB pelos canais oficiais ou acompanhe as publicações no site.
@@ -161,36 +187,44 @@ export default function Post() {
             )}
 
             {/* Post navigation */}
-            <div className="grid grid-cols-2 gap-4 mt-10 pt-8 border-t border-gray-100">
-              <Link
-                to={`/${newsItems[1]?.slug}/`}
-                className="group flex flex-col gap-1 p-4 rounded-xl border border-gray-100 hover:border-[#C41230] hover:bg-red-50 transition-all"
-              >
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                  Publicação anterior
-                </span>
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-[#C41230] line-clamp-2 transition-colors">
-                  {newsItems[1]?.title || "Publicação anterior"}
-                </span>
-              </Link>
-              <Link
-                to={`/${newsItems[2]?.slug}/`}
-                className="group flex flex-col gap-1 p-4 rounded-xl border border-gray-100 hover:border-[#C41230] hover:bg-red-50 transition-all text-right"
-              >
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center justify-end gap-1">
-                  Próxima publicação
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-[#C41230] line-clamp-2 transition-colors">
-                  {newsItems[2]?.title || "Próxima publicação"}
-                </span>
-              </Link>
-            </div>
+            {(olderPost || newerPost) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 pt-8 border-t border-gray-100">
+                {olderPost ? (
+                  <Link
+                    to={`/${olderPost.slug}/`}
+                    className="group flex flex-col gap-1 p-4 rounded-xl border border-gray-100 hover:border-[#C41230] hover:bg-red-50 transition-all"
+                  >
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                      </svg>
+                      Publicação anterior
+                    </span>
+                    <span className="text-sm font-semibold text-gray-700 group-hover:text-[#C41230] line-clamp-2 transition-colors">
+                      {olderPost.title}
+                    </span>
+                  </Link>
+                ) : (
+                  <span />
+                )}
+                {newerPost && (
+                  <Link
+                    to={`/${newerPost.slug}/`}
+                    className="group flex flex-col gap-1 p-4 rounded-xl border border-gray-100 hover:border-[#C41230] hover:bg-red-50 transition-all sm:text-right"
+                  >
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center sm:justify-end gap-1">
+                      Próxima publicação
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                    <span className="text-sm font-semibold text-gray-700 group-hover:text-[#C41230] line-clamp-2 transition-colors">
+                      {newerPost.title}
+                    </span>
+                  </Link>
+                )}
+              </div>
+            )}
           </article>
 
           {/* Sidebar */}

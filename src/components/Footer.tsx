@@ -1,22 +1,28 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UNION_NAME, UNION_ADDRESS_LINES, externalLinks, WHATSAPP_CHANNEL_URL } from "../data/institutional";
 
 const footerLinks = {
   institucional: [
-    { label: "História", href: "/quem-somos/historia/" },
-    { label: "Missão", href: "/quem-somos/missao/" },
-    { label: "Corpo Administrativo", href: "/quem-somos/corpo-administrativo/" },
+    { label: "Quem Somos", href: "/quem-somos/" },
+    { label: "Coordenação Executiva", href: "/quem-somos/coordenacao-executiva/" },
     { label: "Conselho de Representantes", href: "/quem-somos/conselho-de-representantes/" },
     { label: "Conselho Fiscal", href: "/quem-somos/conselho-fiscal/" },
-    { label: "Agenda da Coordenação Executiva", href: "/quem-somos/agenda-da-coordenacao-executiva/" },
+    { label: "Comissão de Ética", href: "/quem-somos/comissao-de-etica/" },
+    { label: "Corpo Administrativo", href: "/quem-somos/corpo-administrativo/" },
+    { label: "Memória Sindical", href: "/quem-somos/memoria-sindical/" },
+  ],
+  servicos: [
+    { label: "Agenda Institucional", href: "/agenda/" },
+    { label: "Convênios e Parcerias", href: "/convenios-e-parcerias/" },
+    { label: "Subsede HUB", href: "/hub/" },
+    { label: "Aposentados", href: "/category/aposentado/" },
   ],
   publicacoes: [
     { label: "Notícias", href: "/category/publicacoes/noticias/" },
     { label: "Informativos", href: "/category/informativos/" },
-    { label: "Vídeos", href: "/category/multimidia/videos/" },
-    { label: "Cards", href: "/category/multimidia/cards/" },
-    { label: "Fotos", href: "/category/multimidia/fotos/" },
-    { label: "Aposentados", href: "/category/aposentado/" },
+    { label: "Informes da FASUBRA", href: "/category/informes-fasubra/" },
+    { label: "Multimídia", href: "/category/multimidia/" },
   ],
   juridico: [
     { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/" },
@@ -24,15 +30,14 @@ const footerLinks = {
   ],
   documentos: [
     { label: "Estatuto", href: "/estatuto/" },
-    { label: "Atas de Assembleia", href: "/category/documentos/atas/" },
-    { label: "Resoluções e Boletins", href: "/resolucoes-boletins/" },
-    { label: "CONSINTFUB", href: "/tag/consintfub/" },
+    { label: "Atas", href: "/category/documentos/atas/" },
+    { label: "CONSINTFUB", href: "/category/documentos/consintfub/" },
     { label: "Eleições", href: "/category/eleicoes/" },
+    { label: "Resoluções", href: "/category/documentos/resolucoes/" },
   ],
   transparencia: [
     { label: "Prestação de Contas", href: "/category/transparencia/prestacao-de-contas/" },
-    { label: "Contratos e Convênios", href: "/contratos-convenios/" },
-    { label: "Comissão de Ética", href: "/category/comissao-de-etica/" },
+    { label: "Contratos", href: "/category/transparencia/contratos/" },
   ],
 };
 
@@ -55,7 +60,8 @@ export default function Footer() {
     const year = e.target.value;
     setSelectedArchive(year);
     if (year) {
-      navigate(`/${year}/`);
+      // Arquivo por ano: a busca também considera a data de publicação.
+      navigate(`/busca/?s=${year}`);
     }
   };
 
@@ -70,15 +76,14 @@ export default function Footer() {
               <img src="/sintfub-logo.png" alt="SINTFUB" className="h-11 w-auto flex-shrink-0" />
               <div>
                 <div className="text-white font-black text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
-                <div className="text-gray-400 text-xs leading-tight">
-                  Sindicato dos Servidores Técnico-Administrativos da<br />Fundação Universidade de Brasília
-                </div>
+                <div className="text-gray-400 text-xs leading-tight max-w-[280px]">{UNION_NAME}</div>
               </div>
             </Link>
             <address className="not-italic space-y-2 text-sm mb-6">
-              <p className="text-gray-400">
-                UnB, Bloco C, Edifício Multiuso 1, Sala 54/2<br />
-                Asa Norte, Brasília/DF · CEP 70910-900
+              <p className="text-gray-400 leading-relaxed">
+                {UNION_ADDRESS_LINES.map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
               </p>
               <a href="tel:+5561992316213" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
                 <svg className="w-4 h-4 text-[#C41230]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -121,10 +126,22 @@ export default function Footer() {
           {/* Institucional */}
           <div>
             <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 font-[family-name:var(--font-display)]">
-              Quem Somos
+              SINTFUB
             </h3>
             <ul className="space-y-2">
               {footerLinks.institucional.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mt-6 mb-4 font-[family-name:var(--font-display)]">
+              Serviços
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.servicos.map((link) => (
                 <li key={link.label}>
                   <Link to={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
                     {link.label}
@@ -251,11 +268,51 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Links úteis */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-6 flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
+          <h3 className="text-white font-bold text-sm uppercase tracking-wider font-[family-name:var(--font-display)] flex-shrink-0">
+            Links úteis
+          </h3>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {externalLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link.desc}
+                  className="inline-flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                  <svg className="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={WHATSAPP_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Canal do SINTFUB no WhatsApp
+                <svg className="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       {/* Bottom bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
           <p>
-            © {new Date().getFullYear()} SINTFUB, Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília. Todos os direitos reservados.
+            © {new Date().getFullYear()} SINTFUB, {UNION_NAME}. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4">
             <Link to="/politica-de-privacidade/" className="hover:text-gray-300 transition-colors">

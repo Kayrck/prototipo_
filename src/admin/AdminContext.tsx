@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { newsItems as realNewsItems, documents as realDocuments } from "../data/content";
+import { UNION_ADDRESS, TAE_FUB } from "../data/institutional";
 
 // ---------------------------------------------------------------------------
 // Tipos
@@ -132,7 +133,7 @@ const seedCategories: AdminCategory[] = [
   { id: "cat-3", name: "Fotos", slug: "fotos", parent: "cat-2", description: "Galerias de fotos de eventos.", image: "", status: "ativa" },
   { id: "cat-4", name: "Vídeos", slug: "videos", parent: "cat-2", description: "Vídeos do canal do SINTFUB.", image: "", status: "ativa" },
   { id: "cat-5", name: "Cards", slug: "cards", parent: "cat-2", description: "Cards e banners de campanha.", image: "", status: "ativa" },
-  { id: "cat-6", name: "Informativos", slug: "informativos", parent: "", description: "Boletins e informes periódicos.", image: "", status: "ativa" },
+  { id: "cat-6", name: "Informativos", slug: "informativos", parent: "", description: "Boletins, notas, moções e cartas abertas.", image: "", status: "ativa" },
   { id: "cat-7", name: "Atas", slug: "atas", parent: "", description: "Atas de Assembleia Geral.", image: "", status: "ativa" },
   { id: "cat-8", name: "CONSINTFUB", slug: "consintfub", parent: "", description: "Congresso do SINTFUB.", image: "", status: "ativa" },
   { id: "cat-9", name: "Documentos", slug: "documentos", parent: "", description: "Documentos institucionais.", image: "", status: "ativa" },
@@ -146,6 +147,7 @@ const seedCategories: AdminCategory[] = [
   { id: "cat-17", name: "Transparência", slug: "transparencia", parent: "", description: "Transparência institucional.", image: "", status: "ativa" },
   { id: "cat-18", name: "Campanha Salarial", slug: "campanha-salarial", parent: "", description: "Campanha salarial da categoria.", image: "", status: "ativa" },
   { id: "cat-19", name: "Reforma Administrativa", slug: "reforma-administrativa", parent: "", description: "Acompanhamento da Reforma Administrativa.", image: "", status: "ativa" },
+  { id: "cat-20", name: "Informes da FASUBRA", slug: "informes-fasubra", parent: "", description: "Informes de Direção da FASUBRA repassados à categoria.", image: "", status: "ativa" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -261,12 +263,12 @@ const seedSettings: AdminSettings = {
   phoneJuridico: "(61) 99232-2081",
   phoneFinanceiro: "(61) 99255-0589",
   phoneSubsedeHub: "(61) 99231-7544",
-  address: "UnB, Bloco C, Edifício Multiuso 1, Sala 54/2 - Asa Norte, Brasília - DF, 70910-900",
+  address: UNION_ADDRESS,
   facebook: "https://www.facebook.com/sintfub",
   instagram: "https://www.instagram.com/sintfub_unb",
   youtube: "https://www.youtube.com/channel/UCz4A5n0VW_mMyR88MI177BQ",
   seoTitle: "SINTFUB - Sindicato dos Servidores Técnico-Administrativos da Fundação Universidade de Brasília",
-  seoDescription: "O SINTFUB representa e protege os direitos dos servidores técnico-administrativos ativos e aposentados da FUB.",
+  seoDescription: `O SINTFUB representa e protege os direitos dos ${TAE_FUB}, ativos e aposentados.`,
   seoUrl: "https://sintfub.org.br",
   seoSocialImage: "/sintfub-logo.png",
 };

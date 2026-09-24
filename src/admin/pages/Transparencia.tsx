@@ -4,7 +4,7 @@ export default function Transparencia() {
   return (
     <CategoryWorkspace
       title="Transparência"
-      description="Prestação de Contas, Contratos/Convênios, Conselho Fiscal, Comissão de Ética, Regimento Interno, Fluxograma, Formulário de Consulta e Termo de Denúncia."
+      description="Prestação de Contas e Contratos: documentos financeiros e informações sobre os órgãos de controle."
       pubCategorySlugs={["transparencia", "prestacao-de-contas"]}
       docCategories={["Transparência", "Prestação de Contas"]}
     />

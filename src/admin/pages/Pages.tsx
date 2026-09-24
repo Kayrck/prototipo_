@@ -10,11 +10,15 @@ interface SitePage {
 
 const initialPages: SitePage[] = [
   { id: "home", name: "Home", path: "/", status: "publicado" },
-  { id: "quem-somos", name: "Quem Somos", path: "/quem-somos", status: "publicado" },
+  { id: "quem-somos", name: "SINTFUB (Quem Somos)", path: "/quem-somos/", status: "publicado" },
   { id: "juridico", name: "Jurídico", path: "/juridico/", status: "publicado" },
   { id: "documentos", name: "Documentos", path: "/category/documentos/", status: "publicado" },
   { id: "transparencia", name: "Transparência", path: "/category/transparencia/", status: "publicado" },
   { id: "aposentados", name: "Aposentados", path: "/category/aposentado/", status: "publicado" },
+  { id: "servicos", name: "Serviços", path: "/servicos/", status: "publicado" },
+  { id: "agenda", name: "Agenda Institucional", path: "/agenda/", status: "publicado" },
+  { id: "convenios", name: "Convênios e Parcerias", path: "/convenios-e-parcerias/", status: "publicado" },
+  { id: "hub", name: "Subsede HUB", path: "/hub/", status: "publicado" },
   { id: "contato", name: "Contato", path: "/contato", status: "publicado" },
   { id: "denuncie", name: "Denuncie", path: "/denuncia", status: "publicado" },
   { id: "filie-se", name: "Filie-se", path: "/filie-se", status: "publicado" },

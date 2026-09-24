@@ -13,7 +13,7 @@ interface FieldDef {
 const sections: { title: string; description?: string; fields: FieldDef[] }[] = [
   {
     title: "1. Identificação Funcional",
-    description: "Dados de identificação do servidor na FUB e no governo federal.",
+    description: "Dados de identificação do filiado na FUB e no governo federal.",
     fields: [
       { name: "matricula_fub", label: "Matrícula FUB", type: "text", required: true },
       { name: "matricula_siape", label: "Matrícula SIAPE", type: "text", required: true },
@@ -31,7 +31,7 @@ const sections: { title: string; description?: string; fields: FieldDef[] }[] = 
   },
   {
     title: "2. Dados Pessoais",
-    description: "Informações pessoais do servidor.",
+    description: "Informações pessoais do filiado.",
     fields: [
       { name: "nome", label: "Nome do Servidor", type: "text", required: true, colSpan: 2 },
       { name: "filiacao_pai", label: "Filiação (Pai)", type: "text" },
@@ -44,7 +44,7 @@ const sections: { title: string; description?: string; fields: FieldDef[] }[] = 
   },
   {
     title: "3. Endereço",
-    description: "Endereço residencial do servidor.",
+    description: "Endereço residencial do filiado.",
     fields: [
       { name: "bairro", label: "Bairro", type: "text" },
       { name: "cidade", label: "Cidade", type: "text" },
@@ -80,7 +80,7 @@ const sections: { title: string; description?: string; fields: FieldDef[] }[] = 
   },
   {
     title: "6. Contato",
-    description: "Canais de contato do servidor.",
+    description: "Canais de contato do filiado.",
     fields: [
       { name: "tel_trabalho", label: "Telefone do Trabalho", type: "tel" },
       { name: "celular", label: "Celular", type: "tel", required: true },

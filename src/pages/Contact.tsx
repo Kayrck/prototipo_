@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
+import { UNION_ADDRESS_LINES, WHATSAPP_CHANNEL_URL, sectors } from "../data/institutional";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-const departments = [
-  { label: "Secretaria", phone: "(61) 99231-6213", email: "sintfub@sintfub.org.br", wa: "5561992316213" },
-  { label: "Jurídico", phone: "(61) 99232-2081", email: "sintfub@sintfub.org.br", wa: "5561992322081" },
-  { label: "Financeiro", phone: "(61) 99255-0589", email: "sintfub@sintfub.org.br", wa: "5561992550589" },
-  { label: "Subsede HUB", phone: "(61) 99231-7544", email: "sintfub@sintfub.org.br", wa: "5561992317544" },
-];
+const departments = sectors.map((sector) => ({
+  label: sector.label,
+  phone: sector.phoneDisplay,
+  email: sector.email,
+  wa: sector.phone,
+}));
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -148,13 +149,27 @@ export default function Contact() {
             <div className="p-5 bg-gray-50 rounded-xl border border-gray-100">
               <h3 className="font-bold text-gray-900 text-sm mb-3">Endereço</h3>
               <address className="not-italic text-xs text-gray-600 leading-relaxed">
-                SINTFUB, Sindicato dos Servidores Técnico-Administrativos da<br />
-                Fundação Universidade de Brasília<br />
-                UnB, Bloco C, Edifício Multiuso 1, Sala 54/2<br />
-                Asa Norte, Brasília/DF<br />
-                CEP: 70910-900
+                {UNION_ADDRESS_LINES.map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
               </address>
             </div>
+
+            {/* Canal do WhatsApp */}
+            <a
+              href={WHATSAPP_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center gap-3 p-4 bg-[#C41230] hover:bg-[#9B0E25] text-white rounded-xl transition-colors"
+            >
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+              </svg>
+              <span className="text-sm font-bold leading-tight">
+                Canal do SINTFUB no WhatsApp
+                <span className="block text-xs font-normal text-red-100 mt-0.5">Receba as informações do sindicato no seu celular</span>
+              </span>
+            </a>
           </div>
 
           {/* Form + Map */}

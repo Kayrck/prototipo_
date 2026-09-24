@@ -138,7 +138,7 @@ export default function Complaint() {
               Canal de Denúncia
             </h1>
             <p className="text-gray-400 text-base leading-relaxed">
-              Use este canal para registrar denúncias relacionadas as condições de trabalho, irregularidades ou situações que afetam os servidores da FUB. Seu relato será tratado com seriedade e responsabilidade pelo SINTFUB.
+              Use este canal para registrar denúncias relacionadas às condições de trabalho, a irregularidades ou a situações que afetem os servidores técnico-administrativos em educação da FUB. O relato será tratado pelo SINTFUB com seriedade e responsabilidade.
             </p>
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function Complaint() {
               {
                 icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
                 title: "Atendimento",
-                desc: "O SINTFUB analisará sua denúncia e tomará as providências cabíveis. Forneça o e-mail para retorno quando necessário.",
+                desc: "O SINTFUB analisará a denúncia e tomará as providências cabíveis. Informe um e-mail para retorno, quando necessário.",
               },
             ].map((card) => (
               <div key={card.title} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100">

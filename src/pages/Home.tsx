@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import NewsCard from "../components/NewsCard";
 import Reveal from "../components/Reveal";
 import { newsItems, documents } from "../data/content";
+import { TAE_FUB, WHATSAPP_CHANNEL_URL } from "../data/institutional";
 
 const heroSlides = [
   {
     image: "/img/consintfub-geral.jpg",
     tag: "SINTFUB em ação",
     headline: "Defendendo os trabalhadores da Fundação Universidade de Brasília",
-    subtext: "O SINTFUB representa e protege os direitos dos servidores ativos e aposentados da FUB. Juntos somos mais fortes.",
+    subtext: `O SINTFUB representa e protege os direitos dos ${TAE_FUB}, ativos e aposentados. Juntos somos mais fortes.`,
     ctaPrimary: { label: "Filie-se ao SINTFUB", href: "/filie-se/" },
     ctaSecondary: { label: "Saiba mais", href: "/quem-somos/" },
   },
@@ -25,8 +26,8 @@ const heroSlides = [
     image: "/img/cldf-hub-homenagem.jpg",
     tag: "Unidade e luta",
     headline: "Conquistas coletivas que transformam a vida dos trabalhadores",
-    subtext: "Mais de uma década de luta pela valorização, pelos direitos e pela dignidade dos servidores da UnB.",
-    ctaPrimary: { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/" },
+    subtext: `Mais de uma década de luta pela valorização, pelos direitos e pela dignidade dos ${TAE_FUB}.`,
+    ctaPrimary: { label: "Jurídico", href: "/juridico/" },
     ctaSecondary: { label: "Denuncie", href: "/denuncia/" },
   },
 ];
@@ -35,12 +36,12 @@ const strategicCTAs = [
   {
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
       </svg>
     ),
     label: "Convênios e Parcerias",
     desc: "Benefícios exclusivos para filiados",
-    href: "/contratos-convenios/",
+    href: "/convenios-e-parcerias/",
     highlight: false,
   },
   {
@@ -49,20 +50,20 @@ const strategicCTAs = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
       </svg>
     ),
-    label: "Jurídico Trabalhista",
-    desc: "Defesa dos seus direitos laborais",
-    href: "/category/juridico-trabalhista/",
+    label: "Jurídico",
+    desc: "Assessoria jurídica para filiados",
+    href: "/juridico/",
     highlight: false,
   },
   {
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
       </svg>
     ),
-    label: "Jurídico Cível",
-    desc: "Assessoria em demandas civis",
-    href: "/category/juridico-civel/",
+    label: "Subsede HUB",
+    desc: "Atendimento no Hospital Universitário",
+    href: "/hub/",
     highlight: false,
   },
   {
@@ -74,6 +75,34 @@ const strategicCTAs = [
     label: "Filie-se",
     desc: "Junte-se ao SINTFUB hoje",
     href: "/filie-se/",
+    highlight: true,
+  },
+];
+
+// Funcionalidades ao filiado (ocupa o espaço dos antigos indicadores numéricos).
+const memberServices = [
+  {
+    icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+    label: "Agenda Institucional",
+    desc: "Assembleias, congresso e compromissos do sindicato, da FASUBRA e da CUT.",
+    href: "/agenda/",
+    external: false,
+    highlight: false,
+  },
+  {
+    icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+    label: "Agendar atendimento",
+    desc: "Plantões jurídicos e demais setores: agende pelos canais de Contato ou pelo WhatsApp.",
+    href: "/contato/",
+    external: false,
+    highlight: false,
+  },
+  {
+    icon: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z",
+    label: "Canal do SINTFUB no WhatsApp",
+    desc: "Receba as informações do sindicato direto no seu celular.",
+    href: WHATSAPP_CHANNEL_URL,
+    external: true,
     highlight: true,
   },
 ];
@@ -185,26 +214,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="border-b border-gray-100 py-8 bg-offwhite" aria-label="Números do SINTFUB">
+      {/* Funcionalidades ao filiado */}
+      <section className="border-b border-gray-100 py-8 bg-offwhite" aria-label="Serviços ao filiado">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto sm:mx-0">
-            {[
-              { value: "40+", label: "Anos de luta sindical", desc: "Defendendo os trabalhadores da FUB desde 1985" },
-              { value: "4", label: "Departamentos de atendimento", desc: "Secretaria, Jurídico, Financeiro e HUB" },
-            ].map((stat, i) => (
-              <Reveal
-                key={stat.label}
-                delay={i * 100}
-                className="flex flex-col bg-white border border-gray-100 border-l-4 border-l-[#C41230] rounded-xl px-5 py-4 sm:px-6 sm:py-5 shadow-sm"
-              >
-                <div className="text-3xl lg:text-4xl font-black text-[#C41230] font-[family-name:var(--font-display)] mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm font-semibold text-gray-900">{stat.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{stat.desc}</div>
-              </Reveal>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+            {memberServices.map((service, i) => {
+              const className = `group flex items-start gap-4 rounded-xl px-5 py-4 sm:px-6 sm:py-5 shadow-sm border transition-all hover:-translate-y-0.5 hover:shadow-md ${
+                service.highlight
+                  ? "bg-[#C41230] border-[#C41230] text-white"
+                  : "bg-white border-gray-100 border-l-4 border-l-[#C41230]"
+              }`;
+              const content = (
+                <>
+                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 ${service.highlight ? "bg-white/20" : "bg-red-50 text-[#C41230]"}`}>
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                    </svg>
+                  </div>
+                  <div className="min-w-0">
+                    <div className={`text-sm font-bold font-[family-name:var(--font-display)] ${service.highlight ? "text-white" : "text-gray-900"}`}>{service.label}</div>
+                    <div className={`text-xs mt-0.5 leading-relaxed ${service.highlight ? "text-red-100" : "text-gray-500"}`}>{service.desc}</div>
+                  </div>
+                </>
+              );
+              return (
+                <Reveal key={service.label} delay={i * 100}>
+                  {service.external ? (
+                    <a href={service.href} target="_blank" rel="noopener noreferrer" className={className}>
+                      {content}
+                    </a>
+                  ) : (
+                    <Link to={service.href} className={className}>
+                      {content}
+                    </Link>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -276,7 +322,7 @@ export default function Home() {
             </Link>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {documents.map((doc, i) => (
+            {documents.slice(0, 6).map((doc, i) => (
               <Reveal
                 key={doc.id}
                 as="a"
@@ -429,7 +475,7 @@ export default function Home() {
                 Faça parte do SINTFUB
               </h2>
               <p className="text-red-200 text-base lg:text-lg leading-relaxed">
-                A filiação garante acesso a representação jurídica, convênios exclusivos, participação nas assembleias e muito mais. Proteja seus direitos como servidor da FUB.
+                A filiação garante acesso à assessoria jurídica, convênios exclusivos, participação nas assembleias e muito mais. Proteja seus direitos como servidor técnico-administrativo em educação da FUB.
               </p>
             </Reveal>
             <Reveal delay={120} className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
@@ -536,9 +582,9 @@ export default function Home() {
           </Reveal>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {[
-              { label: "Quem Somos", href: "/quem-somos/", desc: "História, missão e coordenação executiva", illustration: "/img/area-quem-somos.svg" },
+              { label: "SINTFUB", href: "/quem-somos/", desc: "História, missão e coordenação executiva", illustration: "/img/area-quem-somos.svg" },
               { label: "Transparência", href: "/category/transparencia/", desc: "Prestação de contas e documentos financeiros", illustration: "/img/area-transparencia.svg" },
-              { label: "Aposentados", href: "/category/aposentado/", desc: "Notícias e suporte previdenciário", illustration: "/img/area-aposentados.svg" },
+              { label: "Aposentados", href: "/category/aposentado/", desc: "Prova de Vida, notícias e orientações", illustration: "/img/area-aposentados.svg" },
               { label: "Denúncia", href: "/denuncia/", desc: "Canal de denúncias com sigilo garantido", illustration: "/img/area-denuncia.svg" },
               { label: "Contato", href: "/contato/", desc: "Fale com a Secretaria e demais setores", illustration: "/img/area-contato.svg" },
             ].map((area, i) => (

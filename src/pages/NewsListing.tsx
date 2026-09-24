@@ -3,15 +3,22 @@ import { useLocation, Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import NewsCard, { NewsCardSkeleton } from "../components/NewsCard";
 import { newsItems, tagCloud } from "../data/content";
+import type { NewsKind } from "../data/types";
 
 const categoryLabels: Record<string, string> = {
   "publicacoes": "Publicações",
   "noticias": "Notícias",
   "informativos": "Informativos",
+  "boletins": "Boletins",
+  "notas": "Notas",
+  "mocoes": "Moções",
+  "cartas-abertas": "Cartas Abertas",
+  "informes-fasubra": "Informes da FASUBRA",
   "aposentado": "Aposentados",
+  "aposentados": "Aposentados",
   "juridico-trabalhista": "Jurídico Trabalhista",
   "juridico-civel": "Jurídico Cível",
-  "multimidia": "Multimídias",
+  "multimidia": "Multimídia",
   "fotos": "Fotos",
   "videos": "Vídeos",
   "cards": "Cards",
@@ -20,8 +27,28 @@ const categoryLabels: Record<string, string> = {
   "documentos": "Documentos",
   "consintfub": "CONSINTFUB",
   "eleicoes": "Eleições",
-  "comissao-de-etica": "Comissão de Ética",
 };
+
+const pageDescriptions: Record<string, string> = {
+  "informativos": "Boletins, notas, moções e cartas abertas do SINTFUB.",
+  "boletins": "Boletins Informativos do SINTFUB, com a íntegra de cada edição em PDF.",
+  "notas": "Notas públicas e de pesar divulgadas pelo SINTFUB.",
+  "mocoes": "Moções aprovadas em Assembleia Geral.",
+  "cartas-abertas": "Cartas abertas do SINTFUB à comunidade e às autoridades.",
+  "informes-fasubra": "Informes de Direção da FASUBRA repassados pelo SINTFUB à categoria.",
+  "multimidia": "Cards, fotos e vídeos do SINTFUB.",
+};
+
+/** Subcategorias de "Informativos", pela URL, e o tipo de publicação correspondente. */
+const informativoKinds: Record<string, NewsKind> = {
+  "boletins": "boletim",
+  "notas": "nota",
+  "mocoes": "mocao",
+  "cartas-abertas": "carta-aberta",
+};
+const INFORMATIVO_KINDS = Object.values(informativoKinds);
+
+const PUBLICACOES_FAMILY = ["noticias", "informativos", "boletins", "notas", "mocoes", "cartas-abertas", "informes-fasubra", "multimidia", "fotos", "videos", "cards"];
 
 const PAGE_SIZE = 6;
 const MULTIMIDIA_SLUGS = ["fotos", "videos", "cards"];
@@ -32,6 +59,77 @@ const multimidiaVideos = [
   { label: "Memorial da Greve de 2024", href: "https://www.youtube.com/watch?v=C0cU4hLx398", image: "/img/video-memorial-greve.jpg" },
   { label: "Esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", image: "/img/video-urp-esclarecimentos.jpg" },
 ];
+
+interface NavItem {
+  label: string;
+  href: string;
+  count?: number;
+  external?: boolean;
+}
+
+/** Navegação lateral: apenas categorias relacionadas ao conteúdo da página, sem repetir o menu superior. */
+function buildNavigation(leaf: string, parent: string): { title: string; items: NavItem[] } | null {
+  const countKind = (kind: NewsKind) => newsItems.filter((n) => n.kind === kind).length;
+
+  if (leaf === "informativos" || parent === "informativos") {
+    return {
+      title: "Navegação",
+      items: [
+        { label: "Todos os informativos", href: "/category/informativos/", count: newsItems.filter((n) => n.categorySlug === "informativos" || (n.kind && INFORMATIVO_KINDS.includes(n.kind))).length },
+        { label: "Boletins", href: "/category/informativos/boletins/", count: countKind("boletim") },
+        { label: "Notas", href: "/category/informativos/notas/", count: countKind("nota") },
+        { label: "Moções", href: "/category/informativos/mocoes/", count: countKind("mocao") },
+        { label: "Cartas Abertas", href: "/category/informativos/cartas-abertas/", count: countKind("carta-aberta") },
+      ],
+    };
+  }
+  if (leaf === "informes-fasubra") {
+    return {
+      title: "Navegação",
+      items: [
+        { label: "Agenda da FASUBRA", href: "/agenda/#fasubra" },
+        { label: "Informativos do SINTFUB", href: "/category/informativos/" },
+        { label: "Site da FASUBRA", href: "https://fasubra.org.br/", external: true },
+      ],
+    };
+  }
+  if (leaf === "multimidia" || parent === "multimidia") {
+    return {
+      title: "Navegação",
+      items: [
+        { label: "Toda a multimídia", href: "/category/multimidia/" },
+        { label: "Cards", href: "/category/multimidia/cards/", count: newsItems.filter((n) => n.categorySlug === "cards").length },
+        { label: "Fotos", href: "/category/multimidia/fotos/", count: newsItems.filter((n) => n.categorySlug === "fotos").length },
+        { label: "Vídeos", href: "/category/multimidia/videos/", count: multimidiaVideos.length },
+      ],
+    };
+  }
+  if (leaf === "publicacoes" || leaf === "noticias") {
+    return {
+      title: "Navegação",
+      items: [
+        { label: "Aposentados", href: "/category/aposentado/", count: newsItems.filter((n) => n.categorySlug === "aposentados").length },
+        { label: "Jurídico Trabalhista", href: "/category/juridico-trabalhista/", count: newsItems.filter((n) => n.categorySlug === "juridico-trabalhista").length },
+        { label: "Jurídico Cível", href: "/category/juridico-civel/", count: newsItems.filter((n) => n.categorySlug === "juridico-civel").length },
+        { label: "Subsede HUB", href: "/hub/" },
+      ],
+    };
+  }
+  return null;
+}
+
+/** Janela de páginas com reticências, para a paginação caber em telas estreitas. */
+function pageWindow(current: number, total: number): (number | "…")[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const keep = new Set([1, total, current - 1, current, current + 1].filter((n) => n >= 1 && n <= total));
+  const sorted = Array.from(keep).sort((a, b) => a - b);
+  const result: (number | "…")[] = [];
+  sorted.forEach((n, i) => {
+    if (i > 0 && n - sorted[i - 1] > 1) result.push("…");
+    result.push(n);
+  });
+  return result;
+}
 
 export default function NewsListing() {
   const location = useLocation();
@@ -55,31 +153,27 @@ export default function NewsListing() {
   const parentCategory = !isTagPage && segments.length === 3 ? segments[1] : "";
   const isMultimidiaRoot = leafCategory === "multimidia" && !parentCategory;
   const showVideoTiles = isMultimidiaRoot || (leafCategory === "videos" && parentCategory === "multimidia");
-  const isPublicacoesRoot = leafCategory === "publicacoes" && !parentCategory;
-  const categoryBreakdown = isPublicacoesRoot
-    ? [
-        { slug: "noticias", label: "Notícias" },
-        { slug: "aposentados", label: "Aposentados" },
-        { slug: "juridico-trabalhista", label: "Jurídico Trabalhista" },
-        { slug: "juridico-civel", label: "Jurídico Cível" },
-        { slug: "informativos", label: "Informativos" },
-      ].map((c) => ({ ...c, count: newsItems.filter((item) => item.categorySlug === c.slug).length }))
-    : [];
 
   const catLabel = isTagPage
     ? `Tag: ${tagSlug.replace(/-/g, " ")}`
     : (categoryLabels[leafCategory] || "Publicações");
 
-  const filtered = newsItems.filter((item) => {
-    if (isTagPage) return item.tags.some((t) => t.toLowerCase().replace(/\s+/g, "-") === tagSlug);
-    // "Publicações" é a categoria-mãe (agrega Notícias, Informativos, Multimídias etc.),
-    // então a página raiz /category/publicacoes/ deve mostrar todas as publicações.
-    if (leafCategory === "publicacoes" && !parentCategory) return true;
-    // "Multimídias" agrega Fotos, Vídeos e Cards na página raiz da categoria.
-    if (isMultimidiaRoot) return MULTIMIDIA_SLUGS.includes(item.categorySlug);
-    if (leafCategory) return item.categorySlug === leafCategory;
-    return true;
-  });
+  const filtered = newsItems
+    .filter((item) => {
+      if (isTagPage) return item.tags.some((t) => t.toLowerCase().replace(/\s+/g, "-") === tagSlug);
+      // "Publicações" é a categoria-mãe (agrega Notícias, Informativos, Multimídia etc.),
+      // então a página raiz /category/publicacoes/ deve mostrar todas as publicações.
+      if (leafCategory === "publicacoes" && !parentCategory) return true;
+      // "Multimídia" agrega Fotos, Vídeos e Cards na página raiz da categoria.
+      if (isMultimidiaRoot) return MULTIMIDIA_SLUGS.includes(item.categorySlug);
+      // Subcategorias de Informativos (Boletins, Notas, Moções, Cartas Abertas).
+      if (parentCategory === "informativos") return item.kind === informativoKinds[leafCategory];
+      if (leafCategory === "informativos") return item.categorySlug === "informativos" || (item.kind !== undefined && INFORMATIVO_KINDS.includes(item.kind));
+      if (leafCategory === "informes-fasubra") return item.kind === "informe-fasubra";
+      if (leafCategory) return item.categorySlug === leafCategory;
+      return true;
+    })
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   useEffect(() => {
     setPage(1);
@@ -89,14 +183,23 @@ export default function NewsListing() {
   const currentPage = Math.min(page, totalPages);
   const paged = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
+  const inPublicacoes = PUBLICACOES_FAMILY.includes(leafCategory) || PUBLICACOES_FAMILY.includes(parentCategory);
   const breadcrumbItems: { label: string; href?: string }[] = isTagPage
     ? [{ label: catLabel }]
     : parentCategory
     ? [
+        ...(inPublicacoes && parentCategory !== "publicacoes" ? [{ label: "Publicações", href: "/category/publicacoes/" }] : []),
         { label: categoryLabels[parentCategory] || "Publicações", href: `/category/${parentCategory}/` },
         { label: catLabel },
       ]
+    : inPublicacoes && leafCategory !== "publicacoes"
+    ? [{ label: "Publicações", href: "/category/publicacoes/" }, { label: catLabel }]
     : [{ label: catLabel }];
+
+  const navigation = isTagPage ? null : buildNavigation(leafCategory, parentCategory);
+  const description = pageDescriptions[leafCategory];
+
+  const isActive = (item: NavItem) => item.href === location.pathname;
 
   return (
     <div className="min-h-screen bg-offwhite">
@@ -112,6 +215,7 @@ export default function NewsListing() {
             </h1>
           </div>
           <p className="text-gray-500 text-sm mt-2 ml-4">
+            {description && <span>{description} </span>}
             {showVideoTiles
               ? `${filtered.length + multimidiaVideos.length} ${filtered.length + multimidiaVideos.length === 1 ? "publicação" : "publicações"}`
               : `${filtered.length} ${filtered.length === 1 ? "publicação" : "publicações"}`}
@@ -123,19 +227,33 @@ export default function NewsListing() {
         <div className="flex gap-8">
           {/* Main content */}
           <div className="flex-1 min-w-0">
-            {isPublicacoesRoot && (
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-10">
-                {categoryBreakdown.map((c) => (
-                  <Link
-                    key={c.slug}
-                    to={`/category/${c.slug}/`}
-                    className="text-center p-4 rounded-2xl border border-gray-100 hover:border-[#C41230] bg-gray-50 hover:bg-white transition-all"
-                  >
-                    <div className="text-2xl font-black text-gray-900 font-[family-name:var(--font-display)]">{c.count}</div>
-                    <div className="text-xs text-gray-500 font-medium mt-0.5">{c.label}</div>
-                  </Link>
-                ))}
-              </div>
+            {/* Navegação compacta para telas sem a barra lateral */}
+            {navigation && (
+              <nav className="lg:hidden -mx-6 px-6 mb-6 overflow-x-auto" aria-label={navigation.title}>
+                <ul className="flex gap-2 w-max pb-1">
+                  {navigation.items.map((item) => (
+                    <li key={item.href}>
+                      {item.external ? (
+                        <a href={item.href} target="_blank" rel="noopener noreferrer" className="block whitespace-nowrap text-xs font-semibold px-3 py-1.5 rounded-full border bg-white border-gray-200 text-gray-600">
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          aria-current={isActive(item) ? "page" : undefined}
+                          className={`block whitespace-nowrap text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
+                            isActive(item)
+                              ? "bg-[#C41230] border-[#C41230] text-white"
+                              : "bg-white border-gray-200 text-gray-600 hover:border-[#C41230] hover:text-[#C41230]"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             )}
             {showVideoTiles && (
               <div className="mb-10">
@@ -198,7 +316,7 @@ export default function NewsListing() {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-12">
+                  <div className="flex flex-wrap items-center justify-center gap-2 mt-12">
                     <button
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage === 1}
@@ -210,21 +328,25 @@ export default function NewsListing() {
                       </svg>
                       Anterior
                     </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                      <button
-                        key={p}
-                        onClick={() => setPage(p)}
-                        aria-label={`Página ${p}`}
-                        aria-current={currentPage === p ? "page" : undefined}
-                        className={`w-10 h-10 rounded-lg text-sm font-semibold transition-colors ${
-                          currentPage === p
-                            ? "bg-[#C41230] text-white"
-                            : "border border-gray-200 text-gray-600 hover:border-[#C41230] hover:text-[#C41230]"
-                        }`}
-                      >
-                        {p}
-                      </button>
-                    ))}
+                    {pageWindow(currentPage, totalPages).map((p, i) =>
+                      p === "…" ? (
+                        <span key={`gap-${i}`} aria-hidden="true" className="w-6 text-center text-gray-400">…</span>
+                      ) : (
+                        <button
+                          key={p}
+                          onClick={() => setPage(p)}
+                          aria-label={`Página ${p}`}
+                          aria-current={currentPage === p ? "page" : undefined}
+                          className={`w-10 h-10 rounded-lg text-sm font-semibold transition-colors ${
+                            currentPage === p
+                              ? "bg-[#C41230] text-white"
+                              : "border border-gray-200 text-gray-600 hover:border-[#C41230] hover:text-[#C41230]"
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      )
+                    )}
                     <button
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={currentPage === totalPages}
@@ -242,19 +364,41 @@ export default function NewsListing() {
             )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="hidden lg:block w-72 flex-shrink-0" aria-label="Publicações recentes">
-            <div className="sticky top-24">
-              <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 mb-6">
-                <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-1">
-                  Notícias recentes
-                </h2>
-                <div className="divide-y divide-gray-100">
-                  {newsItems.slice(0, 6).map((item) => (
-                    <NewsCard key={item.id} {...item} variant="horizontal" />
-                  ))}
+          {/* Sidebar: navegação contextual + tags */}
+          <aside className="hidden lg:block w-72 flex-shrink-0" aria-label="Navegação da seção">
+            <div className="sticky top-40 space-y-6">
+              {navigation && (
+                <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+                  <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-4">{navigation.title}</h2>
+                  <ul className="space-y-1.5">
+                    {navigation.items.map((item) => (
+                      <li key={item.href}>
+                        {item.external ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between text-sm py-1.5 px-3 rounded-lg text-gray-600 hover:text-[#C41230] hover:bg-red-50 transition-colors"
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          <Link
+                            to={item.href}
+                            aria-current={isActive(item) ? "page" : undefined}
+                            className={`flex items-center justify-between text-sm py-1.5 px-3 rounded-lg transition-colors ${
+                              isActive(item) ? "bg-red-50 text-[#C41230] font-semibold" : "text-gray-600 hover:text-[#C41230] hover:bg-red-50"
+                            }`}
+                          >
+                            {item.label}
+                            {item.count !== undefined && <span className="text-xs text-gray-400">{item.count}</span>}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              )}
               <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100">
                 <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wider mb-4">Tags</h2>
                 <div className="flex flex-wrap gap-2">

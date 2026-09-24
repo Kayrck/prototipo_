@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { menuItems } from "../data/content";
+import { UNION_NAME, WHATSAPP_CHANNEL_URL } from "../data/institutional";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -64,6 +65,18 @@ export default function Header() {
               </svg>
               <span className="hidden sm:inline">(61) 99231-6213</span>
             </a>
+            <a
+              href={WHATSAPP_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-red-200 transition-colors text-xs"
+              aria-label="Canal do SINTFUB no WhatsApp"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+              </svg>
+              <span className="hidden md:inline">Canal do SINTFUB no WhatsApp</span>
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <a href="https://www.facebook.com/sintfub" target="_blank" rel="noopener noreferrer" aria-label="Facebook do SINTFUB" className="hover:text-red-200 transition-colors">
@@ -79,81 +92,25 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Header: logomarca ampliada, nome completo em uma linha e ações.
+          No desktop apenas a barra de navegação (abaixo) acompanha a rolagem;
+          no mobile o cabeçalho inteiro fica fixo, com o botão do menu. */}
       <header
-        className={`bg-white border-b border-gray-200 no-print transition-shadow ${sticky ? "sticky top-0 z-50 shadow-md" : ""}`}
+        className={`bg-white border-b border-gray-200 lg:border-b-0 no-print transition-shadow sticky top-0 z-50 lg:static ${sticky ? "shadow-md lg:shadow-none" : ""}`}
         role="banner"
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex items-center h-16 lg:h-20 gap-2 lg:gap-3">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="SINTFUB, página inicial">
-              <img src="/sintfub-logo.png" alt="SINTFUB" className="h-11 w-auto flex-shrink-0" />
-              <div className="hidden sm:block leading-tight">
-                <div className="font-black text-[#C41230] text-lg font-[family-name:var(--font-display)]">SINTFUB</div>
-                <div className="text-gray-500 text-xs leading-tight max-w-[220px]">
-                  Sindicato dos Servidores Técnico-Administrativos da<br />Fundação Universidade de Brasília
-                </div>
+          <div className="flex items-center gap-3 lg:gap-4 py-2.5 lg:py-3">
+            <Link to="/" className="flex items-center gap-3 lg:gap-4 min-w-0" aria-label="SINTFUB, página inicial">
+              <img src="/sintfub-logo.png" alt="SINTFUB" className="w-auto flex-shrink-0 h-12 sm:h-14 lg:h-[72px]" />
+              <div className="hidden sm:block leading-tight min-w-0">
+                <div className="font-black text-[#C41230] text-xl lg:text-2xl font-[family-name:var(--font-display)]">SINTFUB</div>
+                <div className="text-gray-600 text-xs lg:text-[13px] leading-snug lg:whitespace-nowrap">{UNION_NAME}</div>
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-0" aria-label="Navegação principal">
-              {menuItems.map((item) => (
-                <div key={item.label} className="mega-menu-item relative group">
-                  <Link
-                    to={item.href}
-                    className={`flex items-center gap-1 px-2 py-6 text-sm font-semibold transition-colors whitespace-nowrap ${
-                      item.highlight
-                        ? "text-[#C41230] hover:text-[#9B0E25]"
-                        : "text-gray-700 hover:text-[#C41230]"
-                    }`}
-                  >
-                    {item.label}
-                    {item.children && item.children.length > 0 && (
-                      <svg className="w-3.5 h-3.5 opacity-50 group-hover:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </Link>
-                  {item.children && item.children.length > 0 && (
-                    <div className="mega-menu-dropdown absolute top-full left-0 bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-56 z-50">
-                      {item.children.map((child) => (
-                        <div key={child.label} className="group/sub relative">
-                          <Link
-                            to={child.href}
-                            className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-[#C41230] transition-colors"
-                          >
-                            {child.label}
-                            {"children" in child && child.children && child.children.length > 0 && (
-                              <svg className="w-3.5 h-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                            )}
-                          </Link>
-                          {"children" in child && child.children && child.children.length > 0 && (
-                            <div className="absolute left-full top-0 opacity-0 invisible -translate-x-1 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 transition-all duration-200 bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-48 z-50">
-                              {child.children.map((sub) => (
-                                <Link
-                                  key={sub.label}
-                                  to={sub.href}
-                                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-[#C41230] transition-colors"
-                                >
-                                  {sub.label}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-
             {/* Actions */}
-            <div className="flex items-center gap-2 ml-auto lg:ml-6">
+            <div className="flex items-center gap-2 ml-auto">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
@@ -226,6 +183,74 @@ export default function Header() {
           )}
         </div>
       </header>
+
+      {/* Desktop Nav (fixa ao rolar a página) */}
+      <nav
+        className={`hidden lg:block sticky top-0 z-50 bg-white border-y border-gray-200 no-print transition-shadow ${sticky ? "shadow-md" : ""}`}
+        aria-label="Navegação principal"
+      >
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 flex items-center justify-between gap-2">
+          {menuItems.map((item) => (
+            <div key={item.label} className="mega-menu-item relative group">
+              <Link
+                to={item.href}
+                className={`flex items-center gap-1 px-2 py-3 text-sm font-semibold transition-colors whitespace-nowrap ${
+                  item.highlight
+                    ? "text-[#C41230] hover:text-[#9B0E25]"
+                    : "text-gray-700 hover:text-[#C41230]"
+                }`}
+              >
+                {item.label}
+                {item.children && item.children.length > 0 && (
+                  <svg className="w-3.5 h-3.5 opacity-50 group-hover:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                )}
+              </Link>
+              {item.children && item.children.length > 0 && (
+                <div className="mega-menu-dropdown absolute top-full left-0 bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-56 z-50">
+                  {item.children.map((child) => (
+                    <div key={child.label} className="group/sub relative">
+                      <Link
+                        to={child.href}
+                        className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-[#C41230] transition-colors"
+                      >
+                        {child.label}
+                        {child.children && child.children.length > 0 && (
+                          <svg className="w-3.5 h-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                        )}
+                      </Link>
+                      {child.children && child.children.length > 0 && (
+                        <div className="absolute left-full top-0 opacity-0 invisible -translate-x-1 group-hover/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-x-0 transition-all duration-200 bg-white border border-gray-200 rounded-xl shadow-xl py-2 min-w-48 z-50">
+                          {child.children.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              to={sub.href}
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-[#C41230] transition-colors"
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+          {sticky && (
+            <Link
+              to="/filie-se/"
+              className="flex-shrink-0 bg-[#C41230] hover:bg-[#9B0E25] text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
+            >
+              Filie-se
+            </Link>
+          )}
+        </div>
+      </nav>
 
       {/* Mobile Drawer */}
       {mobileOpen && (
@@ -308,7 +333,7 @@ export default function Header() {
                         <div className="bg-gray-50 border-y border-gray-100">
                           {item.children.map((child) => (
                             <div key={child.label}>
-                              {"children" in child && child.children && child.children.length > 0 ? (
+                              {child.children && child.children.length > 0 ? (
                                 <>
                                   <button
                                     onClick={() => setOpenMobileSub(openMobileSub === child.label ? null : child.label)}
@@ -381,6 +406,17 @@ export default function Header() {
                 </svg>
                 Filie-se ao SINTFUB
               </Link>
+              <a
+                href={WHATSAPP_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full border border-gray-200 hover:border-[#C41230] text-gray-700 hover:text-[#C41230] font-semibold py-2.5 rounded-xl transition-colors text-sm"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+                Canal do SINTFUB no WhatsApp
+              </a>
               <div className="flex items-center justify-center gap-4 pt-1">
                 <a href="mailto:sintfub@sintfub.org.br" className="text-gray-500 hover:text-[#C41230] text-xs transition-colors">
                   sintfub@sintfub.org.br

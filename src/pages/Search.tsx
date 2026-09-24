@@ -19,6 +19,7 @@ export default function Search() {
         (item) =>
           item.title.toLowerCase().includes(query.toLowerCase()) ||
           item.excerpt.toLowerCase().includes(query.toLowerCase()) ||
+          item.dateFormatted.toLowerCase().includes(query.toLowerCase()) ||
           item.tags.some((t) => t.toLowerCase().includes(query.toLowerCase()))
       );
       setResults(filtered);
