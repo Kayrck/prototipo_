@@ -58,6 +58,10 @@ const multimidiaVideos = [
   { label: "Fala da Nadia", href: "https://www.youtube.com/watch?v=RIVp_ClgKGQ", image: "/img/video-fala-nadia.jpg" },
   { label: "Memorial da Greve de 2024", href: "https://www.youtube.com/watch?v=C0cU4hLx398", image: "/img/video-memorial-greve.jpg" },
   { label: "Esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", image: "/img/video-urp-esclarecimentos.jpg" },
+  { label: "SINTFUB recepciona novos servidores e reforça a importância da organização sindical", href: "https://www.youtube.com/watch?v=HvaaUNae5vs", image: "/img/video-novos-servidores.jpg" },
+  { label: "Técnico-administrativos da UnB cobram cumprimento de acordo e negociação da URP em audiência pública", href: "https://www.youtube.com/watch?v=GeDpQaLPh8k", image: "/img/video-cobram-acordo.jpg" },
+  { label: "Informe e deliberações da Assembleia de 20 de agosto de 2025", href: "https://www.youtube.com/watch?v=R9IACZhk2SA", image: "/img/video-assembleia-20-agosto.jpg" },
+  { label: "SINTFUB se reúne com assessoria do ministro Gilmar Mendes", href: "https://www.youtube.com/watch?v=QbNfaiGdw1E", image: "/img/video-gilmar-mendes.jpg" },
 ];
 
 interface NavItem {
@@ -265,7 +269,7 @@ export default function NewsListing() {
                       href={video.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative rounded-2xl overflow-hidden h-40 bg-gray-800"
+                      className="group relative rounded-2xl overflow-hidden h-48 bg-gray-800"
                       aria-label={`Assistir "${video.label}" no YouTube`}
                     >
                       <img
@@ -281,7 +285,7 @@ export default function NewsListing() {
                             <path d="M8 5v14l11-7z" />
                           </svg>
                         </div>
-                        <span className="text-white font-bold text-sm text-center px-4 font-[family-name:var(--font-display)]">{video.label}</span>
+                        <span className="text-white font-bold text-sm text-center px-4 line-clamp-3 font-[family-name:var(--font-display)]">{video.label}</span>
                       </div>
                     </a>
                   ))}

@@ -96,11 +96,59 @@ export const substituteBody: string[] = [
 ];
 
 /**
- * Fotografias da Coordenação Executiva, indexadas pelo nome completo. Enquanto
- * uma foto não estiver cadastrada aqui, a página exibe as iniciais da pessoa.
- * Exemplo: "Carla Simone Vizzotto": "/img/coordenacao/carla-simone-vizzotto.jpg"
+ * Fotografias da Coordenação Executiva e do Corpo Suplente, indexadas pelo nome completo
+ * (arquivos em /public/img/coordenacao, obtidos da página oficial da gestão 2026-2029).
+ * Quem não tem foto cadastrada aqui aparece com as iniciais.
  */
-export const boardPhotos: Record<string, string> = {};
+export const boardPhotos: Record<string, string> = {
+  "Carla Simone Vizzotto": "/img/coordenacao/carla-simone-vizzotto.jpg",
+  "Maria do Socorro Oliveira Marzola": "/img/coordenacao/maria-do-socorro-oliveira-marzola.jpg",
+  "Efraim Carlos Costa": "/img/coordenacao/efraim-carlos-costa.jpg",
+  "Alice Queiroz Silva": "/img/coordenacao/alice-queiroz-silva.jpg",
+  "Taiã Mairon Peixoto Ribeiro": "/img/coordenacao/taia-mairon-peixoto-ribeiro.jpg",
+  "Jackson Ferreira do Nascimento": "/img/coordenacao/jackson-ferreira-do-nascimento.jpg",
+  "Sinara Sartori de Melo": "/img/coordenacao/sinara-sartori-de-melo.jpg",
+  "Camila Oliveira Sobrinho": "/img/coordenacao/camila-oliveira-sobrinho.jpg",
+  "Mônica Regina Peres": "/img/coordenacao/monica-regina-peres.jpg",
+  "Wilker Luciano Zorzin": "/img/coordenacao/wilker-luciano-zorzin.jpg",
+  "Luiz Eduardo Celino Benedito": "/img/coordenacao/luiz-eduardo-celino-benedito.jpg",
+  "Nadia Regina Alves Valadares": "/img/coordenacao/nadia-regina-alves-valadares.jpg",
+  "Valdete Silva de Freitas Morais": "/img/coordenacao/valdete-silva-de-freitas-morais.jpg",
+  "Sônia Aparecida Alves": "/img/coordenacao/sonia-aparecida-alves.jpg",
+  "Celina Menezes Bastos": "/img/coordenacao/celina-menezes-bastos.jpg",
+  "Leocádia Aparecida Chaves": "/img/coordenacao/leocadia-aparecida-chaves.jpg",
+  "Junia Maria Zandonade Falqueto": "/img/coordenacao/junia-maria-zandonade-falqueto.jpg",
+  "Maria Célia Orlato Selem": "/img/coordenacao/maria-celia-orlato-selem.jpg",
+  "Andrea Henrique Campos Da Fonseca": "/img/coordenacao/andrea-henrique-campos-da-fonseca.jpg",
+  "Luanna Ferreira da Silva": "/img/coordenacao/luanna-ferreira-da-silva.jpg",
+  "Iris Dias Santos": "/img/coordenacao/iris-dias-santos.jpg",
+  "Alexandre Jorge de Medeiros Fernandes": "/img/coordenacao/alexandre-jorge-de-medeiros-fernandes.jpg",
+  "Carla Márcia": "/img/coordenacao/carla-marcia.jpg",
+  "Vidigal Barbosa": "/img/coordenacao/vidigal-barbosa.jpg",
+  "Christina Elisa Madeira Mauriz Saraiva": "/img/coordenacao/christina-elisa-madeira-mauriz-saraiva.jpg",
+  "Vanderléia da Conceição Indiano": "/img/coordenacao/vanderleia-da-conceicao-indiano.jpg",
+  "Elton Jhon Almeida de Souza": "/img/coordenacao/elton-jhon-almeida-de-souza.jpg",
+  "Felícia Maria de Souza": "/img/coordenacao/felicia-maria-de-souza.jpg",
+  "Alessandra de Cássia Alves de Carvalho": "/img/coordenacao/alessandra-de-cassia-alves-de-carvalho.jpg",
+  "Rafael Romualdo dos Reis": "/img/coordenacao/rafael-romualdo-dos-reis.jpg",
+  "Maria Sueli de Lima": "/img/coordenacao/maria-sueli-de-lima.jpg",
+  "Camila Siebert Altavini": "/img/coordenacao/camila-siebert-altavini.jpg",
+  "José Almiram Rodrigues": "/img/coordenacao/jose-almiram-rodrigues.jpg",
+  "Cecília Ribeiro de Sena": "/img/coordenacao/cecilia-ribeiro-de-sena.jpg",
+  "Patricia Rosa de Lima Alves": "/img/coordenacao/patricia-rosa-de-lima-alves.jpg",
+  "Geralda Ducenir Izidorio Rocha da Silva": "/img/coordenacao/geralda-ducenir-izidorio-rocha-da-silva.jpg",
+  "Paulo Meira Lima Mattos": "/img/coordenacao/paulo-meira-lima-mattos.jpg",
+  "Gercino Duarte Silva": "/img/coordenacao/gercino-duarte-silva.jpg",
+  "Débora Cirlene de Sousa": "/img/coordenacao/debora-cirlene-de-sousa.jpg",
+  "Daniel Roberto Milke": "/img/coordenacao/daniel-roberto-milke.jpg",
+  "Jane Lucia Bendixen Tesch Auersvald": "/img/coordenacao/jane-lucia-bendixen-tesch-auersvald.jpg",
+  "Mariana Dias Batista Logrado": "/img/coordenacao/mariana-dias-batista-logrado.jpg",
+  "Flavio Renato de Aguiar Lopes": "/img/coordenacao/flavio-renato-de-aguiar-lopes.jpg",
+  "Fernando Soares dos Santos": "/img/coordenacao/fernando-soares-dos-santos.jpg",
+  "Alan Ribeiro Mol": "/img/coordenacao/alan-ribeiro-mol.jpg",
+  "Sara Regina Morais Kollar": "/img/coordenacao/sara-regina-morais-kollar.jpg",
+  "Danilo Gustavo Rodrigues de Oliveira": "/img/coordenacao/danilo-gustavo-rodrigues-de-oliveira.jpg",
+};
 
 export const fiscalCouncil = {
   titulares: ["Frederico Cristiano Gonçalves Mourão", "Rosângela Rodrigues de Araújo Fraga", "Dijalma José da Silva"],

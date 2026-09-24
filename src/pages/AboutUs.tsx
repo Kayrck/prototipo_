@@ -51,11 +51,11 @@ function PersonCard({ name, role }: { name: string; role?: string }) {
   return (
     <li className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl">
       {photo ? (
-        <img src={photo} alt={`Foto de ${name}`} className="w-14 h-14 rounded-full object-cover flex-shrink-0" loading="lazy" />
+        <img src={photo} alt={`Foto de ${name}`} className="w-16 h-16 rounded-full object-cover object-[50%_20%] flex-shrink-0 bg-gray-100" loading="lazy" />
       ) : (
         <div
           aria-hidden="true"
-          className="w-14 h-14 rounded-full bg-red-50 text-[#C41230] font-black text-base flex items-center justify-center flex-shrink-0 font-[family-name:var(--font-display)]"
+          className="w-16 h-16 rounded-full bg-red-50 text-[#C41230] font-black text-base flex items-center justify-center flex-shrink-0 font-[family-name:var(--font-display)]"
         >
           {initials(name)}
         </div>
