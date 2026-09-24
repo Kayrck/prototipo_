@@ -1,4 +1,7 @@
-export const newsItems = [
+import type { NewsItem } from "./types";
+import { extraNewsItems } from "./posts-extra";
+
+const baseNewsItems: NewsItem[] = [
   {
     id: 1,
     slug: "sessao-solene-hub-54-anos-fotos",
@@ -105,6 +108,7 @@ export const newsItems = [
     category: "Aposentados",
     categorySlug: "aposentados",
     image: "/img/nota-pesar-noe.png",
+    kind: "nota",
     tags: ["aposentado", "pesar"],
   },
   {
@@ -237,6 +241,7 @@ export const newsItems = [
     category: "Notícias",
     categorySlug: "noticias",
     image: "/img/acordo-mec-fasubra.jpg",
+    kind: "informe-fasubra",
     tags: ["campanhasalarial2024", "fasubra"],
   },
   {
@@ -261,6 +266,7 @@ export const newsItems = [
     category: "Aposentados",
     categorySlug: "aposentados",
     image: "/img/nota-pesar-odorico.jpg",
+    kind: "nota",
     tags: ["aposentado", "pesar"],
   },
   {
@@ -294,8 +300,9 @@ export const newsItems = [
     excerpt: "Boletim mensal da FASUBRA Sindical com atualizações sobre a pauta nacional dos técnico-administrativos em educação, repassado pelo SINTFUB à categoria.",
     date: "2026-02-23",
     dateFormatted: "23 de fevereiro de 2026",
-    category: "Informativos",
-    categorySlug: "informativos",
+    category: "Informes da FASUBRA",
+    categorySlug: "informes-fasubra",
+    kind: "informe-fasubra",
     tags: ["informativo", "fasubra"],
     image: "/img/informe-fasubra-fevereiro.jpg",
   },
@@ -321,18 +328,6 @@ export const newsItems = [
     category: "Jurídico Cível",
     categorySlug: "juridico-civel",
     image: "/img/juridico-horario-atendimento.jpg",
-    tags: ["juridico", "atendimento"],
-  },
-  {
-    id: 28,
-    slug: "assessoria-juridica-gratuita-associados",
-    title: "Assessoria Jurídica Gratuita para Associados SINTFUB",
-    excerpt: "Servidoras e servidores associados ao SINTFUB têm direito a atendimento jurídico gratuito com os advogados contratados pelo sindicato.",
-    date: "2023-09-21",
-    dateFormatted: "21 de setembro de 2023",
-    category: "Jurídico Cível",
-    categorySlug: "juridico-civel",
-    image: "/img/juridico-assessoria-gratuita.png",
     tags: ["juridico", "atendimento"],
   },
   {
@@ -393,6 +388,7 @@ export const newsItems = [
     category: "Aposentados",
     categorySlug: "aposentados",
     image: "/img/nota-pesar-gilvan.jpg",
+    kind: "nota",
     tags: ["aposentado", "pesar"],
   },
   {
@@ -445,6 +441,9 @@ export const newsItems = [
   },
 ];
 
+/** Todas as publicações: as originais do protótipo mais as reais importadas do site oficial. */
+export const newsItems: NewsItem[] = [...baseNewsItems, ...extraNewsItems];
+
 export const documents = [
   {
     id: 1,
@@ -494,6 +493,14 @@ export const documents = [
     image: "/img/doc-atas-2026.png",
   },
   {
+    id: 12,
+    title: "Ata de Assembleia Geral · 22/11/2023",
+    type: "Ata",
+    date: "Nov/2023",
+    url: "https://sintfub.org.br/wp-content/uploads/2025/05/SINTFUB-ATA-ASSEMLEIA-GERAL-22.11.2023.pdf",
+    description: "Registro da Assembleia Geral realizada em 22 de novembro de 2023.",
+  },
+  {
     id: 6,
     title: "Relatórios do Conselho Fiscal · Prestação de Contas 2023",
     type: "Transparência",
@@ -511,6 +518,20 @@ export const documents = [
     url: "https://sintfub.org.br/wp-content/uploads/2026/03/Edital_Convocacao_Prestacao_Contas_2023.pdf",
     size: "182 KB",
     image: "/img/doc-prestacao-contas.png",
+  },
+  {
+    id: 13,
+    title: "Edital de Convocação · Prestação de Contas 2024",
+    type: "Transparência",
+    date: "Mai/2026",
+    url: "https://sintfub.org.br/wp-content/uploads/2026/05/Edital_Convocacao_Prestacao_Contas_2024_assinado_assinado_assinado.pdf",
+  },
+  {
+    id: 14,
+    title: "Relatório Completo · Prestação de Contas 2024",
+    type: "Transparência",
+    date: "Mai/2026",
+    url: "https://sintfub.org.br/wp-content/uploads/2026/05/Relatorio-Completo-2024.pdf",
   },
   {
     id: 8,
@@ -536,28 +557,27 @@ export const documents = [
     url: "https://sintfub.org.br/wp-content/uploads/2019/05/ResolucaoCincoCIS.pdf",
     size: "1,3 MB",
   },
-  {
-    id: 11,
-    title: "Boletim Informativo · Eleições 2",
-    type: "Boletim",
-    date: "2019",
-    url: "https://sintfub.org.br/wp-content/uploads/2019/05/BoletimInformativoEleicoesDois.pdf",
-    size: "233 KB",
-  },
 ];
 
-export const menuItems = [
+export interface MenuItem {
+  label: string;
+  href: string;
+  children?: MenuItem[];
+  highlight?: boolean;
+}
+
+export const menuItems: MenuItem[] = [
   {
-    label: "Quem Somos",
+    label: "SINTFUB",
     href: "/quem-somos/",
     children: [
-      { label: "História", href: "/quem-somos/historia/" },
+      { label: "Quem Somos", href: "/quem-somos/" },
+      { label: "Coordenação Executiva", href: "/quem-somos/coordenacao-executiva/" },
       { label: "Conselho de Representantes", href: "/quem-somos/conselho-de-representantes/" },
       { label: "Conselho Fiscal", href: "/quem-somos/conselho-fiscal/" },
-      { label: "Memória Sindical", href: "/quem-somos/memoria-sindical/" },
-      { label: "Agenda da Coordenação Executiva", href: "/quem-somos/agenda-da-coordenacao-executiva/" },
+      { label: "Comissão de Ética", href: "/quem-somos/comissao-de-etica/" },
       { label: "Corpo Administrativo", href: "/quem-somos/corpo-administrativo/" },
-      { label: "Missão", href: "/quem-somos/missao/" },
+      { label: "Memória Sindical", href: "/quem-somos/memoria-sindical/" },
     ],
   },
   {
@@ -565,9 +585,19 @@ export const menuItems = [
     href: "/category/publicacoes/",
     children: [
       { label: "Notícias", href: "/category/publicacoes/noticias/" },
-      { label: "Informativos", href: "/category/informativos/" },
       {
-        label: "Multimídias",
+        label: "Informativos",
+        href: "/category/informativos/",
+        children: [
+          { label: "Boletins", href: "/category/informativos/boletins/" },
+          { label: "Notas", href: "/category/informativos/notas/" },
+          { label: "Moções", href: "/category/informativos/mocoes/" },
+          { label: "Cartas Abertas", href: "/category/informativos/cartas-abertas/" },
+        ],
+      },
+      { label: "Informes da FASUBRA", href: "/category/informes-fasubra/" },
+      {
+        label: "Multimídia",
         href: "/category/multimidia/",
         children: [
           { label: "Cards", href: "/category/multimidia/cards/" },
@@ -589,20 +619,19 @@ export const menuItems = [
     label: "Documentos",
     href: "/category/documentos/",
     children: [
-      { label: "Atas de Assembleia", href: "/category/documentos/atas/" },
-      { label: "Atas 2018", href: "/atas-de-assembleias-2018/" },
       { label: "Estatuto", href: "/estatuto/" },
+      { label: "Atas", href: "/category/documentos/atas/" },
+      { label: "CONSINTFUB", href: "/category/documentos/consintfub/" },
+      { label: "Eleições", href: "/category/eleicoes/" },
       {
-        label: "CONSINTFUB",
-        href: "/tag/consintfub/",
+        label: "Resoluções",
+        href: "/category/documentos/resolucoes/",
         children: [
-          { label: "XXII CONSINTFUB", href: "/tag/consintfub/" },
-          { label: "XXI CONSINTFUB", href: "/tag/consintfub/" },
-          { label: "XIX CONSINTFUB", href: "/tag/consintfub/" },
+          { label: "Resoluções do SINTFUB", href: "/category/documentos/resolucoes/sintfub/" },
+          { label: "Resoluções da UnB", href: "/category/documentos/resolucoes/unb/" },
+          { label: "Resoluções do MGI", href: "/category/documentos/resolucoes/mgi/" },
         ],
       },
-      { label: "Eleições", href: "/category/eleicoes/" },
-      { label: "Resoluções e Boletins", href: "/resolucoes-boletins/" },
     ],
   },
   {
@@ -610,9 +639,16 @@ export const menuItems = [
     href: "/category/transparencia/",
     children: [
       { label: "Prestação de Contas", href: "/category/transparencia/prestacao-de-contas/" },
-      { label: "Contratos e Convênios", href: "/contratos-convenios/" },
-      { label: "Conselho Fiscal", href: "/quem-somos/conselho-fiscal/" },
-      { label: "Comissão de Ética", href: "/category/comissao-de-etica/" },
+      { label: "Contratos", href: "/category/transparencia/contratos/" },
+    ],
+  },
+  {
+    label: "Serviços",
+    href: "/servicos/",
+    children: [
+      { label: "Agenda Institucional", href: "/agenda/" },
+      { label: "Convênios e Parcerias", href: "/convenios-e-parcerias/" },
+      { label: "Subsede HUB", href: "/hub/" },
     ],
   },
   {
