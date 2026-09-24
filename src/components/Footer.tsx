@@ -16,6 +16,7 @@ const footerLinks = {
     { label: "Agenda Institucional", href: "/agenda/" },
     { label: "Convênios e Parcerias", href: "/convenios-e-parcerias/" },
     { label: "Subsede HUB", href: "/hub/" },
+    { label: "Receba informações", href: "/cadastro/" },
     { label: "Aposentados", href: "/category/aposentado/" },
   ],
   publicacoes: [

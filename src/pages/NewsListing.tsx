@@ -5,6 +5,7 @@ import NewsCard, { NewsCardSkeleton } from "../components/NewsCard";
 import { newsItems, tagCloud } from "../data/content";
 import type { NewsKind } from "../data/types";
 import { themes } from "../data/themes";
+import { videos } from "../data/videos";
 
 const categoryLabels: Record<string, string> = {
   "publicacoes": "Publicações",
@@ -54,16 +55,8 @@ const PUBLICACOES_FAMILY = ["noticias", "informativos", "boletins", "notas", "mo
 const PAGE_SIZE = 6;
 const MULTIMIDIA_SLUGS = ["fotos", "videos", "cards"];
 
-const multimidiaVideos = [
-  { label: "HUB · 54 anos", href: "https://www.youtube.com/watch?v=cCoZSAESKpA", image: "/img/video-hub-54-anos.jpg" },
-  { label: "Fala da Nadia", href: "https://www.youtube.com/watch?v=RIVp_ClgKGQ", image: "/img/video-fala-nadia.jpg" },
-  { label: "Memorial da Greve de 2024", href: "https://www.youtube.com/watch?v=C0cU4hLx398", image: "/img/video-memorial-greve.jpg" },
-  { label: "Esclarecimentos sobre a URP/89", href: "https://www.youtube.com/watch?v=KKazZ1_w7dc", image: "/img/video-urp-esclarecimentos.jpg" },
-  { label: "SINTFUB recepciona novos servidores e reforça a importância da organização sindical", href: "https://www.youtube.com/watch?v=HvaaUNae5vs", image: "/img/video-novos-servidores.jpg" },
-  { label: "Técnico-administrativos da UnB cobram cumprimento de acordo e negociação da URP em audiência pública", href: "https://www.youtube.com/watch?v=GeDpQaLPh8k", image: "/img/video-cobram-acordo.jpg" },
-  { label: "Informe e deliberações da Assembleia de 20 de agosto de 2025", href: "https://www.youtube.com/watch?v=R9IACZhk2SA", image: "/img/video-assembleia-20-agosto.jpg" },
-  { label: "SINTFUB se reúne com assessoria do ministro Gilmar Mendes", href: "https://www.youtube.com/watch?v=QbNfaiGdw1E", image: "/img/video-gilmar-mendes.jpg" },
-];
+const VIDEOS_PER_LOAD = 12;
+const VIDEOS_ON_ROOT = 8;
 
 interface NavItem {
   label: string;
@@ -105,7 +98,7 @@ function buildNavigation(leaf: string, parent: string): { title: string; items: 
         { label: "Toda a multimídia", href: "/category/multimidia/" },
         { label: "Cards", href: "/category/multimidia/cards/", count: newsItems.filter((n) => n.categorySlug === "cards").length },
         { label: "Fotos", href: "/category/multimidia/fotos/", count: newsItems.filter((n) => n.categorySlug === "fotos").length },
-        { label: "Vídeos", href: "/category/multimidia/videos/", count: multimidiaVideos.length },
+        { label: "Vídeos", href: "/category/multimidia/videos/", count: videos.length },
       ],
     };
   }
@@ -145,6 +138,7 @@ export default function NewsListing() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [videoLimit, setVideoLimit] = useState(VIDEOS_PER_LOAD);
 
   useEffect(() => {
     setLoading(true);
@@ -187,6 +181,7 @@ export default function NewsListing() {
 
   useEffect(() => {
     setPage(1);
+    setVideoLimit(VIDEOS_PER_LOAD);
   }, [location.pathname]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -227,7 +222,7 @@ export default function NewsListing() {
           <p className="text-gray-500 text-sm mt-2 ml-4">
             {description && <span>{description} </span>}
             {showVideoTiles
-              ? `${filtered.length + multimidiaVideos.length} ${filtered.length + multimidiaVideos.length === 1 ? "publicação" : "publicações"}`
+              ? `${(isMultimidiaRoot ? filtered.length : 0) + videos.length} ${(isMultimidiaRoot ? filtered.length : 0) + videos.length === 1 ? "publicação" : "publicações"}`
               : `${filtered.length} ${filtered.length === 1 ? "publicação" : "publicações"}`}
           </p>
         </div>
@@ -269,9 +264,9 @@ export default function NewsListing() {
               <div className="mb-10">
                 <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Vídeos</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {multimidiaVideos.map((video) => (
+                  {(isMultimidiaRoot ? videos.slice(0, VIDEOS_ON_ROOT) : videos.slice(0, videoLimit)).map((video) => (
                     <a
-                      key={video.label}
+                      key={video.href}
                       href={video.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -296,6 +291,23 @@ export default function NewsListing() {
                     </a>
                   ))}
                 </div>
+                {isMultimidiaRoot && videos.length > VIDEOS_ON_ROOT && (
+                  <p className="mt-4 text-sm">
+                    <Link to="/category/multimidia/videos/" className="font-semibold text-[#C41230] hover:underline">
+                      Ver todos os {videos.length} vídeos
+                    </Link>
+                  </p>
+                )}
+                {!isMultimidiaRoot && videoLimit < videos.length && (
+                  <div className="mt-6 text-center">
+                    <button
+                      onClick={() => setVideoLimit((n) => n + VIDEOS_PER_LOAD)}
+                      className="px-5 py-2.5 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 hover:border-[#C41230] hover:text-[#C41230] transition-colors"
+                    >
+                      Mostrar mais vídeos ({videos.length - videoLimit} restantes)
+                    </button>
+                  </div>
+                )}
               </div>
             )}
             {loading ? (

@@ -140,10 +140,11 @@ const hubConfigs: Record<string, HubConfig> = {
       },
       {
         type: "cards",
-        title: "Temas relacionados",
+        title: "Navegação",
         items: [
           { label: "URP", href: "/temas/urp/", desc: "Notícias, documentos e materiais sobre a URP/89.", icon: ICON.doc },
-          { label: "Carreira", href: "/temas/carreira/", desc: "RSC, PCCTAE, licença-prêmio e demais direitos da carreira.", icon: ICON.briefcase },
+          { label: "Pareceres", href: "/category/juridico-trabalhista/pareceres/", desc: "Pareceres, notas e informes jurídicos.", icon: ICON.scale },
+          { label: "Ações do SINTFUB", href: "/category/juridico-trabalhista/acoes/", desc: "Documentos das ações judiciais e decisões de interesse da categoria.", icon: ICON.briefcase },
         ],
       },
       { type: "news", title: "Publicações", newsCategory: "juridico-trabalhista" },
@@ -299,6 +300,7 @@ const hubConfigs: Record<string, HubConfig> = {
           { label: "Agenda Institucional", href: "/agenda/", desc: "Agenda da Coordenação, da FASUBRA, da CUT e calendário do sindicato.", icon: ICON.calendar },
           { label: "Convênios e Parcerias", href: "/convenios-e-parcerias/", desc: "Vantagens e descontos oferecidos aos filiados.", icon: ICON.gift },
           { label: "Subsede HUB", href: "/hub/", desc: "Contatos, plantão jurídico e publicações sobre o HUB.", icon: ICON.hospital },
+          { label: "Cadastre-se", href: "/cadastro/", desc: "Receba notícias, informes e conteúdos do sindicato por e-mail e WhatsApp.", icon: ICON.mail },
           { label: "Canal do SINTFUB no WhatsApp", href: WHATSAPP_CHANNEL_URL, desc: "Receba as informações do sindicato direto no seu celular.", icon: ICON.megaphone },
         ],
       },

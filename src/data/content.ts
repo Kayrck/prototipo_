@@ -1,6 +1,7 @@
 import type { NewsItem } from "./types";
 import { extraNewsItems } from "./posts-extra";
 import { themeNewsItems } from "./posts-themes";
+import { archiveNewsItems } from "./posts-archive";
 
 const baseNewsItems: NewsItem[] = [
   {
@@ -443,7 +444,7 @@ const baseNewsItems: NewsItem[] = [
 ];
 
 /** Todas as publicações: as originais do protótipo mais as reais importadas do site oficial. */
-export const newsItems: NewsItem[] = [...baseNewsItems, ...extraNewsItems, ...themeNewsItems];
+export const newsItems: NewsItem[] = [...baseNewsItems, ...extraNewsItems, ...themeNewsItems, ...archiveNewsItems];
 
 export const documents = [
   {
@@ -650,6 +651,7 @@ export const menuItems: MenuItem[] = [
       { label: "Agenda Institucional", href: "/agenda/" },
       { label: "Convênios e Parcerias", href: "/convenios-e-parcerias/" },
       { label: "Subsede HUB", href: "/hub/" },
+      { label: "Cadastre-se", href: "/cadastro/" },
     ],
   },
   {
@@ -670,9 +672,11 @@ export const menuItems: MenuItem[] = [
   },
 ];
 
+// Tags que só classificam o tipo de publicação (já navegáveis pelas subcategorias) ficam fora da nuvem.
+const structuralTags = new Set(["boletim", "informativo", "nota", "pesar", "informe", "moção", "carta aberta", "cards", "fotos"]);
 const tagCounts = new Map<string, number>();
 newsItems.forEach((item) => {
-  item.tags.forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1));
+  item.tags.filter((t) => !structuralTags.has(t)).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1));
 });
 export const tagCloud = Array.from(tagCounts.entries())
   .map(([label, count]) => ({ label, count }))

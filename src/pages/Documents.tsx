@@ -277,7 +277,14 @@ export default function Documents() {
         description={process.summary}
         aside={<SideNav title="Processos eleitorais" items={processNav} activeHref={`/category/eleicoes/${process.slug}/`} />}
       >
-        {process.docs.length > 0 && <DocList docs={process.docs} />}
+        <div className="space-y-10">
+          {process.groups.map((group) => (
+            <section key={group.label} aria-label={group.label}>
+              <h2 className="font-bold text-gray-900 text-base mb-3 font-[family-name:var(--font-display)]">{group.label}</h2>
+              <DocList docs={group.docs} />
+            </section>
+          ))}
+        </div>
         <NewsLinks tag={process.tag} title="Publicações" />
       </Shell>
     );

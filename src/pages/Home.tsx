@@ -98,6 +98,14 @@ const memberServices = [
     highlight: false,
   },
   {
+    icon: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+    label: "Cadastre-se",
+    desc: "Receba notícias e informes do SINTFUB por e-mail e WhatsApp.",
+    href: "/cadastro/",
+    external: false,
+    highlight: false,
+  },
+  {
     icon: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z",
     label: "Canal do SINTFUB no WhatsApp",
     desc: "Receba as informações do sindicato direto no seu celular.",
@@ -217,7 +225,7 @@ export default function Home() {
       {/* Funcionalidades ao filiado */}
       <section className="border-b border-gray-100 py-8 bg-offwhite" aria-label="Serviços ao filiado">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
             {memberServices.map((service, i) => {
               const className = `group flex items-start gap-4 rounded-xl px-5 py-4 sm:px-6 sm:py-5 shadow-sm border transition-all hover:-translate-y-0.5 hover:shadow-md ${
                 service.highlight

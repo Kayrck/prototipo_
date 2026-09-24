@@ -30,11 +30,11 @@ export default function PrivacyPolicy() {
               },
               {
                 title: "2. Dados que coletamos",
-                content: "Coletamos dados fornecidos voluntariamente pelos usuários por meio dos formulários de Contato, Denúncia e Filiação. Os dados coletados incluem, conforme o formulário: nome, e-mail, telefone, CPF, RG, dados bancários, matrícula funcional, entre outros necessários ao processo de filiação sindical.",
+                content: "Coletamos dados fornecidos voluntariamente pelos usuários por meio dos formulários de Contato, Denúncia, Filiação e Cadastro para receber informações. Os dados coletados incluem, conforme o formulário: nome, setor, e-mail, telefone ou WhatsApp, CPF, RG, dados bancários, matrícula funcional, entre outros necessários ao processo de filiação sindical.",
               },
               {
                 title: "3. Finalidade do tratamento",
-                content: "Os dados são utilizados exclusivamente para: (a) processar solicitações de filiação sindical; (b) responder a mensagens de contato; (c) processar e investigar denúncias recebidas; (d) cumprir obrigações legais do SINTFUB como entidade sindical.",
+                content: "Os dados são utilizados exclusivamente para: (a) processar solicitações de filiação sindical; (b) responder a mensagens de contato e enviar notícias, informes e materiais do SINTFUB a quem se cadastrou para recebê-los; (c) processar e investigar denúncias recebidas; (d) cumprir obrigações legais do SINTFUB como entidade sindical.",
               },
               {
                 title: "4. Base legal",

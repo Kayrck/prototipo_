@@ -18,6 +18,8 @@ import TermsOfUse from "./pages/TermsOfUse";
 import HubPage from "./pages/HubPage";
 import Agenda from "./pages/Agenda";
 import Themes from "./pages/Themes";
+import Signup from "./pages/Signup";
+import JuridicoSection from "./pages/JuridicoSection";
 import BackToTop from "./components/BackToTop";
 import { newsItems } from "./data/content";
 // O painel administrativo só é baixado por quem acessa /admin (mantém o site público leve).
@@ -63,6 +65,8 @@ function AppShell() {
           <Route path="/denuncia" element={<Complaint />} />
           <Route path="/contato/" element={<Contact />} />
           <Route path="/contato" element={<Contact />} />
+          <Route path="/cadastro/" element={<Signup />} />
+          <Route path="/cadastro" element={<Signup />} />
 
           {/* Documents */}
           <Route path="/estatuto/" element={<Documents />} />
@@ -85,6 +89,7 @@ function AppShell() {
 
           {/* Categories, ordered most specific first */}
           <Route path="/category/juridico-trabalhista/" element={<HubPage />} />
+          <Route path="/category/juridico-trabalhista/:section/" element={<JuridicoSection />} />
           <Route path="/category/juridico-civel/" element={<HubPage />} />
           <Route path="/category/transparencia/" element={<HubPage />} />
           <Route path="/category/transparencia/prestacao-de-contas/" element={<Documents />} />

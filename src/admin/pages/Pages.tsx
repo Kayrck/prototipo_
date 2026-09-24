@@ -20,6 +20,7 @@ const initialPages: SitePage[] = [
   { id: "temas", name: "Temas (Carreira, URP, Campanha Salarial, Reforma Administrativa)", path: "/temas/", status: "publicado" },
   { id: "convenios", name: "Convênios e Parcerias", path: "/convenios-e-parcerias/", status: "publicado" },
   { id: "hub", name: "Subsede HUB", path: "/hub/", status: "publicado" },
+  { id: "cadastro", name: "Cadastre-se (informações por e-mail e WhatsApp)", path: "/cadastro/", status: "publicado" },
   { id: "contato", name: "Contato", path: "/contato", status: "publicado" },
   { id: "denuncie", name: "Denuncie", path: "/denuncia", status: "publicado" },
   { id: "filie-se", name: "Filie-se", path: "/filie-se", status: "publicado" },

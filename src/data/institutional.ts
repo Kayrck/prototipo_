@@ -206,109 +206,232 @@ export const consintfubEditions: ConsintfubEdition[] = [
     slug: "xxiv",
     label: "XXIV CONSINTFUB",
     when: "25 a 27 de agosto de 2026",
-    summary: "Fortaleceu a organização da categoria e aprovou o plano de lutas em defesa da educação pública e dos trabalhadores.",
+    summary:
+      "Realizado no Auditório 3 da Faculdade de Ciências da Saúde da UnB, com o tema “Universidade democrática: valorização e participação dos técnicos-administrativos em educação”, fortaleceu a organização da categoria e aprovou o plano de lutas.",
     docs: [{ title: "Programação · XXIV CONSINTFUB", date: "Ago/2026", url: `${UP}2026/08/Programacao_XXIV_CONSINTFUB.pdf` }],
     tag: "consintfub",
   },
   {
     slug: "xxii",
     label: "XXII CONSINTFUB",
-    when: "Novembro de 2022",
-    summary: "Debateu conjuntura nacional e plano de lutas, aprovou o regimento interno e tratou da filiação do SINTFUB a uma central sindical.",
-    docs: [],
+    when: "17 e 18 de novembro de 2022",
+    summary: "Debateu a conjuntura nacional e o plano de lutas, aprovou o regimento interno e tratou da filiação do SINTFUB a uma central sindical.",
+    docs: [
+      { title: "Edital de Convocação · XXII CONSINTFUB", date: "Nov/2022", url: `${UP}2022/11/EDITALXXIICONSINTFUB.pdf` },
+      { title: "Programação · XXII CONSINTFUB", date: "Nov/2022", url: `${UP}2022/11/PROGRAMACAOxxiiconsintfub.pdf` },
+      { title: "Regimento Interno · XXII CONSINTFUB", date: "Nov/2022", url: `${UP}2022/11/RegimentointernoXXIIConsintfub2022.pdf` },
+    ],
     legacyUrl: "https://sintfub.org.br/category/xxii-consintfub/",
   },
   {
     slug: "xxi",
     label: "XXI CONSINTFUB",
     when: "26 de agosto de 2021",
-    summary: "Realizado na Praça Chico Mendes.",
-    docs: [],
+    summary: "Realizado na Praça Chico Mendes, reuniu a categoria e atualizou o Estatuto do sindicato.",
+    docs: [
+      { title: "Programação · XXI CONSINTFUB", date: "Ago/2021", url: `${UP}2021/08/programacao1.pdf` },
+      { title: "Regimento Interno · XXI CONSINTFUB (versão de 8/7/2021)", date: "Ago/2021", url: `${UP}2021/08/Regimento-interno-XXI-Consintfub-2021v08072021.pdf` },
+      { title: "Caderno de Teses · XXI CONSINTFUB", date: "Ago/2021", url: `${UP}2021/08/cadernodetesesxxiconsintfub.pdf` },
+    ],
+    tag: "xxi-consintfub",
     legacyUrl: "https://sintfub.org.br/category/xxi-consintfub/",
   },
   {
     slug: "xix",
     label: "XIX CONSINTFUB",
-    when: "Maio de 2017",
-    summary: "Marcado por debates e pela participação democrática da categoria.",
+    when: "16 a 18 de maio de 2017",
+    summary:
+      "Realizado no Auditório 3 da Faculdade de Ciências da Saúde, no campus Darcy Ribeiro da UnB, abordou a conjuntura, o plano de lutas e o calendário de atividades, com debates sobre universidade e financiamento.",
     docs: [],
     legacyUrl: "https://sintfub.org.br/category/xix-consintfub/",
   },
 ];
 
 /** Processos eleitorais (Documentos > Eleições). */
+export interface ElectionGroup {
+  label: string;
+  docs: DocLink[];
+}
+
 export interface ElectionProcess {
   slug: string;
   label: string;
   summary: string;
-  docs: DocLink[];
+  /** Documentos agrupados por processo/ano, do mais recente para o mais antigo. */
+  groups: ElectionGroup[];
   /** Tag das publicações internas relacionadas ao processo. */
   tag?: string;
 }
+
+const cadConsuni2017: DocLink[] = [
+  { title: "Edital de Convocação · Eleição CAD e CONSUNI 2017", date: "2017", url: `${UP}2018/01/EDITAL-DE-CONVOCACAO-ELEICAO-CAD-CONSUNI.pdf` },
+  { title: "Regimento Eleitoral · CAD e CONSUNI 2017", date: "2017", url: `${UP}2017/04/RegimentoelCAD.CONSUNI2017.pdf` },
+];
+const cadConsuni2017Atas: DocLink[] = [
+  { title: "Ata da reunião da Comissão Eleitoral CAD/CONSUNI · 24/03", date: "2017", url: `${UP}2018/01/ATA-REUNIAO-DIA-24-03_COMISSAO-ELEITORAL-CAD-CONSUNI1.pdf` },
+  { title: "Ata da reunião da Comissão Eleitoral CAD/CONSUNI · 07/04", date: "2017", url: `${UP}2018/01/ATA-REUNIAO-DIA-07-4_COMISSAO-ELEITORAL-CAD-CONSUNI.pdf` },
+  { title: "Ata da reunião da Comissão Eleitoral CAD/CONSUNI · 13/04", date: "2017", url: `${UP}2018/01/ATA-REUNIAO-DIA-13-4_COMISSAO-ELEITORAL-CAD-CONSUNI.pdf` },
+];
+const cadConsuni2023: DocLink[] = [
+  { title: "Edital de Convocação · Eleição CAD e CONSUNI 2023", date: "Out/2023", url: `${UP}2023/10/EDITAL-CAD-CONSUNI-2023-1.pdf` },
+  { title: "Regimento Eleitoral · CAD e CONSUNI 2023", date: "Out/2023", url: `${UP}2023/10/Regimento-Eleitoral-CAD-CONSUNI-2023-1.pdf` },
+];
+const cadConsuni2025Shared: DocLink[] = [
+  { title: "Edital de Convocação · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/EDITAL-DE-CONVOCACAO-CAD-CONSUNI-2025.pdf` },
+  { title: "Regimento Eleitoral · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/Regimento-Eleitoral-CADE-CONSUNI-2025.pdf` },
+];
+const homologacao2025: DocLink = { title: "Homologação de candidatos · CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/HOMOLOGACAO-CANDITATOS-AO-CAD_CONSUNI_CIS-2025.pdf` };
+const resultado2025: DocLink = { title: "Resultado preliminar · Eleições CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/RESULTADO-PRELIMINAR-ELEICOES-CAD-CONSUNI-E-CIS-2025.pdf` };
+const resolucao4: DocLink = { title: "Resolução Nº 4 · Comissão Eleitoral CAD/CONSUNI", date: "2019", url: `${UP}2019/05/RESOlucaoQuatroCADCONSUNI.pdf` };
 
 export const electionProcesses: ElectionProcess[] = [
   {
     slug: "sintfub",
     label: "Eleições SINTFUB",
-    summary: "Eleição da Coordenação Executiva e do Conselho Fiscal do SINTFUB (quadriênio 2026-2029) e documentos do processo de 2019.",
-    docs: [
-      { title: "Edital de Convocação de Eleição · Quadriênio 2026-2029", date: "Ago/2025", url: `${UP}2025/08/ELEICAO-SINTFUB-EDITAL-DE-CONVOCACAO-DE-ELEICAO-QUADRIENIO-2026-A-2029.pdf` },
-      { title: "Calendário das Eleições · Quadriênio 2026-2029", date: "Ago/2025", url: `${UP}2025/08/CALENDARIO-ELEICOES-QUADRIENIO-2026-2029-.Recuperacao-Automatica.pdf` },
-      { title: "Regimento da Eleição da Coordenação Executiva do SINTFUB · 2025-2026", date: "Out/2025", url: `${UP}2025/10/Regimento-da-Eleicao-da-Coordenacao-Executiva-do-SINTFUB-2025-2026.pdf` },
-      { title: "Regimento do Conselho Fiscal · 2025", date: "Nov/2025", url: `${UP}2025/11/2025_regimento_conselhofiscal.pdf` },
-      { title: "Divulgação do resultado · Eleição SINTFUB 2025", date: "Nov/2025", url: `${UP}2025/11/divulgacao_resultado_eleicao2025.pdf` },
-      { title: "Boletim Informativo · Eleições 2 (2019)", date: "2019", url: `${UP}2019/05/BoletimInformativoEleicoesDois.pdf` },
+    summary: "Eleição da Coordenação Executiva e do Conselho Fiscal do SINTFUB: documentos dos processos de 2025 (quadriênio 2026-2029), 2021 (quadriênio 2022-2025) e 2019.",
+    groups: [
+      {
+        label: "Eleição 2025 · quadriênio 2026-2029",
+        docs: [
+          { title: "Edital de Convocação de Eleição · Quadriênio 2026-2029", date: "Ago/2025", url: `${UP}2025/08/ELEICAO-SINTFUB-EDITAL-DE-CONVOCACAO-DE-ELEICAO-QUADRIENIO-2026-A-2029.pdf` },
+          { title: "Calendário das Eleições · Quadriênio 2026-2029", date: "Ago/2025", url: `${UP}2025/08/CALENDARIO-ELEICOES-QUADRIENIO-2026-2029-.Recuperacao-Automatica.pdf` },
+          { title: "Regimento da Eleição da Coordenação Executiva do SINTFUB · 2025-2026", date: "Out/2025", url: `${UP}2025/10/Regimento-da-Eleicao-da-Coordenacao-Executiva-do-SINTFUB-2025-2026.pdf` },
+          { title: "Regimento do Conselho Fiscal · 2025", date: "Nov/2025", url: `${UP}2025/11/2025_regimento_conselhofiscal.pdf` },
+          { title: "Divulgação do resultado · Eleição SINTFUB 2025", date: "Nov/2025", url: `${UP}2025/11/divulgacao_resultado_eleicao2025.pdf` },
+        ],
+      },
+      {
+        label: "Eleição 2021 · quadriênio 2022-2025",
+        docs: [
+          { title: "Calendário aprovado · Eleições SINTFUB 2021", date: "Out/2021", url: `${UP}2021/10/calendarioeleicao2021.pdf` },
+          { title: "Edital de Convocação de Eleições · 2021", date: "Out/2021", url: `${UP}2021/10/editalconvocacaoeleicao2021.pdf` },
+          { title: "Regimento da Eleição · 2021", date: "Out/2021", url: `${UP}2021/10/regimentoeleicao2021.pdf` },
+          { title: "Ficha cadastral · Eleição 2021", date: "Out/2021", url: `${UP}2021/10/fichacadastraleleicao2021.pdf` },
+          { title: "Ficha de inscrição de chapa · Eleição 2021", date: "Out/2021", url: `${UP}2021/10/fichainscricaochapaeleicao2021.pdf` },
+          { title: "Resultado da eleição · 2021", date: "Dez/2021", url: `${UP}2021/12/eleicao2021resultado.pdf` },
+          { title: "Resultado · Coordenação Executiva 2021", date: "Dez/2021", url: `${UP}2021/12/eleicao2021resultadocoordenacaoexecutiva.pdf` },
+          { title: "Resultado · Conselho Fiscal 2021", date: "Dez/2021", url: `${UP}2021/12/eleicao2021resultadoconselhofiscal.pdf` },
+        ],
+      },
+      {
+        label: "Processo de 2019",
+        docs: [
+          { title: "Boletim Informativo · Eleições 2", date: "2019", url: `${UP}2019/05/BoletimInformativoEleicoesDois.pdf` },
+          { title: "Verso do Boletim · Eleições 2", date: "2019", url: `${UP}2019/05/VersoBoletim.pdf` },
+        ],
+      },
     ],
     tag: "eleicoes-sintfub",
   },
   {
     slug: "reitoria",
     label: "Eleições Reitoria",
-    summary: "Acompanhamento da Consulta para a Reitoria da UnB e da nomeação da nova reitoria, em 2024.",
-    docs: [],
+    summary: "Documentos das Consultas à comunidade universitária para a Reitoria da UnB, organizadas pela Comissão Organizadora da Consulta (COC), e publicações sobre a Consulta de 2024.",
+    groups: [
+      {
+        label: "Consulta 2024",
+        docs: [
+          { title: "Regulamento da Consulta para a Reitoria da UnB · COC 2024", date: "Jun/2024", url: `${UP}2024/06/REGULAMENTO-DA-CONSULTA-PARA-A-REITORIA-DA-UnB_COC_2024_final_V2.pdf` },
+          { title: "Comunicado nº 001/2024 · Orientações de inscrição das chapas", date: "Jul/2024", url: `${UP}2024/07/COMUNICADO_001_2024_COC_ORIENTACOES-DE-INSCRICAO-DAS-CHAPAS.pdf` },
+          { title: "Comunicado nº 002/2024 · Homologação parcial das chapas", date: "Jul/2024", url: `${UP}2024/07/COMUNICADO_002_2024_COC_HOMOLOGACAO-PARCIAL-DAS-CHAPAS.pdf` },
+          { title: "Regramento nº 001/2024 · Comunicação e campanha", date: "Jul/2024", url: `${UP}2024/07/Regramento_001_2024_COC_Comunicacao-e-Campanha_site.pdf` },
+          { title: "Regramento nº 002/2024 · Prestação de contas", date: "Jul/2024", url: `${UP}2024/07/Regramento_002_2024_COC_Prestacao-de-Contas_Site.pdf` },
+          { title: "Regramento nº 003/2024 · Regras para a condução de debates entre candidatos e candidatas", date: "Jul/2024", url: `${UP}2024/07/Regramento-003_2024_COC_Regras-para-Conducao-de-Debates-entre-Candidatosas-a-Reitora-e-Vice-Reitora-da-UnB.pdf` },
+          { title: "Regramento nº 004/2024 · Entrevistas", date: "Jul/2024", url: `${UP}2024/07/Regramento_04_2024_COC_entrevistas.pdf` },
+          { title: "Comunicado nº 011/2024 · Seções de votação", date: "Ago/2024", url: `${UP}2024/08/COMUNICADO_011_2024_COC_SECOES-DE-VOTACAO.pdf` },
+          { title: "Comunicado nº 014/2024 · Resultado do 1º turno da Consulta", date: "Ago/2024", url: `${UP}2024/08/COMUNICADO_014_2024_COC_RESULTADO-DO-1o-TURNO-DA-CONSULTA.pdf` },
+          { title: "Planilha de despesas do 1º turno · COC 2024", date: "Set/2024", url: `${UP}2024/09/Planilha-de-despesas-do-1o-turno-da-COC_2024.pdf` },
+          { title: "Planilha de despesas do 2º turno · COC 2024", date: "Set/2024", url: `${UP}2024/09/Planilha-de-despesas-do-2o-turno-da-COC_2024.pdf` },
+        ],
+      },
+      {
+        label: "Consulta 2020",
+        docs: [
+          { title: "Nota pública nº 01/2020 · Comissão Organizadora da Consulta (COC-UnB)", date: "Jun/2020", url: `${UP}2020/06/VF-Nota-publica-01_COC-UnB_2020-REVISADA-1.pdf` },
+        ],
+      },
+    ],
     tag: "eleicoes-reitoria",
   },
   {
     slug: "cad",
     label: "CAD",
-    summary: "Eleição de representantes da categoria no Conselho de Administração (CAD) da UnB.",
-    docs: [
-      { title: "Edital de Convocação · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/EDITAL-DE-CONVOCACAO-CAD-CONSUNI-2025.pdf` },
-      { title: "Regimento Eleitoral · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/Regimento-Eleitoral-CADE-CONSUNI-2025.pdf` },
-      { title: "Ficha de Inscrição · CAD 2025", date: "Out/2025", url: `${UP}2025/10/Ficha-de-Inscricao-CAD-2025.pdf` },
-      { title: "Homologação de candidatos · CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/HOMOLOGACAO-CANDITATOS-AO-CAD_CONSUNI_CIS-2025.pdf` },
-      { title: "Resultado preliminar · Eleições CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/RESULTADO-PRELIMINAR-ELEICOES-CAD-CONSUNI-E-CIS-2025.pdf` },
-      { title: "Ato da Reitoria CAD nº 0064/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13668868_Ato_da_Reitoria_CAD_n__0064_2026.pdf` },
-      { title: "Resolução Nº 4 · Comissão Eleitoral CAD/CONSUNI (2019)", date: "2019", url: `${UP}2019/05/RESOlucaoQuatroCADCONSUNI.pdf` },
+    summary: "Eleição de representantes da categoria no Conselho de Administração (CAD) da UnB: editais, regimentos, candidaturas e resultados de 2017 a 2025.",
+    groups: [
+      {
+        label: "Eleição 2025",
+        docs: [
+          ...cadConsuni2025Shared,
+          { title: "Ficha de Inscrição · CAD 2025", date: "Out/2025", url: `${UP}2025/10/Ficha-de-Inscricao-CAD-2025.pdf` },
+          homologacao2025,
+          resultado2025,
+          { title: "Ato da Reitoria CAD nº 0064/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13668868_Ato_da_Reitoria_CAD_n__0064_2026.pdf` },
+        ],
+      },
+      { label: "Eleição 2023", docs: cadConsuni2023 },
+      { label: "Eleição 2021", docs: [{ title: "Resultado · CAD 2021", date: "Dez/2021", url: `${UP}2021/12/eleicao2021resultadocad.pdf` }] },
+      { label: "Processo de 2019", docs: [resolucao4] },
+      {
+        label: "Eleição 2017",
+        docs: [
+          ...cadConsuni2017,
+          { title: "Ficha de Inscrição · CAD 2017", date: "2017", url: `${UP}2017/04/Ficha-de-Inscricao-CAD-20171.pdf` },
+          { title: "Candidatos ao CAD 2017 · Numeração das cédulas", date: "2017", url: `${UP}2018/01/Candidatos-CAD-2017-NUMERACAO-CEDULAS-1.pdf` },
+          { title: "Resultado das Eleições · CAD 2017", date: "2017", url: `${UP}2018/01/RESULTADO-CAD-ELEICOES-2017-1.pdf` },
+          ...cadConsuni2017Atas,
+        ],
+      },
     ],
     tag: "eleicoes-cad",
   },
   {
     slug: "consuni",
     label: "Consuni",
-    summary: "Eleição de representantes da categoria no Conselho Universitário (Consuni) da UnB.",
-    docs: [
-      { title: "Edital de Convocação · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/EDITAL-DE-CONVOCACAO-CAD-CONSUNI-2025.pdf` },
-      { title: "Regimento Eleitoral · CAD e CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/Regimento-Eleitoral-CADE-CONSUNI-2025.pdf` },
-      { title: "Ficha de Inscrição · CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/Ficha-de-Inscricao-CONSUNI-2025.pdf` },
-      { title: "Homologação de candidatos · CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/HOMOLOGACAO-CANDITATOS-AO-CAD_CONSUNI_CIS-2025.pdf` },
-      { title: "Resultado preliminar · Eleições CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/RESULTADO-PRELIMINAR-ELEICOES-CAD-CONSUNI-E-CIS-2025.pdf` },
-      { title: "Ato da Reitoria CONSUNI nº 0065/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13670945_Ato_da_Reitoria_CONSUNI_n__0065_2026.pdf` },
-      { title: "Resolução Nº 4 · Comissão Eleitoral CAD/CONSUNI (2019)", date: "2019", url: `${UP}2019/05/RESOlucaoQuatroCADCONSUNI.pdf` },
+    summary: "Eleição de representantes da categoria no Conselho Universitário (Consuni) da UnB: editais, regimentos, candidaturas e resultados de 2017 a 2025.",
+    groups: [
+      {
+        label: "Eleição 2025",
+        docs: [
+          ...cadConsuni2025Shared,
+          { title: "Ficha de Inscrição · CONSUNI 2025", date: "Out/2025", url: `${UP}2025/10/Ficha-de-Inscricao-CONSUNI-2025.pdf` },
+          homologacao2025,
+          resultado2025,
+          { title: "Ato da Reitoria CONSUNI nº 0065/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13670945_Ato_da_Reitoria_CONSUNI_n__0065_2026.pdf` },
+        ],
+      },
+      { label: "Eleição 2023", docs: cadConsuni2023 },
+      { label: "Eleição 2021", docs: [{ title: "Resultado · CONSUNI 2021", date: "Dez/2021", url: `${UP}2021/12/eleicao2021resultadoconsuni.pdf` }] },
+      { label: "Processo de 2019", docs: [resolucao4] },
+      {
+        label: "Eleição 2017",
+        docs: [
+          ...cadConsuni2017,
+          { title: "Ficha de Inscrição · CONSUNI 2017", date: "2017", url: `${UP}2017/04/Ficha-de-Inscricao-CONSUNI-20171.pdf` },
+          { title: "Candidatos ao CONSUNI 2017 · Numeração das cédulas", date: "2017", url: `${UP}2018/01/Candidatos-CONSUNI-2017-NUMERACAO-CEDULAS-1.pdf` },
+          { title: "Resultado das Eleições · CONSUNI 2017", date: "2017", url: `${UP}2018/01/RESULTADO-CONSUNI-ELEICOES-2017-1.pdf` },
+          ...cadConsuni2017Atas,
+        ],
+      },
     ],
     tag: "eleicoes-consuni",
   },
   {
     slug: "cis",
     label: "CIS",
-    summary: "Eleição de representantes da categoria na Comissão Interna de Supervisão (CIS) da UnB.",
-    docs: [
-      { title: "Edital de Convocação · CIS 2025", date: "Out/2025", url: `${UP}2025/10/EDITAL-CIS-2025-2.pdf` },
-      { title: "Regimento Interno da Eleição · CIS 2025", date: "Out/2025", url: `${UP}2025/10/Regimento-Interno-Eleicao-CIS-2025.pdf` },
-      { title: "Homologação de candidatos · CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/HOMOLOGACAO-CANDITATOS-AO-CAD_CONSUNI_CIS-2025.pdf` },
-      { title: "Resultado preliminar · Eleições CAD, CONSUNI e CIS 2025", date: "Nov/2025", url: `${UP}2025/11/RESULTADO-PRELIMINAR-ELEICOES-CAD-CONSUNI-E-CIS-2025.pdf` },
-      { title: "Ato da Reitoria CIS nº 0206/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13851175_Ato_da_Reitoria_CIS_n__0206_2026.pdf` },
-      { title: "Resolução Nº 5 · Comissão Eleitoral CIS (2019)", date: "2019", url: `${UP}2019/05/ResolucaoCincoCIS.pdf` },
+    summary: "Eleição de representantes da categoria na Comissão Interna de Supervisão (CIS) da UnB: editais, regimentos e resultados de 2019 a 2025.",
+    groups: [
+      {
+        label: "Eleição 2025",
+        docs: [
+          { title: "Edital de Convocação · CIS 2025", date: "Out/2025", url: `${UP}2025/10/EDITAL-CIS-2025-2.pdf` },
+          { title: "Regimento Interno da Eleição · CIS 2025", date: "Out/2025", url: `${UP}2025/10/Regimento-Interno-Eleicao-CIS-2025.pdf` },
+          homologacao2025,
+          resultado2025,
+          { title: "Ato da Reitoria CIS nº 0206/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13851175_Ato_da_Reitoria_CIS_n__0206_2026.pdf` },
+        ],
+      },
+      { label: "Eleição 2022", docs: [{ title: "Edital de Convocação · Eleições CIS 2022", date: "Out/2022", url: `${UP}2022/10/eleicoescis2022edital.pdf` }] },
+      { label: "Processo de 2019", docs: [{ title: "Resolução Nº 5 · Comissão Eleitoral CIS", date: "2019", url: `${UP}2019/05/ResolucaoCincoCIS.pdf` }] },
     ],
     tag: "eleicoes-cis",
   },
@@ -336,11 +459,15 @@ export const resolutionAreas: ResolutionArea[] = [
   {
     slug: "unb",
     label: "Resoluções da UnB",
-    summary: "Atos da Reitoria da Universidade de Brasília divulgados pelo SINTFUB.",
+    summary: "Resoluções do Conselho de Administração e atos da Reitoria da Universidade de Brasília divulgados pelo SINTFUB.",
     docs: [
       { title: "Ato da Reitoria CAD nº 0064/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13668868_Ato_da_Reitoria_CAD_n__0064_2026.pdf` },
       { title: "Ato da Reitoria CONSUNI nº 0065/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13670945_Ato_da_Reitoria_CONSUNI_n__0065_2026.pdf` },
       { title: "Ato da Reitoria CIS nº 0206/2026", date: "Mar/2026", url: `${UP}2026/03/SEI_13851175_Ato_da_Reitoria_CIS_n__0206_2026.pdf` },
+      { title: "Resolução do Conselho de Administração nº 0015/2023 · Política de Prevenção e Combate ao Assédio Moral", date: "2023", url: `${UP}2024/08/resolucao-UnB-assedio.15.2023.pdf` },
+      { title: "Resolução do Conselho de Administração nº 0026/2022 · Retorno ao trabalho presencial", date: "2022", url: `${UP}2022/07/Anexo1ResolucaodoCAD00262022.pdf` },
+      { title: "Resolução do Conselho de Administração nº 0001/2022 · Altera o art. 13 da Resolução CAD 051/2021", date: "2022", url: `${UP}2022/07/Anexo3ResolucaodoCAD00012022.pdf` },
+      { title: "Resolução do Conselho de Administração nº 0051/2021 · Retorno gradual e seguro ao trabalho presencial", date: "2021", url: `${UP}2022/07/Anexo2ResolucaodoCAD00512021.pdf` },
     ],
   },
   {
@@ -399,7 +526,7 @@ export const accountsByYear: AccountsYear[] = [
   },
   {
     year: "2022",
-    docs: [],
+    docs: [{ title: "Edital de Convocação · Assembleia Geral Ordinária de Prestação de Contas (exercício 2022)", date: "Fev/2025", url: `${UP}2025/02/EDITA-DE-CONVOCACAO-ASSEMBLEIA-GERAL-ORDINARIA-DE-PRESTACAO-DE-CONTAS.pdf` }],
     newsSlugs: ["assembleia-estatutaria-aprova-prestacao-contas-2022", "edital-assembleia-geral-ordinaria-prestacao-de-contas"],
   },
 ];
