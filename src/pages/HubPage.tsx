@@ -235,7 +235,7 @@ const hubConfigs: Record<string, HubConfig> = {
         items: [
           { label: "Jurídico", href: "/juridico/", desc: "Assessoria jurídica para filiados, incluindo orientações sobre direitos trabalhistas.", icon: ICON.scale },
           { label: "Contato", href: "/contato/", desc: "Fale com a Secretaria do SINTFUB pelos canais disponíveis.", icon: ICON.mail },
-          { label: "Filiação", href: "/filie-se/", desc: "Não há filiação diferenciada para aposentados: o processo é o mesmo para todos os filiados.", icon: ICON.userPlus },
+          { label: "Filiação", href: "/filie-se/", desc: "O formulário de filiação atende ativos, aposentados, aposentadas e pensionistas, pelo mesmo processo.", icon: ICON.userPlus },
         ],
       },
       { type: "news", title: "Publicações para aposentados", newsCategory: "aposentados" },
