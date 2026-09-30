@@ -105,6 +105,7 @@ function AppShell() {
           <Route path="/category/informes-fasubra/" element={<NewsListing />} />
           <Route path="/category/multimidia/" element={<NewsListing />} />
           <Route path="/category/multimidia/:sub/" element={<NewsListing />} />
+          <Route path="/category/podcast/" element={<NewsListing />} />
           <Route path="/category/:category/" element={<NewsListing />} />
           <Route path="/category/:category/:subcategory/" element={<NewsListing />} />
 

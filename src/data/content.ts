@@ -607,6 +607,7 @@ export const menuItems: MenuItem[] = [
           { label: "Vídeos", href: "/category/multimidia/videos/" },
         ],
       },
+      { label: "Podcast", href: "/category/podcast/" },
     ],
   },
   {

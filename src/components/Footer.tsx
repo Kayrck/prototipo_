@@ -24,6 +24,7 @@ const footerLinks = {
     { label: "Informativos", href: "/category/informativos/" },
     { label: "Informes da FASUBRA", href: "/category/informes-fasubra/" },
     { label: "Multimídia", href: "/category/multimidia/" },
+    { label: "Podcast", href: "/category/podcast/" },
     { label: "Temas", href: "/temas/" },
   ],
   juridico: [

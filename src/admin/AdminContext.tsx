@@ -148,6 +148,7 @@ const seedCategories: AdminCategory[] = [
   { id: "cat-18", name: "Campanha Salarial", slug: "campanha-salarial", parent: "", description: "Campanha salarial da categoria.", image: "", status: "ativa" },
   { id: "cat-19", name: "Reforma Administrativa", slug: "reforma-administrativa", parent: "", description: "Acompanhamento da Reforma Administrativa.", image: "", status: "ativa" },
   { id: "cat-20", name: "Informes da FASUBRA", slug: "informes-fasubra", parent: "", description: "Informes de Direção da FASUBRA repassados à categoria.", image: "", status: "ativa" },
+  { id: "cat-21", name: "Podcast", slug: "podcast", parent: "", description: "Programa em áudio do SINTFUB. Sem episódios publicados ainda.", image: "", status: "ativa" },
 ];
 
 // ---------------------------------------------------------------------------

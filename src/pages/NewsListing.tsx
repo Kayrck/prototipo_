@@ -24,6 +24,7 @@ const categoryLabels: Record<string, string> = {
   "fotos": "Fotos",
   "videos": "Vídeos",
   "cards": "Cards",
+  "podcast": "Podcast",
   "transparencia": "Transparência",
   "prestacao-de-contas": "Prestação de Contas",
   "documentos": "Documentos",
@@ -39,6 +40,7 @@ const pageDescriptions: Record<string, string> = {
   "cartas-abertas": "Cartas abertas do SINTFUB à comunidade e às autoridades.",
   "informes-fasubra": "Informes de Direção da FASUBRA repassados pelo SINTFUB à categoria.",
   "multimidia": "Cards, fotos e vídeos do SINTFUB.",
+  "podcast": "Programa em áudio do SINTFUB.",
 };
 
 /** Subcategorias de "Informativos", pela URL, e o tipo de publicação correspondente. */
@@ -50,7 +52,7 @@ const informativoKinds: Record<string, NewsKind> = {
 };
 const INFORMATIVO_KINDS = Object.values(informativoKinds);
 
-const PUBLICACOES_FAMILY = ["noticias", "informativos", "boletins", "notas", "mocoes", "cartas-abertas", "informes-fasubra", "multimidia", "fotos", "videos", "cards"];
+const PUBLICACOES_FAMILY = ["noticias", "informativos", "boletins", "notas", "mocoes", "cartas-abertas", "informes-fasubra", "multimidia", "fotos", "videos", "cards", "podcast"];
 
 const PAGE_SIZE = 6;
 const MULTIMIDIA_SLUGS = ["fotos", "videos", "cards"];
