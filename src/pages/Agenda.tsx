@@ -98,7 +98,7 @@ export default function Agenda() {
                 </li>
                 <li className="p-4 bg-white border border-gray-100 rounded-xl">
                   <p className="text-sm font-semibold text-gray-900">Plantões jurídicos</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Na sede do SINTFUB, no Campus Darcy Ribeiro, e na subsede do HUB.</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Na subsede do HUB.</p>
                   <Link to="/juridico/" className="text-xs font-semibold text-[#C41230] hover:underline">
                     Ver calendário dos plantões
                   </Link>

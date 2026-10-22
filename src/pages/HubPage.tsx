@@ -68,7 +68,7 @@ const hubConfigs: Record<string, HubConfig> = {
         title: "",
         stats: [
           { value: "4", label: "Áreas de plantão" },
-          { value: "2", label: "Locais de plantão: sede e subsede HUB" },
+          { value: "1", label: "Local de plantão: subsede HUB" },
           { value: String(juridicoPubCount), label: "Publicações jurídicas" },
         ],
       },
@@ -76,7 +76,7 @@ const hubConfigs: Record<string, HubConfig> = {
         type: "info",
         title: "Atendimento jurídico aos filiados",
         content:
-          "Filiados ao SINTFUB têm direito ao atendimento prestado pelos escritórios de advocacia que oferecem assessoria jurídica ao sindicato. Os plantões nas áreas trabalhista, cível, de família e dos juizados especiais acontecem na sede do SINTFUB, no Campus Darcy Ribeiro, e na subsede do HUB. O agendamento deve ser realizado pelos canais disponíveis na página de Contato ou pelo WhatsApp.",
+          "Filiados ao SINTFUB têm direito ao atendimento prestado pelos escritórios de advocacia que oferecem assessoria jurídica ao sindicato. Os plantões nas áreas trabalhista, cível, de família e dos juizados especiais acontecem na subsede do HUB. O agendamento deve ser realizado pelos canais disponíveis na página de Contato ou pelo WhatsApp.",
         action: { label: "Agendar pelo Contato", href: "/contato/" },
       },
       {
@@ -108,7 +108,7 @@ const hubConfigs: Record<string, HubConfig> = {
         faqs: [
           { q: "Quem tem direito ao atendimento jurídico?", a: "Filiados ao SINTFUB têm direito ao atendimento prestado pelos escritórios de advocacia que oferecem assessoria jurídica ao sindicato." },
           { q: "Quais áreas são atendidas?", a: "Os plantões acontecem nas áreas trabalhista, cível, de família e dos juizados especiais (crimes de menor potencial ofensivo)." },
-          { q: "Onde acontecem os plantões?", a: "Na sede do SINTFUB, no Campus Darcy Ribeiro, e na subsede do HUB, conforme a escala de cada área." },
+          { q: "Onde acontecem os plantões?", a: "Na subsede do HUB, conforme a escala de cada área." },
           { q: "Como agendar um atendimento?", a: "Pelos canais disponíveis na página de Contato ou pelo WhatsApp do SINTFUB." },
         ],
       },
@@ -279,7 +279,7 @@ const hubConfigs: Record<string, HubConfig> = {
       {
         type: "info",
         title: "Plantão jurídico no HUB",
-        content: "Os plantões jurídicos também acontecem na subsede do HUB. O agendamento deve ser realizado pelos canais disponíveis na página de Contato ou pelo WhatsApp.",
+        content: "Os plantões jurídicos acontecem na subsede do HUB. O agendamento deve ser realizado pelos canais disponíveis na página de Contato ou pelo WhatsApp.",
         action: { label: "Ver calendário e áreas atendidas", href: "/juridico/" },
       },
       { type: "news", title: "Publicações sobre o HUB", newsTag: "hub" },
